@@ -5,12 +5,12 @@ import java.io.Serializable;
 public class BreweryBean implements Serializable{
 	
 	/*
-	 * 酒ID
+	 * 酒蔵ID
 	 */
 	private String breweryId;
 	
 	/*
-	 * 酒の名前
+	 * 酒蔵の名前
 	 */
 	private String breweryName;
 	
@@ -35,7 +35,7 @@ public class BreweryBean implements Serializable{
 	private String address;
 	
 	/*
-	 * 味わい
+	 *予約ができるかどうか
 	 */
 	private Boolean reservation;
 	
