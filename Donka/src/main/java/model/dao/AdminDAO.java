@@ -1,5 +1,35 @@
 package model.dao;
 
-public class AdminDAO {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-}
+public class AdminDAO {
+	
+	/*
+	 * ログインを行う
+	 */
+	
+	public boolean lobinCheck(String adminId,String password)throws ClassNotFoundException,SQLException{
+		
+		String sql="SELECT * FROM m_admin WHERE admin_id=? AND passward=?";
+		
+		try(Connection con=ConnectionManager.getConnection();
+				PreparedStatement pstmt=con.prepareStatement(sql)){
+			
+			pstmt.setString(1, adminId);
+			pstmt.setString(2, password);
+			
+			ResultSet res=pstmt.executeQuery();
+			
+			if(res.next()) {
+				return true;
+			}
+			
+			
+		}
+		return false;
+	}
+
+} 
