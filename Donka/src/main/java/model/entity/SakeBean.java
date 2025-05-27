@@ -1,6 +1,7 @@
 package model.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class SakeBean implements Serializable{
 	
@@ -42,7 +43,7 @@ public class SakeBean implements Serializable{
 	/*
 	 * 更新した日
 	 */
-	private date updateDay;
+	private Date updateDay;
 	
 	/*
 	 * 酒の詳細
@@ -113,11 +114,11 @@ public class SakeBean implements Serializable{
 		this.breweryId = breweryId;
 	}
 
-	public date getUpdateDay() {
+	public Date getUpdateDay() {
 		return updateDay;
 	}
 
-	public void setUpdateDay(date updateDay) {
+	public void setUpdateDay(Date updateDay) {
 		this.updateDay = updateDay;
 	}
 
@@ -128,4 +129,4 @@ public class SakeBean implements Serializable{
 	public void setSakeExplanation(String sakeExplanation) {
 		this.sakeExplanation = sakeExplanation;
 	}
-	
+}
