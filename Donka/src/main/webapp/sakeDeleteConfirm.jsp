@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>酒の削除確認画面</title>
+<title>Insert title here</title>
 </head>
 <body>
 
+<<<<<<< master
 こちらを削除してよろしいですか？<br>
 <jsp:useBean id="sake" scope="session" class="model.entity.SakeBean" />
 
@@ -20,5 +21,7 @@
 <input type="submit" value="削除する">
 </form>
 
+=======
+>>>>>>> b58628d ９回目武田　jsp
 </body>
 </html>
