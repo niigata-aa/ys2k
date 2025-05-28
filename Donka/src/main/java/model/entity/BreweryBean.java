@@ -17,17 +17,17 @@ public class BreweryBean implements Serializable{
 	/*
 	 * 写真のURL
 	 */
-	private String blmgPath;
+	private String bImgPath;
 	
 	/*
 	 * 緯度
 	 */
-	private int lattitude;
+	private int latitude;
 	
 	/*
 	 * 経度
 	 */
-	private int longtiude;
+	private int longitude;
 	
 	/*
 	 * 住所
@@ -78,33 +78,33 @@ public class BreweryBean implements Serializable{
 	}
 
 
-	public String getBlmgPath() {
-		return blmgPath;
+	public String getBImgPath() {
+		return bImgPath;
 	}
 
 
-	public void setBlmgPath(String blmgPath) {
-		this.blmgPath = blmgPath;
+	public void setBImgPath(String bImgPath) {
+		this.bImgPath = bImgPath;
 	}
 
 
-	public int getLattitude() {
-		return lattitude;
+	public int getLatitude() {
+		return latitude;
 	}
 
 
-	public void setLattitude(int lattitude) {
-		this.lattitude = lattitude;
+	public void setLatitude(int lattitude) {
+		this.latitude = lattitude;
 	}
 
 
-	public int getLongtiude() {
-		return longtiude;
+	public int getLongitude() {
+		return longitude;
 	}
 
 
-	public void setLongtiude(int longtiude) {
-		this.longtiude = longtiude;
+	public void setLongitude(int longitude) {
+		this.longitude = longitude;
 	}
 
 
