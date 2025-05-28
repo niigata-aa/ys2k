@@ -1,12 +1,17 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.dao.UserDAO;
 
 /**
  * Servlet implementation class UserLoginServlet
@@ -35,8 +40,51 @@ public class UserLoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		//リクエストのエンコーディング方式を指定
+		request.setCharacterEncoding("UTF-8");
+		
+		//リクエストパラメータの取得
+		String userId = request.getParameter("userId");
+		String password = request.getParameter("password");		
+		
+		//nicknameはdaoから持ってくる
+		String nickname = "";
+		
+		//操作が成功した時のURL
+		String url = "loginComplete.jsp";
+		
+		
+		//DAOの生成
+		UserDAO dao = new UserDAO();
+		
+		//DAOの利用
+		try {
+			nickname = dao.loginCheck(userId,password);
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		//成功、失敗した時の値の設定
+		
+		/*成功したとき*/
+		if(nickname != null) {	
+			
+			//セッションスコープへの属性の設定
+			HttpSession session = request.getSession();
+			session.setAttribute("userId", userId);
+		
+		/*失敗したとき*/	
+		}else { 
+			
+			url = "failure.jsp";
+			//リクエストスコープへの属性の設定
+			request.setAttribute("url","login.jsp");//aタグの中身に入るurlの値(失敗した時の遷移先を設定)
+			
+		}
+			
+		//リクエストの転送
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		rd.forward(request, response);
 	}
 
 }

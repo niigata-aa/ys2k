@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>失敗画面</title>
 </head>
 <body>
-
+	何らかの不具合が発生しました。
+	５秒後にxxxxページに戻ります。
+	
+	<a href="<%= request.getAttribute("url")%>">戻らない場合はこちら</a>
+	
 </body>
 </html>
