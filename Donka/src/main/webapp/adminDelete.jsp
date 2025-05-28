@@ -7,8 +7,8 @@
 <title>管理者用削除画面</title>
 </head>
 <body>
-<a href="sakedelete.jsp">酒の削除</a><br>
-<a href="commentdelete1.jsp">コメントの削除</a><br>
+<a href="SakeDeleteServlet.java">酒の削除</a><br>
+<a href="CommentDeleteServlet.java">コメントの削除</a><br>
 <a href="adminTop.jsp">トップページ</a>
 
 </body>
