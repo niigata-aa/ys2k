@@ -19,13 +19,13 @@
 					<option value=2>中越</option>
 					<option value=3>下越</option>
 					<option value=4>佐渡</option>
-				</select>
-	予約の可否：<input type="checkbox" id="reserb" name="reserb"/>
-	
-	<button onclick="location.href='./adminregistaration.jsp'">戻る</button><br>
+				</select><br>
+	予約の可否：<input type="checkbox" id="reserve" name="reserve"/><br>
 	<input type="submit" value="登録する">
-	
 	</form>
 
+	<form action="adminRegistration.jsp" method="POST">
+		<input type="submit" value="戻る">
+	</form>
 </body>
 </html>

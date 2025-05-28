@@ -1,13 +1,13 @@
 package model.entity;
-
 import java.io.Serializable;
+import java.util.Date;
 
 public class BreweryBean implements Serializable{
 	
 	/*
 	 * 酒蔵ID
 	 */
-	private String breweryId;
+	private int breweryId;
 	
 	/*
 	 * 酒蔵の名前
@@ -22,12 +22,12 @@ public class BreweryBean implements Serializable{
 	/*
 	 * 緯度
 	 */
-	private int latitude;
+	private double latitude;
 	
 	/*
 	 * 経度
 	 */
-	private int longitude;
+	private double longitude;
 	
 	/*
 	 * 住所
@@ -35,9 +35,19 @@ public class BreweryBean implements Serializable{
 	private String address;
 	
 	/*
-	 *予約ができるかどうか
+	 * 更新日時
 	 */
-	private Boolean reservation;
+	private Date updateDay;
+	
+	/*
+	 *予約ができるかどうかのフラグ
+	 */
+	private Boolean reservationFlag;
+	
+	/*
+	 * 予約先のURL
+	 */
+	private String reservationPath;
 	
 	/*
 	 * 酒蔵の説明
@@ -49,7 +59,6 @@ public class BreweryBean implements Serializable{
 	 */
 	private int areaId;
 	
-	
 	/*
 	 * BrewreyBeanを構築
 	 */
@@ -58,12 +67,12 @@ public class BreweryBean implements Serializable{
 	}
 
 
-	public String getBreweryId() {
+	public int getBreweryId() {
 		return breweryId;
 	}
 
 
-	public void setBreweryId(String breweryId) {
+	public void setBreweryId(int breweryId) {
 		this.breweryId = breweryId;
 	}
 
@@ -88,22 +97,22 @@ public class BreweryBean implements Serializable{
 	}
 
 
-	public int getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
 
-	public void setLatitude(int lattitude) {
+	public void setLatitude(double lattitude) {
 		this.latitude = lattitude;
 	}
 
 
-	public int getLongitude() {
+	public double getLongitude() {
 		return longitude;
 	}
 
 
-	public void setLongitude(int longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 
@@ -116,17 +125,33 @@ public class BreweryBean implements Serializable{
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-
-	public Boolean getReservation() {
-		return reservation;
+	
+	public Date getUpdateDay() {
+		return updateDay;
 	}
 
 
-	public void setReservation(Boolean reservation) {
-		this.reservation = reservation;
+	public void setUpdateDay(Date updateDay) {
+		this.updateDay = updateDay;
 	}
 
+	public Boolean getReservationFlag() {
+		return reservationFlag;
+	}
+
+
+	public void setReservationFlag(Boolean reservationFlag) {
+		this.reservationFlag = reservationFlag;
+	}
+
+	public String getReservationPath() {
+		return reservationPath;
+	}
+
+
+	public void setReservationPath(String reservationPath) {
+		this.reservationPath = reservationPath;
+	}
 
 	public String getBreweryExplanation() {
 		return breweryExplanation;
