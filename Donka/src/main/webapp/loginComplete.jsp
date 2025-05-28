@@ -9,7 +9,7 @@
 <body>
 	ログインが完了しました。
 	5秒後にとっぷぺーじに戻ります。
-	<a href="home.jsp">戻らない場合はこちら</a>hlksjhdfhasldkjfhlkasjhdflk
+	<a href="home.jsp">戻らない場合はこちら</a>
 	
 </body>
 </html>
