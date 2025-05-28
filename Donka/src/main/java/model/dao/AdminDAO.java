@@ -11,7 +11,7 @@ public class AdminDAO {
 	 * ログインを行う
 	 */
 	
-	public boolean lobinCheck(String adminId,String password)throws ClassNotFoundException,SQLException{
+	public boolean loginCheck(String adminId,String password)throws ClassNotFoundException,SQLException{
 		
 		String sql="SELECT * FROM m_admin WHERE admin_id=? AND passward=?";
 		
