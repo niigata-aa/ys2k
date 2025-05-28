@@ -7,8 +7,8 @@
 <title>管理者登録画面</title>
 </head>
 <body>
-<a href="SakeRegistServlet.java">酒の登録</a><br>
-<a href="BreweryRegistServlet.java">酒蔵の登録</a><br>
+<a href="SakeRegistServlet">酒の登録</a><br>
+<a href="BreweryRegistServlet">酒蔵の登録</a><br>
 <a href="adminTop.jsp">トップページ</a>
 
 </body>
