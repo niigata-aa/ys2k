@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>管理者用変更画面</title>
 </head>
 <body>
+<a href="sakeupdate .jsp">酒の変更</a><br>
+<a href="breweryupdate.jsp">酒蔵の変更</a><br>
+<a href="adminTop.jsp">トップページ</a>
 
 </body>
 </html>

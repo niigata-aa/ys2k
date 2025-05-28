@@ -4,9 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>管理者完了画面</title>
 </head>
 <body>
+<form action="CompleteServlet" method="POST">
+完了しました。<br>
+５秒後にトップページに戻ります。<br>
+<a href="admintop.jsp">戻らない場合はこちらから</a>
+
+</form>
 
 </body>
 </html>
