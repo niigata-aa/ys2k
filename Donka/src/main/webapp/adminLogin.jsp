@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
+<title>管理者ログイン</title>
 </head>
 <body>
-
+	<form action="AdminLogin" method="post">
+		管理者ID:<input type="text" name="id"><br>
+		パスワード:<input type="text"name="password"><br>
+		<input type="submit" value="ログイン">
+	</form>
 </body>
 </html>
