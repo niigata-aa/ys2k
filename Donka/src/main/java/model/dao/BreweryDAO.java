@@ -44,7 +44,7 @@ public class BreweryDAO {
 				brewery.setLatitude(latitude);
 				brewery.setLongitude(longitude);
 				brewery.setAddress(address);
-				brewery.setUpdateDay(updateDay);
+				brewery.setUpdateDay(updateDay); //ユーザが更新日時に値を設定することは多分無い
 				brewery.setReservationFlag(reservationFlag);
 				brewery.setReservationPath(reservationPath);
 				brewery.setBreweryExplanation(breweryExplanation);
@@ -60,26 +60,27 @@ public class BreweryDAO {
     	
         int processingNumber = 0;
 
-        String sql = "INSERT INTO m_brewery (brewary_name, b_img_path, latitude, longitude, address, brewery_explanation, reservation_flag, reservation_path, area_id) "
+        String sql = "INSERT INTO m_brewery (brewery_id, brewery_name, b_img_path, latitude, longitude, address, brewery_explanation, reservation_flag, reservation_path, area_id) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection con = ConnectionManager.getConnection();
              PreparedStatement pstmt = con.prepareStatement(sql)) {
-
-            pstmt.setString(1, brewery.getBreweryName());
-            pstmt.setString(2, brewery.getBImgPath());
-            pstmt.setDouble(3, brewery.getLatitude());
-            pstmt.setDouble(4, brewery.getLongitude());
-            pstmt.setString(5, brewery.getAddress());
-            pstmt.setString(6, brewery.getBreweryExplanation());
-            pstmt.setBoolean(7,  brewery.getReservationFlag());
-            pstmt.setString(8,  brewery.getReservationPath());
-            pstmt.setInt(9, brewery.getAreaId());
+            pstmt.setInt(1, brewery.getBreweryId());
+            pstmt.setString(2, brewery.getBreweryName());
+            pstmt.setString(3, brewery.getBImgPath());
+            pstmt.setDouble(4, brewery.getLatitude());
+            pstmt.setDouble(5, brewery.getLongitude());
+            pstmt.setString(6, brewery.getAddress());
+            pstmt.setString(7, brewery.getBreweryExplanation());
+            pstmt.setBoolean(8, brewery.getReservationFlag());
+            pstmt.setString(9, brewery.getReservationPath());
+            pstmt.setInt(10, brewery.getAreaId());
             
 			processingNumber = pstmt.executeUpdate();
 
-            return processingNumber;
+           
         }
+        return processingNumber;
     }
     
     public int update(BreweryBean brewery) throws SQLException, ClassNotFoundException {
@@ -104,7 +105,7 @@ public class BreweryDAO {
             
 			processingNumber = pstmt.executeUpdate();
 
-            return processingNumber;
         }
+        return processingNumber;
     }
 }
