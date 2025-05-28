@@ -25,7 +25,7 @@ public class BreweryDAO {
             pstmt.setString(5, brewery.getAddress());
             pstmt.setString(6, brewery.getBreweryExplanation());
             pstmt.setBoolean(7,  brewery.getReservation());
-            pstmt.setInt(7, brewery.getAreaId());
+            pstmt.setInt(8, brewery.getAreaId());
 
             return processingNumber;
         }
@@ -47,11 +47,13 @@ public class BreweryDAO {
             pstmt.setString(4, brewery.getAddress());
             pstmt.setInt(5, brewery.getAreaId());
             pstmt.setString(6, brewery.getBImgPath());
-            pstmt.setString(7, brewery.getBreweryId()); //変更したい酒蔵のid
+            pstmt.setString(7, brewery.getBreweryId());
 
             return processingNumber;
         }
     }
+    
+    
     
     
 }
