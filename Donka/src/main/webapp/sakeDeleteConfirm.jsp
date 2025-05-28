@@ -8,15 +8,15 @@
 </head>
 <body>
 
-こちらを削除してよろしいですか？
+こちらを削除してよろしいですか？<br>
 <jsp:useBean id="sake" scope="session" class="model.entity.SakeBean" />
 
 酒：<jsp:getProperty name="sake" property="sake"/><br>
 
-<form action="SakeDeleteServlet" method="POST">
+<form action="SakeDelete" method="POST">
 <input type="submit" value="戻る">
 </form>
-<form action="CompleteServlet" method="POST">
+<form action="Complete" method="POST">
 <input type="submit" value="削除する">
 </form>
 
