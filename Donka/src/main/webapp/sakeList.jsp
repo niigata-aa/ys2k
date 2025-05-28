@@ -4,9 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>酒一覧</title>
 </head>
 <body>
+<%
+List<SakeBean> sakeList=(List<SakeBean>)request.getAttribute("sakeList");
+%>
+<%
+for(SakeBean brewery:sakeList){
+%>	
+<%=brewery.getBreweryName() %>
+<img src="<%=brewery.getBImgPath() %>"><br>
+
+<%
+}
+%>
 
 </body>
 </html>

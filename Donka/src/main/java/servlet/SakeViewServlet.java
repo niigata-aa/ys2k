@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.dao.BreweryDAO;
-import model.entity.BreweryBean;
+import model.dao.SakeDAO;
+import model.entity.SakeBean;
 
 /**
- * Servlet implementation class BreweryViewServlet
+ * Servlet implementation class SakeViewServlet
  */
-@WebServlet("/BreweryView")
-public class BreweryViewServlet extends HttpServlet {
+@WebServlet("/SakeViewServlet")
+public class SakeViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BreweryViewServlet() {
+    public SakeViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,21 +42,22 @@ public class BreweryViewServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<BreweryBean> breweryList=null;
+		List<SakeBean> sakeList=null;
 		
-	
-		BreweryDAO dao=new BreweryDAO();
+		
+		SakeDAO dao=new SakeDAO();
 		
 		try {
-			breweryList=dao.selectAll();
+			sakeList=dao.selectAll();
 		}catch(SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("breweryList", breweryList);
+		request.setAttribute("breweryList", sakeList);
 		
-		RequestDispatcher rd=request.getRequestDispatcher("breweryList.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("sakeList.jsp");
 		rd.forward(request, response);
 	}
+	
 
 }
