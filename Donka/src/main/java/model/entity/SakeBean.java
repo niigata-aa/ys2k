@@ -1,7 +1,7 @@
 package model.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class SakeBean implements Serializable{
 	
@@ -33,7 +33,7 @@ public class SakeBean implements Serializable{
 	/*
 	 * 味わい
 	 */
-	private int taste;
+	private String taste;
 	
 	/*
 	 * 酒蔵のID
@@ -43,7 +43,7 @@ public class SakeBean implements Serializable{
 	/*
 	 * 更新した日
 	 */
-	private Date updateDay;
+	private Timestamp updateDay;
 	
 	/*
 	 * 酒の詳細
@@ -98,11 +98,11 @@ public class SakeBean implements Serializable{
 		this.fDrink = fDrink;
 	}
 
-	public int getTaste() {
+	public String getTaste() {
 		return taste;
 	}
 
-	public void setTaste(int taste) {
+	public void setTaste(String taste) {
 		this.taste = taste;
 	}
 
@@ -114,12 +114,8 @@ public class SakeBean implements Serializable{
 		this.breweryId = breweryId;
 	}
 
-	public Date getUpdateDay() {
+	public Timestamp getUpdateDay() {
 		return updateDay;
-	}
-
-	public void setUpdateDay(Date updateDay) {
-		this.updateDay = updateDay;
 	}
 
 	public String getSakeExplanation() {

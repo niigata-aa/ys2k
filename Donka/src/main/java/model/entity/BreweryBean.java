@@ -1,6 +1,6 @@
 package model.entity;
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class BreweryBean implements Serializable{
 	
@@ -37,7 +37,7 @@ public class BreweryBean implements Serializable{
 	/*
 	 * 更新日時
 	 */
-	private Date updateDay;
+	private Timestamp updateDay;
 	
 	/*
 	 *予約ができるかどうかのフラグ
@@ -126,14 +126,10 @@ public class BreweryBean implements Serializable{
 		this.address = address;
 	}
 	
-	public Date getUpdateDay() {
+	public Timestamp getUpdateDay() {
 		return updateDay;
 	}
 
-
-	public void setUpdateDay(Date updateDay) {
-		this.updateDay = updateDay;
-	}
 
 	public Boolean getReservationFlag() {
 		return reservationFlag;

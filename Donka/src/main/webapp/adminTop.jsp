@@ -9,7 +9,7 @@
 <body>
 <a href="adminregistaration.jsp">登録</a><br>
 <a href="adminupdate.jsp">変更</a><br>
-<a href="admindelete.jsp">削除</a><br>
+<a href="adminDelete.jsp">削除</a><br>
 <a href="logconfirm.jsp">ログ確認</a><br>
 <a href="adminlogout.jsp">ログアウト</a>
 
