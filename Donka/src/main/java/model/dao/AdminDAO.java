@@ -14,7 +14,7 @@ public class AdminDAO {
 	public boolean loginCheck(String adminId,String password)throws ClassNotFoundException,SQLException{
 		
 		String sql="SELECT * FROM m_admin WHERE admin_id=? AND password=?";
-		
+		//shibuya
 		try(Connection con=ConnectionManager.getConnection();
 				PreparedStatement pstmt=con.prepareStatement(sql)){
 			
@@ -22,7 +22,6 @@ public class AdminDAO {
 			pstmt.setString(2, password);
 			
 			ResultSet res=pstmt.executeQuery();
-			
 			if(res.next()) {
 				return true;
 			}
