@@ -10,7 +10,7 @@
 	<form action="UserLogin" method="post">
 		ユーザーID:<input type="text" name="userId"><br>
 		パスワード:<input type="password"name="password"><br>
-		fjhfhgfjhfj<input type="submit" value="ログイン">
+		<input type="submit" value="ログイン">
 	</form>
 
 </body>

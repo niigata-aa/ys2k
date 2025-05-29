@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.dao.UserDAO;
+import model.entity.UserBean;
 
 /**
  * Servlet implementation class UserLoginServlet
@@ -69,9 +70,16 @@ public class UserLoginServlet extends HttpServlet {
 		/*成功したとき*/
 		if(nickname != null) {	
 			
+			
+			//ビーンズの中に値を挿入する
+			UserBean user = new UserBean();
+			user.setUserId(userId);
+			user.setNickname(nickname);
+			
 			//セッションスコープへの属性の設定
 			HttpSession session = request.getSession();
-			session.setAttribute("userId", userId);
+			session.setAttribute("user",user);
+			
 		
 		/*失敗したとき*/	
 		}else { 

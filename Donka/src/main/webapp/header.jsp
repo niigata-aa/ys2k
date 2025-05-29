@@ -1,12 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+    
+<% if(session.getAttribute("user") == null){%>
 
-</body>
-</html>
+<%--ログインしていないときの処理 --%>
+<a href="home.jsp">呑花臥酒</a>
+<a href="breweryList.jsp">一覧表示</a>
+<a href="showRank.jsp">ランキング</a>
+<a href="login.jsp">ログイン</a>
+<a href="userRegistration.jsp">登録</a>
+
+<%} else{%>
+
+<%--ログインしているときの処理 --%>
+<a href="home.jsp">呑花臥酒</a>
+<a href="breweryList.jsp">一覧表示</a>
+<a href="showRank.jsp">ランキング</a>
+<input type="submit" value="ログアウト">
+
+<%} %>
