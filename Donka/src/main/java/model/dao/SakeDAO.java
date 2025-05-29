@@ -36,7 +36,7 @@ public class SakeDAO {
 				
 				sake.setSakeId(sakeId);
 				sake.setSakeName(sakeName);
-				sake.setSlmgPath(sImgPath);
+				sake.setSImgPath(sImgPath);
 				sake.setAlc(alc);
 				sake.setfDrink(fDrink);
 				sake.setTaste(taste);
@@ -61,7 +61,7 @@ public class SakeDAO {
 			
 			pstmt.setInt(1,sake.getSakeId());
 			pstmt.setString(2,sake.getSakeName());
-			pstmt.setString(3,sake.getSlmgPath());
+			pstmt.setString(3,sake.getSImgPath());
 			pstmt.setDouble(4, sake.getAlc());
 			pstmt.setString(5,sake.getfDrink());
 			pstmt.setString(6,sake.getTaste());
@@ -86,7 +86,7 @@ public class SakeDAO {
 			
 			pstmt.setInt(1,sake.getSakeId());
 			pstmt.setString(2,sake.getSakeName());
-			pstmt.setString(3,sake.getSlmgPath());
+			pstmt.setString(3,sake.getSImgPath());
 			pstmt.setDouble(4, sake.getAlc());
 			pstmt.setString(5,sake.getfDrink());
 			pstmt.setString(6,sake.getTaste());
