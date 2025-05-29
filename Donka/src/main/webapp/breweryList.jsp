@@ -11,18 +11,17 @@
 <%
 List<BreweryBean> breweryList=(List<BreweryBean>)request.getAttribute("breweryList");
 %>
-<h1> 酒蔵の一覧</h1>
+<div class="d1"><h1> 酒蔵の一覧</h1></div>
 <div class="table_box">
-<table border=1>
+<table >
 <tr>
-<th class="sticky">酒蔵ID</th><th class="sticky">酒蔵の名前</th><th class="sticky">酒蔵の写真</th>
+<!--<th class="sticky">酒蔵の名前</th><th class="sticky">酒蔵の写真</th>-->
 </tr>
 <%
 for(BreweryBean brewery:breweryList){
 %>	
-<tr><td><%=brewery.getBreweryId() %></td>
-<td><%=brewery.getBreweryName() %></td>
-<td><img src="<%=brewery.getBImgPath()%>"></td></tr>
+<tr><td class="d2"><%=brewery.getBreweryName() %></td>
+<td><a href="BreweryDetail"><img src="<%=brewery.getBImgPath()%>"class="image"></a></td></tr>
 
 <%
 }
