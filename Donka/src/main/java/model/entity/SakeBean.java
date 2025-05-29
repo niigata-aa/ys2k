@@ -18,7 +18,7 @@ public class SakeBean implements Serializable{
 	/*
 	 * 酒の写真
 	 */
-	private String slmgPath;
+	private String sImgPath;
 	
 	/*
 	 * 度数
@@ -75,11 +75,11 @@ public class SakeBean implements Serializable{
 	}
 
 	public String getSlmgPath() {
-		return slmgPath;
+		return sImgPath;
 	}
 
 	public void setSlmgPath(String slmgPath) {
-		this.slmgPath = slmgPath;
+		this.sImgPath = slmgPath;
 	}
 
 	public double getAlc() {
