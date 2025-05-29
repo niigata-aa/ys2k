@@ -53,7 +53,7 @@ public class SakeViewServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		request.setAttribute("breweryList", sakeList);
+		request.setAttribute("sakeList", sakeList);
 		
 		RequestDispatcher rd=request.getRequestDispatcher("sakeList.jsp");
 		rd.forward(request, response);
