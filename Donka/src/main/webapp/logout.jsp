@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ログアウト</title>
 </head>
 <body>
+	ログアウトが完了しました。
+	5秒後にトップページに戻ります
+	<a href="home.jsp">戻らない場合はこちらから</a>
 
 </body>
 </html>

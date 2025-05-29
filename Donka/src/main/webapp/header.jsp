@@ -16,6 +16,9 @@
 <a href="home.jsp">呑花臥酒</a>
 <a href="breweryList.jsp">一覧表示</a>
 <a href="showRank.jsp">ランキング</a>
-<input type="submit" value="ログアウト">
+
+<form action="UserLogout" method="post">
+	<input type="submit" value="ログアウト">
+</form>
 
 <%} %>
