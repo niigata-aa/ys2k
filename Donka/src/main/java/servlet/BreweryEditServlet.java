@@ -39,7 +39,7 @@ public class BreweryEditServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		
-		RequestDispatcher rd = request.getRequestDispatcher("BreweryRegistConfirm");
+		RequestDispatcher rd = request.getRequestDispatcher("BreweryEditConfirm");
 		rd.forward(request,response);
 	}
 
