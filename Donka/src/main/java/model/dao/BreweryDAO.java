@@ -55,6 +55,36 @@ public class BreweryDAO {
 		return breweryList;
 	}
 	
+	public List<BreweryBean> selectArea(String areaId) throws SQLException, ClassNotFoundException {
+		
+		List<BreweryBean> breweryList = new ArrayList<BreweryBean>();
+		
+		String sql = "select * from m_brewery where area_id = ?";
+		
+		try (Connection con = ConnectionManager.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql)){
+			
+			pstmt.setString(1, areaId);
+			
+			ResultSet res = pstmt.executeQuery();
+			
+			while (res.next()) {
+				int breweryId = res.getInt("brewery_id"); //酒蔵ID
+				String breweryName = res.getString("brewery_name"); //酒蔵の名前
+				String bImgPath = res.getString("b_img_path"); //酒蔵の写真のパス
+				
+				BreweryBean brewery = new BreweryBean();
+				
+				brewery.setBreweryId(breweryId);
+				brewery.setBreweryName(breweryName);
+				brewery.setBImgPath(bImgPath);
+				
+				breweryList.add(brewery);
+			}
+		}
+		return breweryList;
+	}
+	
     public int insert(BreweryBean brewery) throws SQLException, ClassNotFoundException {
     	
         int processingNumber = 0;

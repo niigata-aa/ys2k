@@ -1,12 +1,18 @@
 package servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.dao.BreweryDAO;
+import model.entity.BreweryBean;
 
 /**
  * Servlet implementation class BrewerySearchServlet
@@ -35,8 +41,20 @@ public class BrewerySearchServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	
+		String areaId = request.getParameter("areaId");
+		
+		BreweryDAO dao = new BreweryDAO();
+
+		try {
+			List<BreweryBean> breweryList = dao.selectArea(areaId);
+			request.setAttribute("breweryList", breweryList);
+		}catch(SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		RequestDispatcher rd=request.getRequestDispatcher("breweryListHonda.jsp");
+		rd.forward(request, response);
 	}
 
 }
