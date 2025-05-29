@@ -12,8 +12,10 @@
 
 <form action = "BreweryEdit" method = "POST">
 酒蔵のID：<input type = "text" name = "breweryId" placeholder = "酒蔵のID"><br>
-酒蔵の名前：<input type = "text" name = "breweryName" placeholder = "酒蔵の名前"><br>
-酒蔵の写真： <input type = "text" name = "bImgPath" placeholder = "写真のURL"><br>
+酒蔵の説明：<input type = "text" name = "breweryExplanation" placeholder = "酒蔵の説明"><br>
+    		<input type="hidden" name="reservationFlag" value="false"> <%-- 予約可否のフラグが選択されてない場合にFalse --%>
+予約の可否：<input type = "checkbox" name = "reservationFlag" value = "true"><br>
+予約先のURL： <input type = "text" name = "ReservationPath" placeholder = "予約先のURL"><br>
 
 <input type = "submit" value="変更する">
 </form>

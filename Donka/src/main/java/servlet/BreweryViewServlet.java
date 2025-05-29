@@ -47,6 +47,7 @@ public class BreweryViewServlet extends HttpServlet {
 	
 		BreweryDAO dao=new BreweryDAO();
 		
+		
 		try {
 			breweryList=dao.selectAll();
 		}catch(SQLException | ClassNotFoundException e) {

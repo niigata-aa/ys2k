@@ -42,15 +42,17 @@ public class BreweryEditConfirmServet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		int breweryId = Integer.parseInt(request.getParameter("breweryId"));
-		String breweryName = request.getParameter("breweryName");
-		String bImgPath = request.getParameter("bImgPath");
+		String breweryExplanation = request.getParameter("breweryExplanation");
+		boolean reservationFlag = Boolean.parseBoolean(request.getParameter("reservationFlag"));
+		String reservationPath = request.getParameter("reservationPath");
 		
 		String url = null;
 		
 		BreweryBean brewery = new BreweryBean();
 		brewery.setBreweryId(breweryId);
-		brewery.setBreweryName(breweryName);
-		brewery.setBImgPath(bImgPath);
+		brewery.setBreweryExplanation(breweryExplanation);
+		brewery.setReservationFlag(reservationFlag);
+		brewery.setReservationPath(reservationPath);
 		
 		try {
 			

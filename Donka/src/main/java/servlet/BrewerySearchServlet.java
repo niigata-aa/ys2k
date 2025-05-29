@@ -43,18 +43,22 @@ public class BrewerySearchServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		List<BreweryBean> breweryList = null; //値を初期化して検索結果だけ入れる
+		
 		int areaId = Integer.parseInt(request.getParameter("areaId"));
 		
 		BreweryDAO dao = new BreweryDAO();
 
 		try {
-			List<BreweryBean> breweryList = dao.selectArea(areaId);
+			breweryList = dao.selectArea(areaId);
 			request.setAttribute("breweryList", breweryList);
 		}catch(SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher rd=request.getRequestDispatcher("breweryListHonda2.jsp");
+		request.setAttribute("breweryList", breweryList);
+		
+		RequestDispatcher rd=request.getRequestDispatcher("breweryList.jsp");
 		rd.forward(request, response);
 	}
 

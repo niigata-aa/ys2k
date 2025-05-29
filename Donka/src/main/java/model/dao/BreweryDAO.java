@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import model.entity.BreweryBean;
@@ -85,6 +86,38 @@ public class BreweryDAO {
 		return breweryList;
 	}
 	
+	public List<BreweryBean> findByAreaIds(int areaId) throws SQLException, ClassNotFoundException {
+        List<BreweryBean> breweryList = new ArrayList<>();
+        
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        StringBuilder sql = new StringBuilder("SELECT * FROM m_brewery");
+        
+		int areaId = rs.getInt("area_id");
+        
+        if (areaId != 0) {
+            sql.append(" WHERE area_id IN (");
+            String placeholders = String.join(",", Collections.nCopies(areaId.size(), "?"));
+            sql.append(placeholders);
+            sql.append(")");
+        }
+        
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                BreweryBean brewery = new BreweryBean();
+                
+                brewery.setBreweryId(rs.getInt("brewery_id"));
+                brewery.setBreweryName(rs.getString("brewery_name"));
+                brewery.setBImgPath(rs.getString("b_img_path"));
+                brewery.setAreaId(rs.getInt("area_id"));
+                breweryList.add(brewery);
+            }
+        return breweryList;
+    }
+        
     public int insert(BreweryBean brewery) throws SQLException, ClassNotFoundException {
     	
         int processingNumber = 0;
@@ -119,9 +152,9 @@ public class BreweryDAO {
         //String sql = "UPDATE m_brewery SET brewery_explanation = ? , latitude = ?, longitude = ?, address = ? , area_id = ? , b_img_path = ? , reservation_flag = ?, reservation_path = ?"
         //		   + "WHERE brewery_id = ?";
         
-        String sql = "UPDATE m_brewery SET brewery_name = ? , b_img_path = ?"
-     		   + "WHERE brewery_id = ?";
-
+        String sql = "UPDATE m_brewery SET reservation_flag = ? , reservation_path = ? , brewery_explanation = ?"
+      		   + "WHERE brewery_id = ?";
+        
         try (Connection con = ConnectionManager.getConnection();
              PreparedStatement pstmt = con.prepareStatement(sql)) {
         	/*
@@ -136,9 +169,10 @@ public class BreweryDAO {
             pstmt.setInt(9, brewery.getBreweryId());
             */
         	
-            pstmt.setString(1, brewery.getBreweryName());
-            pstmt.setString(2, brewery.getBImgPath());
-            pstmt.setInt(3, brewery.getBreweryId());
+            pstmt.setBoolean(1, brewery.getReservationFlag());
+            pstmt.setString(2, brewery.getReservationPath());
+            pstmt.setString(3, brewery.getBreweryExplanation());
+            pstmt.setInt(4, brewery.getBreweryId());
             
 			processingNumber = pstmt.executeUpdate();
 
