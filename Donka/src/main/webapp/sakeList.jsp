@@ -13,21 +13,19 @@ List<SakeBean> sakeList=(List<SakeBean>)request.getAttribute("sakeList");
 %>
 <div class="d1"><h1> 酒の一覧</h1></div>
 <div class="table_box">
-<table >
-<tr>
+<ul class="a1">
 
-</tr>
 <%
 for(SakeBean sake:sakeList){
 %>	
-<tr><td class="d2"><%=sake.getSakeName() %></td>
-<td><a href="SakeDetail"><img src="<%=sake.getSlmgPath()%>"class="image"></a></td></tr>
+<li class="d1"><%=sake.getSakeName() %></li>
+<li class="d2"><a href="SakeDetail"><img src="<%=sake.getSImgPath()%>"class="image"></a></li>
 
 <%
 }
 %>
 
-</table>
+</ul>
 </div>
 
 
