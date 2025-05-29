@@ -40,11 +40,10 @@ public class BreweryDAO {
 				brewery.setBreweryId(breweryId);
 				brewery.setBreweryName(breweryName);
 				brewery.setBImgPath(bImgPath);
-				brewery.setBImgPath(breweryName);
 				brewery.setLatitude(latitude);
 				brewery.setLongitude(longitude);
 				brewery.setAddress(address);
-				brewery.setUpdateDay(updateDay); //ユーザが更新日時に値を設定することは多分無い
+				//brewery.setUpdateDay(updateDay); //ユーザが更新日時に値を設定することは多分無い
 				brewery.setReservationFlag(reservationFlag);
 				brewery.setReservationPath(reservationPath);
 				brewery.setBreweryExplanation(breweryExplanation);
