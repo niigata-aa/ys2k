@@ -39,10 +39,11 @@ public class BrewerySearchServlet extends HttpServlet {
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	 */	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String areaId = request.getParameter("areaId");
+		int areaId = Integer.parseInt(request.getParameter("areaId"));
 		
 		BreweryDAO dao = new BreweryDAO();
 
@@ -53,7 +54,7 @@ public class BrewerySearchServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher rd=request.getRequestDispatcher("breweryListHonda.jsp");
+		RequestDispatcher rd=request.getRequestDispatcher("breweryListHonda2.jsp");
 		rd.forward(request, response);
 	}
 

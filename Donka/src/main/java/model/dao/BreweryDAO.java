@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import model.entity.BreweryBean;
@@ -29,7 +28,7 @@ public class BreweryDAO {
 				Double latitude = res.getDouble("latitude"); //酒蔵の位置の緯度
 				Double longitude = res.getDouble("longitude"); //酒蔵の位置の経度
 				String address = res.getString("address"); //酒蔵の住所
-				Date updateDay = res.getDate("update_day"); //データの更新日時
+				//Date updateDay = res.getDate("update_day"); //データの更新日時
 				boolean reservationFlag = res.getBoolean("reservation_flag"); //酒蔵の予約可否
 				String reservationPath = res.getString("reservation_path"); //酒蔵に予約する際のURL
 				String breweryExplanation = res.getString("brewery_explanation"); //酒蔵の説明
@@ -55,7 +54,7 @@ public class BreweryDAO {
 		return breweryList;
 	}
 	
-	public List<BreweryBean> selectArea(String areaId) throws SQLException, ClassNotFoundException {
+	public List<BreweryBean> selectArea(int areaId) throws SQLException, ClassNotFoundException {
 		
 		List<BreweryBean> breweryList = new ArrayList<BreweryBean>();
 		
@@ -64,7 +63,7 @@ public class BreweryDAO {
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
 			
-			pstmt.setString(1, areaId);
+			pstmt.setInt(1, areaId);
 			
 			ResultSet res = pstmt.executeQuery();
 			
@@ -116,12 +115,15 @@ public class BreweryDAO {
     	
         int processingNumber = 0;
         
-        String sql = "UPDATE m_brewery SET brewery_explanation = ? , latitude = ?, longitude = ?, address = ? , area_id = ? , b_img_path = ? , reservation_flag = ?, reservation_path = ?"
-        		   + "WHERE brewery_id = ?";
+        //String sql = "UPDATE m_brewery SET brewery_explanation = ? , latitude = ?, longitude = ?, address = ? , area_id = ? , b_img_path = ? , reservation_flag = ?, reservation_path = ?"
+        //		   + "WHERE brewery_id = ?";
+        
+        String sql = "UPDATE m_brewery SET brewery_name =  , b_img_path = ?"
+     		   + "WHERE brewery_id = ?";
 
         try (Connection con = ConnectionManager.getConnection();
              PreparedStatement pstmt = con.prepareStatement(sql)) {
-
+        	/*
             pstmt.setString(1, brewery.getBreweryExplanation());
             pstmt.setDouble(2, brewery.getLatitude());
             pstmt.setDouble(3, brewery.getLongitude());
@@ -131,6 +133,11 @@ public class BreweryDAO {
             pstmt.setBoolean(7, brewery.getReservationFlag());
             pstmt.setString(8, brewery.getReservationPath());
             pstmt.setInt(9, brewery.getBreweryId());
+            */
+        	
+            pstmt.setString(1, brewery.getBreweryName());
+            pstmt.setString(2, brewery.getBImgPath());
+            pstmt.setInt(3, brewery.getBreweryId());
             
 			processingNumber = pstmt.executeUpdate();
 

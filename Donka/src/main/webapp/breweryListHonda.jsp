@@ -10,25 +10,15 @@
 
 <h1>地域</h1>
 <form action = "BrewerySearch" method = "POST">
-1.上越：<input type = "checkbox" id = "1" name = "1"><br>
-2.中越：<input type = "checkbox" id = "2" name = "2"><br>
-3.下越：<input type = "checkbox" id = "3" name = "3"><br>
-4.佐越：<input type = "checkbox" id = "4" name = "4"><br>
+1.上越：<input type = "checkbox" value = "1" name = "areaId"><br>
+2.中越：<input type = "checkbox" value = "2" name = "areaId"><br>
+3.下越：<input type = "checkbox" value = "3" name = "areaId"><br>
+4.佐越：<input type = "checkbox" value = "4" name = "areaId"><br>
 
 <input type = "submit" value ="検索">
 </form>
 
-	<%
-			List<BreweryBean> breweryList = (List<BreweryBean>) request.getAttribute("breweryList");
-			for (BreweryBean brewery : breweryList) {
-	%>
-	<%=brewery.getBreweryName() %>
-	<%=brewery.getBImgPath() %>"><br><br>
-
-	<%
-		}
-	%>
-
-
 </body>
 </html>
+
+<%-- --%>
