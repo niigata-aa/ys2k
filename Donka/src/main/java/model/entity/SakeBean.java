@@ -54,9 +54,7 @@ public class SakeBean implements Serializable{
 	 * SakeBeanを構築
 	 */
 	
-	public SakeBean() {
-
-}
+	public SakeBean() {}
 
 	public int getSakeId() {
 		return sakeId;
@@ -74,11 +72,11 @@ public class SakeBean implements Serializable{
 		this.sakeName = sakeName;
 	}
 
-	public String getSImgPath() {
+	public String getsImgPath() {
 		return sImgPath;
 	}
 
-	public void setSImgPath(String sImgPath) {
+	public void setsImgPath(String sImgPath) {
 		this.sImgPath = sImgPath;
 	}
 
@@ -114,15 +112,15 @@ public class SakeBean implements Serializable{
 		this.breweryId = breweryId;
 	}
 
-	public Timestamp getUpdateDay() {
-		return updateDay;
-	}
-
 	public String getSakeExplanation() {
 		return sakeExplanation;
 	}
 
 	public void setSakeExplanation(String sakeExplanation) {
 		this.sakeExplanation = sakeExplanation;
+	}
+
+	public Timestamp getUpdateDay() {
+		return updateDay;
 	}
 }
