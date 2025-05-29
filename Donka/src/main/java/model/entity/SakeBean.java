@@ -78,8 +78,8 @@ public class SakeBean implements Serializable{
 		return sImgPath;
 	}
 
-	public void setSImgPath(String slmgPath) {
-		this.sImgPath = slmgPath;
+	public void setSImgPath(String sImgPath) {
+		this.sImgPath = sImgPath;
 	}
 
 	public double getAlc() {
