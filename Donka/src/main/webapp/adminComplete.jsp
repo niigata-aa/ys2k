@@ -10,7 +10,7 @@
 <form action="CompleteServlet" method="POST">
 完了しました。<br>
 ５秒後にトップページに戻ります。<br>
-<a href="admintop.jsp">戻らない場合はこちらから</a>
+<a href="adminTop.jsp">戻らない場合はこちらから</a>
 
 </form>
 

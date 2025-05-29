@@ -54,7 +54,7 @@ public class SakeDAO {
 		
 		int processingNumber = 0;
 		
-		String sql = "insert into m_sakem_sake(sake_id,sake_name,s_img_path,alc,f_drink,taste,brewery_id,sake_explanation) values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into m_sake(sake_id,sake_name,s_img_path,alc,f_drink,taste,brewery_id,sake_explanation) values(?,?,?,?,?,?,?,?)";
 		
 		try(Connection con = ConnectionManager.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql)){
