@@ -26,7 +26,7 @@ public class SakeDAO {
 				int sakeId = res.getInt("sake_id");
 				String sakeName = res.getString("sake_name");
 				String sImgPath = res.getString("s_img_path");
-				int alc = res.getInt("alc");
+				Double alc = res.getDouble("alc");
 				String fDrink = res.getString("f_drink");
 				String taste = res.getString("taste");
 				int breweryId = res.getInt("brewery_id");
@@ -62,7 +62,7 @@ public class SakeDAO {
 			pstmt.setInt(1,sake.getSakeId());
 			pstmt.setString(2,sake.getSakeName());
 			pstmt.setString(3,sake.getSlmgPath());
-			pstmt.setInt(4, sake.getAlc());
+			pstmt.setDouble(4, sake.getAlc());
 			pstmt.setString(5,sake.getfDrink());
 			pstmt.setString(6,sake.getTaste());
 			pstmt.setInt(7,sake.getBreweryId());
@@ -78,7 +78,7 @@ public class SakeDAO {
 		
 		int processingNumber = 0;
 		
-		String sql = "insert into m_sake(sake_id,sake_name,s_img_path,alc,f_drink,taste,brewery_id,sake_explanation) values(?,?,?,?,?,?,?,?)";
+		String sql = "update m_sake set sake_name=?,s_img_path=?,alc=?,f_drink=?,taste=?,brewery_id=?,sake_explanation=? where sake_id=?";
 		
 		try(Connection con = ConnectionManager.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(sql)){
@@ -87,7 +87,7 @@ public class SakeDAO {
 			pstmt.setInt(1,sake.getSakeId());
 			pstmt.setString(2,sake.getSakeName());
 			pstmt.setString(3,sake.getSlmgPath());
-			pstmt.setInt(4, sake.getAlc());
+			pstmt.setDouble(4, sake.getAlc());
 			pstmt.setString(5,sake.getfDrink());
 			pstmt.setString(6,sake.getTaste());
 			pstmt.setInt(7,sake.getBreweryId());
