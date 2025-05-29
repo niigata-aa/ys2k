@@ -12,6 +12,7 @@
 List<BreweryBean> breweryList=(List<BreweryBean>)request.getAttribute("breweryList");
 %>
 <div class="d1"><h1> 酒蔵の一覧</h1></div>
+<h3>画像をクリックすると詳細へ</h3>
 <div class="table_box">
 <table >
 <tr>
