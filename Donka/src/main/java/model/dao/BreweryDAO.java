@@ -54,6 +54,7 @@ public class BreweryDAO {
 		return breweryList;
 	}
 	
+	
 	public List<BreweryBean> selectArea(int areaId) throws SQLException, ClassNotFoundException {
 		
 		List<BreweryBean> breweryList = new ArrayList<BreweryBean>();
@@ -118,7 +119,7 @@ public class BreweryDAO {
         //String sql = "UPDATE m_brewery SET brewery_explanation = ? , latitude = ?, longitude = ?, address = ? , area_id = ? , b_img_path = ? , reservation_flag = ?, reservation_path = ?"
         //		   + "WHERE brewery_id = ?";
         
-        String sql = "UPDATE m_brewery SET brewery_name =  , b_img_path = ?"
+        String sql = "UPDATE m_brewery SET brewery_name = ? , b_img_path = ?"
      		   + "WHERE brewery_id = ?";
 
         try (Connection con = ConnectionManager.getConnection();
