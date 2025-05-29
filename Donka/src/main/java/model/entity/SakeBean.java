@@ -23,7 +23,7 @@ public class SakeBean implements Serializable{
 	/*
 	 * 度数
 	 */
-	private int alc;
+	private double alc;
 	
 	/*
 	 * おすすめの飲み方
@@ -82,11 +82,11 @@ public class SakeBean implements Serializable{
 		this.slmgPath = slmgPath;
 	}
 
-	public int getAlc() {
+	public double getAlc() {
 		return alc;
 	}
 
-	public void setAlc(int alc) {
+	public void setAlc(double alc) {
 		this.alc = alc;
 	}
 
