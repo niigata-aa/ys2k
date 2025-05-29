@@ -74,11 +74,11 @@ public class SakeBean implements Serializable{
 		this.sakeName = sakeName;
 	}
 
-	public String getSlmgPath() {
+	public String getSImgPath() {
 		return sImgPath;
 	}
 
-	public void setSlmgPath(String slmgPath) {
+	public void setSImgPath(String slmgPath) {
 		this.sImgPath = slmgPath;
 	}
 
