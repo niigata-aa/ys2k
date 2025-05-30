@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.List,model.entity.SakeBean,java.util.Set"%>
+	pageEncoding="UTF-8"
+	import="java.util.List,model.entity.SakeBean,java.util.Set"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +13,6 @@
 	<%
 List<SakeBean> sakeList=(List<SakeBean>)request.getAttribute("sakeList");
 %>
-
-<button onclick="location.href='BreweryView'">酒蔵</button>
-<button onclick="location.href='SakeViewServlet'">日本酒</button>
 
 
 
@@ -95,22 +93,23 @@ List<SakeBean> sakeList=(List<SakeBean>)request.getAttribute("sakeList");
 		</p>
 		<input type="submit" value="検索">
 	</form>
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+	<button onclick="location.href='BreweryView'">酒蔵</button>
+	<button onclick="location.href='SakeViewServlet'">日本酒</button>
+
 	<div class="d1">
 		<h1>酒の一覧</h1>
 	</div>
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	<div class="table_box">
 		<table>
 			<tr>
@@ -140,16 +139,16 @@ List<SakeBean> sakeList=(List<SakeBean>)request.getAttribute("sakeList");
         %>
 
 		</table>
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
+
 	</div>
 
 
