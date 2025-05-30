@@ -22,9 +22,7 @@
 	
 	登録する酒蔵の写真のパス:<jsp:getProperty name="brewery" property="bImgPath"/><br>
 	
-	<form action="未設定" method="POST">
-		<input type="submit" value="戻る">
-	</form>
+
 	<form action="BreweryRegistConfirm" method="POST">
 		<input type ="hidden" name ="breweryName2" value="<jsp:getProperty name="brewery" property="breweryName"/>">
 		<input type ="hidden" name ="breweryExplanation2" value="<jsp:getProperty name="brewery" property="breweryExplanation"/>">
@@ -36,6 +34,10 @@
 		<input type ="hidden" name ="reservationPath2" value="<jsp:getProperty name="brewery" property="reservationPath"/>">
 		<input type ="hidden" name ="bImgPath2" value="<jsp:getProperty name="brewery" property="bImgPath"/>">
 		<input type="submit" value="登録する">
+	</form>
+	
+	<form action="未設定" method="POST">
+		<input type="submit" value="戻る">
 	</form>
 
 </body>

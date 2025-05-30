@@ -49,7 +49,7 @@ public class BreweryRegistConfirmServlet extends HttpServlet {
 		
 		//リクエストパラメータの取得
 		
-		String breweryId          = "300";
+		String breweryId          = "220";
 		String breweryName        = request.getParameter("breweryName2");
 		String breweryExplanation = request.getParameter("breweryExplanation2");
 		String latitude           = request.getParameter("latitude2");
@@ -66,6 +66,10 @@ public class BreweryRegistConfirmServlet extends HttpServlet {
 		int iAreaId = 0;
 		boolean bReservetionFlag = false;
 		
+		if(reservetionFlag.equals("true")){
+			bReservetionFlag = true; 
+		}
+		
 		
 		//リクエストパラメータの型を合わせる
 		try {
@@ -74,13 +78,14 @@ public class BreweryRegistConfirmServlet extends HttpServlet {
 			dLatitude = Double.parseDouble(latitude);
 			dLongitude = Double.parseDouble(longitude);
 			iAreaId = Integer.parseInt(areaId);
-			bReservetionFlag = Boolean.parseBoolean(reservetionFlag);
 			
 		} catch (NumberFormatException e) {
 			
 			e.printStackTrace();
 			
 		}
+		
+		System.out.println(bReservetionFlag);
 		
 		//breweryオブジェクトを生成、値を代入
 		BreweryBean brewery = new BreweryBean();

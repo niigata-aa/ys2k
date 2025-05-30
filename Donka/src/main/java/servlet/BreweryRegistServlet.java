@@ -78,7 +78,6 @@ public class BreweryRegistServlet extends HttpServlet {
 			dLatitude = Double.parseDouble(latitude);
 			dLongitude = Double.parseDouble(longitude);
 			iAreaId = Integer.parseInt(areaId);
-			bReservetionFlag = Boolean.parseBoolean(reservetionFlag);
 			
 		} catch (NumberFormatException e) {
 			
