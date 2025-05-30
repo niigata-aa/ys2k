@@ -9,6 +9,8 @@
 </head>
 <body>
 
+
+
 <h1>地域</h1>
 <form action = "BrewerySearch" method = "POST">
 <label>1.上越：<input type = "checkbox" value = "1" name = "areaId"></label><br>
@@ -18,6 +20,9 @@
 
 <input type = "submit" value ="検索">
 </form>
+
+<button onclick="location.href='BreweryView'">酒蔵</button>
+<button onclick="location.href='SakeViewServlet'">日本酒</button>
 
 <%
 List<BreweryBean> breweryList=(List<BreweryBean>)request.getAttribute("breweryList");

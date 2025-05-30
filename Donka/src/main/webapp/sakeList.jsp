@@ -8,9 +8,25 @@
 <link rel="stylesheet" href="sakeTable.css">
 </head>
 <body>
+
 	<%
 List<SakeBean> sakeList=(List<SakeBean>)request.getAttribute("sakeList");
 %>
+
+<button onclick="location.href='BreweryView'">酒蔵</button>
+<button onclick="location.href='SakeViewServlet'">日本酒</button>
+
+
+
+
+
+
+
+
+
+
+
+
 	<form action="SakeSearch" method="post">
 		<h2>検索条件</h2>
 		<p>
@@ -79,9 +95,22 @@ List<SakeBean> sakeList=(List<SakeBean>)request.getAttribute("sakeList");
 		</p>
 		<input type="submit" value="検索">
 	</form>
+	
+	
+	
+	
+	
+	
+	
 	<div class="d1">
 		<h1>酒の一覧</h1>
 	</div>
+	
+	
+	
+	
+	
+	
 	<div class="table_box">
 		<table>
 			<tr>
@@ -111,6 +140,16 @@ List<SakeBean> sakeList=(List<SakeBean>)request.getAttribute("sakeList");
         %>
 
 		</table>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</div>
 
 
