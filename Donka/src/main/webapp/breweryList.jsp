@@ -33,7 +33,14 @@ List<BreweryBean> breweryList=(List<BreweryBean>)request.getAttribute("breweryLi
 for(BreweryBean brewery:breweryList){
 %>	
 <tr><td class="d2"><%=brewery.getBreweryName() %></td>
-<td><a href="BreweryDetail"><img src="<%=brewery.getBImgPath()%>"class="image"></a></td></tr>
+<td>
+<form action="BreweryDetail" method="post">
+	<input type="hidden" name="brewid" value=<%=brewery.getBreweryId()%>>
+	<button style="background: transparent;border:none;">
+	<img src="<%=brewery.getbImgPath()%>"class="image">
+	</button>
+</form>
+</td></tr>
 
 <%
 }
