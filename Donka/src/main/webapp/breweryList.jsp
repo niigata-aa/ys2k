@@ -27,7 +27,7 @@ List<BreweryBean> breweryList=(List<BreweryBean>)request.getAttribute("breweryLi
 <div class="table_box">
 <table >
 <tr>
-<!--<th class="sticky">酒蔵の名前</th><th class="sticky">酒蔵の写真</th>-->
+<th class="sticky">酒蔵の名前</th><th class="sticky">酒蔵の写真</th>
 </tr>
 <%
 for(BreweryBean brewery:breweryList){
