@@ -46,14 +46,10 @@ public class CommentRegistServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		// リクエストパラメータの取得
-		int commentId = Integer.parseInt(request.getParameter("commentId"));
 		String content = request.getParameter("content");
 		String userId = request.getParameter("userId");
 		int breweryId = Integer.parseInt(request.getParameter("breweryId"));
-		
-		//HttpSession session = request.getSession();
 
-		request.setAttribute("commentId", commentId);
 		request.setAttribute("content", content);
 		request.setAttribute("userId", userId);
 		request.setAttribute("breweryId", breweryId);
@@ -66,7 +62,7 @@ public class CommentRegistServlet extends HttpServlet {
 		
 		try {
 			// DAOの利用
-			 myName= dao.selectMyNickname(userId);
+			myName= dao.selectMyNickname(userId);
 			// リクエストスコープへの属性の設定
 			request.setAttribute("myName", myName);
 

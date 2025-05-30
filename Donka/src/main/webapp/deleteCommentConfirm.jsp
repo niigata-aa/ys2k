@@ -34,9 +34,5 @@
 		<input type="button" value="戻る" onClick="history.back()">
 		<input type="submit" value="削除する">
 	</form>
-	<%-- 
-	<form action="commentDelete2.jsp" method="POST">
-		<input type="button" value="戻る">
-	</form>--%>
 </body>
 </html>

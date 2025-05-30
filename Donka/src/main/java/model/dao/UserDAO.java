@@ -82,7 +82,7 @@ public class UserDAO {
 					user.setNickname(nickName);
 					
 					userList.add(user);
-					System.out.println(user);
+					//System.out.println(user);
 				}
 				
 			}

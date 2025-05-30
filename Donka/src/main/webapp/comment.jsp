@@ -22,20 +22,20 @@
 		<%
 				for (CommentBean comment : commentList) {
 		%>
-			
+			ユーザーのニックネーム：
 			<%=userList.get(count).getNickname() %><br>
+			コメント：
 			<%=comment.getContent() %><br>
-			<%--<%=comment.getCommentId() --%><br>
+			<br>
 			<% count++; %>
 		<%
 				}
 		%>
 	
 		<%-- ニックネーム表示 --%>
-		ニックネーム：<br>
+		ニックネーム：
 		<%=myName %><br>
-		<input type="hidden" name="commentId" value="6">
-		コメント入力画面：<br>
+		コメント入力：<br>
 		<textarea id="content" name="content"></textarea><br>
 		<input type="hidden" name="userId" value=<%=userId %>>
 		<input type="hidden" name="breweryId" value=<%=breweryId %>>

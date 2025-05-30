@@ -16,15 +16,15 @@ public class CommentDAO {
 	public int insert(CommentBean comment) throws SQLException, ClassNotFoundException {
 	    int count = 0;
 	    
-	    String sql = "INSERT INTO sake_user_comment (comment_id, content, user_id, brewery_id) VALUES (?, ?, ?, ?)";
+	    String sql = "INSERT INTO sake_user_comment ( content, user_id, brewery_id) VALUES ( ?, ?, ?)";
 	    
 	    try (Connection con = ConnectionManager.getConnection();
 	         PreparedStatement pstmt = con.prepareStatement(sql)) {
 	        
-	    	pstmt.setInt(1, comment.getCommentId());
-	        pstmt.setString(2, comment.getContent());
-	        pstmt.setString(3, comment.getUserId());
-	        pstmt.setInt(4, comment.getBreweryId());
+	    	//pstmt.setInt(1, comment.getCommentId());
+	        pstmt.setString(1, comment.getContent());
+	        pstmt.setString(2, comment.getUserId());
+	        pstmt.setInt(3, comment.getBreweryId());
 	        
 	        count = pstmt.executeUpdate();
 	    }

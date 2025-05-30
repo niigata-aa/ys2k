@@ -23,9 +23,13 @@
 			for (CommentBean comment : commentList) {
 				
 	%>
-		<%=userList.get(count).getNickname() %>
+		ニックネーム：
+		<%=userList.get(count).getNickname() %><br>
+		コメント：
 		<%=comment.getContent() %><br>
+		コメントID：
 		<%=comment.getCommentId() %><br>
+		<br>
 		<% count++;%>
 	<%
 				}	
@@ -50,9 +54,6 @@
 	    <input type="button" value="戻る" onClick="history.back()">
 		<input type="submit" value="削除する">
 	</form>
-	<%-- 
-	<form action="commentDelete1.jsp" method="POST">
-		<input type="button" value="戻る" >
-	</form>--%>
+
 	</body>
 </html>

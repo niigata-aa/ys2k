@@ -47,17 +47,17 @@ public class CommentRegistConfirmServlet extends HttpServlet {
 		CommentBean comment = new CommentBean();
 
 		// リクエストパラメータの取得
-		int commentId = Integer.parseInt(request.getParameter("commentId"));
+		//int commentId = Integer.parseInt(request.getParameter("commentId"));
 		String content = request.getParameter("content");
 		//String insertDay = request.getParameter("insertDay");
 		String userId = request.getParameter("userId");
 		int breweryId = Integer.parseInt(request.getParameter("breweryId"));
 		
-		comment.setCommentId(commentId);
+		//comment.setCommentId(commentId);
 		comment.setContent(content);
         comment.setUserId(userId);
         comment.setBreweryId(breweryId);
-        System.out.println("brewery_id" + breweryId);
+        //System.out.println("brewery_id" + breweryId);
   
 		
 		// DAOの生成
@@ -66,7 +66,7 @@ public class CommentRegistConfirmServlet extends HttpServlet {
 		try {
 			// DAOの利用
 			 int count= dao.insert(comment);
-			 System.out.println(count);
+			 //System.out.println(count);
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();

@@ -50,7 +50,6 @@ public class CommentDeleteServlet extends HttpServlet {
 		int commentId = Integer.parseInt(request.getParameter("commentId"));
 		int breweryId = Integer.parseInt(request.getParameter("breweryId"));
 		
-		//HttpSession session = request.getSession();
 		request.setAttribute("breweryId", breweryId);
 		request.setAttribute("commentId", commentId);
 		
@@ -59,7 +58,7 @@ public class CommentDeleteServlet extends HttpServlet {
 		
 		try {
 			// DAOの利用
-			 commentList = dao.selectConfirmComment(commentId, breweryId);
+			commentList = dao.selectConfirmComment(commentId, breweryId);
 			// リクエストスコープへの属性の設定
 			request.setAttribute("commentList", commentList);
 

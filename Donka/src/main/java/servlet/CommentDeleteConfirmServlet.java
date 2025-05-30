@@ -60,7 +60,7 @@ public class CommentDeleteConfirmServlet extends HttpServlet {
 		try {
 			// DAOの利用
 			 int count= dao.delete(comment);
-			 System.out.println(count);
+			 //System.out.println(count);
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
