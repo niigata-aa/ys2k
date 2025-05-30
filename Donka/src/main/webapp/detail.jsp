@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="java.util.List,model.entity.BreweryBean"%>
+	pageEncoding="UTF-8"
+	import="java.util.List,model.entity.BreweryBean,,model.entity.SakeBean"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,25 +17,44 @@
 <body>
 	<%
 	List<BreweryBean> breweryList = (List<BreweryBean>) request.getAttribute("brewList");
+	List<SakeBean> sakeList = (List<SakeBean>) request.getAttribute("sakeList");
 	%>
-	<% for(BreweryBean brew :breweryList){ %>
+	<% 
+	for(BreweryBean brew :breweryList){ 
+	%>
+
+	<img src="<%=brew.getbImgPath()%>" alt="<%=brew.getBreweryName()%>"><br>
+	<p><%=brew.getBreweryName() %></p>
+	<p><%=brew.getBreweryExplanation()%></p>
+	
+	<table>
+		<tr>
+			<th>画像</th>
+			<th>名前</th>
+			<th>度数</th>
+			<th>おすすめの飲み方</th>
+			<th>味わい</th>
+		</tr>
+		<%for(SakeBean sake:sakeList){ %>
+		<tr>
+			<th><img src=<%=sake.getsImgPath() %> alt=<%=sake.getSakeName() %>></th>
+			<th><%=sake.getSakeName() %></th>
+			<th><%=sake.getAlc() %></th>
+			<th><%=sake.getfDrink() %></th>
+			<th><%=sake.getSakeExplanation() %></th>
+		</tr>
+	</table>
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	<%} %>
+
+
+
+
+
+
+
+
 	<%-- 酒の口コミだけ --%>
 	<%-- この時は、酒蔵IDともしかしたらuser_id送るかも --%>
 	<%-- 酒蔵IDとuser_idを値に参照したい --%>
@@ -43,20 +63,20 @@
 			type="hidden" name="userId" value="fgh"> <input type="submit"
 			value="酒の口コミ">
 	</form>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
+
+
+
 	<!-- 地図だけ -->
 	<div id='mapcontainer' style='width: 100%; height: 300px; z-index: 0;'></div>
-	
+
 
 	<script>
 		function init_map() {
@@ -86,6 +106,7 @@
 		window.addEventListener('DOMContentLoaded', init_map());
 	</script>
 	<%
+	}
 	}
 	%>
 </body>
