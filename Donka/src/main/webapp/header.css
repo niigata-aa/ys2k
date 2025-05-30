@@ -2,7 +2,9 @@
 .header-5 {
   box-sizing: border-box;
   width: 100%;
-  background-color: rgb(226, 226, 226);
+  position: fixed;
+  background-color: rgba(255, 238, 247,0.8);
+  z-index: 2; 
 }
 
 .header-inner {
