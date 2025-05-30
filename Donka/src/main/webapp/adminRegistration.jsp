@@ -7,9 +7,9 @@
 <title>管理者登録画面</title>
 </head>
 <body>
-<a href="SakeRegistPreparation">酒の登録</a><br>
-<a href="BreweryRegist">酒蔵の登録</a><br>
-<a href="adminTop.jsp">トップページ</a>
+	<a href="SakeRegistPreparation">酒の登録</a><br>
+	<a href="BreweryRegist">酒蔵の登録</a><br>
+	<a href="adminTop.jsp">トップページ</a>
 
 </body>
 </html>

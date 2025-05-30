@@ -7,11 +7,11 @@
 <title>管理者トップページ</title>
 </head>
 <body>
-<a href="adminregistaration.jsp">登録</a><br>
-<a href="adminupdate.jsp">変更</a><br>
+<a href="adminRegistaration.jsp">登録</a><br>
+<a href="adminUpdate.jsp">変更</a><br>
 <a href="adminDelete.jsp">削除</a><br>
-<a href="logconfirm.jsp">ログ確認</a><br>
-<a href="adminlogout.jsp">ログアウト</a>
+<a href="logConfirm.jsp">ログ確認</a><br>
+<a href="adminLogout.jsp">ログアウト</a>
 
 </body>
 </html>

@@ -7,9 +7,9 @@
 <title>管理者用変更画面</title>
 </head>
 <body>
-<a href="SakeEditServlet">酒の変更</a><br>
-<a href="BreweryEditServlet">酒蔵の変更</a><br>
-<a href="adminTop.jsp">トップページ</a>
+	<a href="SakeUpdatePreparation">酒の変更</a><br>
+	<a href="BreweryEditServlet">酒蔵の変更</a><br>
+	<a href="adminTop.jsp">トップページ</a>
 
 </body>
 </html>

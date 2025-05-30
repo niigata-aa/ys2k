@@ -13,7 +13,7 @@
 	<form action="SakeRegist" method="post">
 		登録する酒の名前:<input type="text" name="sakeName"><br>
 		登録する酒の詳細<br>
-		酒蔵選択:
+		登録する酒蔵を選択:
 		<select name="breweryId">
 			
 			<% for(BreweryBean brewery : breweryList){%>	
@@ -23,20 +23,20 @@
 			<%} %>
 		
 		</select><br>
-		度数:
+		度数を選択:
 		<select name="alc">
 			<option>
 			<% for(int i = 5; i < 22; i++){%>	
 				<option value="<%= i%>"><%= i%></option>
 			<%} %>
 		</select><br>	
-		飲み方:
+		飲み方を選択:
 		<select name="fDrink">
 			<option value="冷">冷</option>
 			<option value="常温">常温</option>
 			<option value="燗">燗</option>
 		</select><br>	
-		味わい:
+		味わいを選択:
 		<select name="taste">
 			<option value="甘口">甘口</option>
 			<option value="中口">中口</option>

@@ -83,16 +83,16 @@ public class SakeDAO {
 
 		try(Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
-
-
-			pstmt.setInt(1,sake.getSakeId());
-			pstmt.setString(2,sake.getSakeName());
-			pstmt.setString(3,sake.getsImgPath());
-			pstmt.setDouble(4, sake.getAlc());
-			pstmt.setString(5,sake.getfDrink());
-			pstmt.setString(6,sake.getTaste());
-			pstmt.setInt(7,sake.getBreweryId());
-			pstmt.setString(8,sake.getSakeExplanation());
+			
+			pstmt.setString(1,sake.getSakeName());
+			pstmt.setString(2,sake.getsImgPath());
+			pstmt.setDouble(3, sake.getAlc());
+			pstmt.setString(4,sake.getfDrink());
+			pstmt.setString(5,sake.getTaste());
+			pstmt.setInt(6,sake.getBreweryId());
+			pstmt.setString(7,sake.getSakeExplanation());
+			
+			pstmt.setInt(8,sake.getSakeId());
 
 			processingNumber = pstmt.executeUpdate();
 		}
