@@ -83,7 +83,7 @@ public class SakeDAO {
 
 		try(Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
-			
+
 			pstmt.setString(1,sake.getSakeName());
 			pstmt.setString(2,sake.getsImgPath());
 			pstmt.setDouble(3, sake.getAlc());
@@ -91,7 +91,7 @@ public class SakeDAO {
 			pstmt.setString(5,sake.getTaste());
 			pstmt.setInt(6,sake.getBreweryId());
 			pstmt.setString(7,sake.getSakeExplanation());
-			
+
 			pstmt.setInt(8,sake.getSakeId());
 
 			processingNumber = pstmt.executeUpdate();
@@ -119,7 +119,7 @@ public class SakeDAO {
 		List<SakeBean> sakeList = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		List<Object> params = new ArrayList<>(); 
-		
+
 		try 
 		(Connection con = ConnectionManager.getConnection()){// データベース接続を取得
 
@@ -204,5 +204,40 @@ public class SakeDAO {
 
 		}
 		return sakeList; // 取得した酒リストを返す
+	}
+	public List<SakeBean> selectBrew(int id) throws SQLException, ClassNotFoundException {
+
+		List<SakeBean> sakeList = new ArrayList<>();
+
+		// データベースへの接続の取得、Statementの取得、SQLステートメントの実行
+		try (Connection con = ConnectionManager.getConnection();
+				PreparedStatement pstmt = con.prepareStatement("select * from m_sake where brewery_id=?")){
+
+					pstmt.setInt(1,id);
+					
+					ResultSet res = pstmt.executeQuery();
+					
+					// 結果の操作
+					while (res.next()) {
+						String sakeName = res.getString("sake_name");
+						String sImgPath = res.getString("s_img_path");
+						Double alc = res.getDouble("alc");
+						String fDrink = res.getString("f_drink");
+						String taste = res.getString("taste");
+						String sakeExplanation = res.getString("sake_explanation");
+
+						SakeBean sake = new SakeBean();
+
+						sake.setSakeName(sakeName);
+						sake.setsImgPath(sImgPath);
+						sake.setAlc(alc);
+						sake.setfDrink(fDrink);
+						sake.setTaste(taste);
+						sake.setSakeExplanation(sakeExplanation);
+
+						sakeList.add(sake);
+					}
+				}
+				return sakeList;
 	}
 }
