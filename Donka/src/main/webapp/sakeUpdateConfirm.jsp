@@ -20,10 +20,9 @@
 	変更する酒の説明：  <jsp:getProperty name="sake" property="sakeExplanation"/><br>
 	変更する酒の写真：  <jsp:getProperty name="sake" property="sImgPath"/><br>
 	
-	<form action="まだ未実装" method="POST">
-		<!-- ここに画面遷移しても保持したい内容のリクエストをセットする -->
-		<input type="submit" value="戻る">
-	</form>
+		<!-- 遷移が1:1なので、そのまま戻す -->
+	<button onclick="history.back()">戻る</button>
+
 	
 	<form action="SakeUpdateConfirm" method="POST">
 		<input type="hidden" name="sakeId2" value="<jsp:getProperty name="sake" property="sakeId"/>" >

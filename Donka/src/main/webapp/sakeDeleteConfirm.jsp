@@ -17,9 +17,8 @@
 
 酒:<%= session.getAttribute("sake")%><br>
 
-<form action="SakeDelete" method="POST">
-<input type="submit" value="戻る">
-</form>
+<button onclick="history.back()">戻る</button>
+
 <form action="SakeDeleteComplete" method="POST">
 <input type="submit" value="削除する">
 </form>

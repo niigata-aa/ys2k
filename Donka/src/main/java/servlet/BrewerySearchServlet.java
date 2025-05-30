@@ -63,7 +63,10 @@ public class BrewerySearchServlet extends HttpServlet {
 		rd.forward(request, response);
 	*/
 		
-		String[] areaIds = request.getParameterValues("areaId"); //そもそも配列にする
+		//そもそも配列にする
+		//getParameterだと最初の値だけ取得、getParameterValuesだと値を全て取得できる
+		String[] areaIds = request.getParameterValues("areaId");
+		String errorMsg = null; // エラーメッセージを格納する変数
 		
 		List<Integer> areaIdList = new ArrayList<>(); //文字列配列を整数リストに変換
 		
@@ -81,9 +84,11 @@ public class BrewerySearchServlet extends HttpServlet {
 	        breweryList = dao.findByAreaIds(areaIdList);
 	        request.setAttribute("breweryList", breweryList);
 	    } catch (SQLException | ClassNotFoundException e) {
-	        e.printStackTrace();
+			errorMsg = "酒の検索中にデータベースエラーが発生しました: " + e.getMessage();
+			e.printStackTrace();
+			request.setAttribute("errorMsg", errorMsg);
 	    }
-		
+
 	    RequestDispatcher rd = request.getRequestDispatcher("breweryList.jsp");
 	    rd.forward(request, response);
 	}

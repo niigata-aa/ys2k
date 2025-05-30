@@ -19,9 +19,8 @@
 変更する酒の説明：  <jsp:getProperty name="sake" property="sakeExplanation"/><br>
 変更する酒の写真：  <jsp:getProperty name="sake" property="sImgPath"/><br>
 
-<form action="SakeEdit" method="POST">
-<input type="submit" value="戻る">
-</form>
+<button onclick="history.back()">戻る</button>
+
 <form action="Complete" method="POST">
 <input type="submit" value="登録する">
 </form>

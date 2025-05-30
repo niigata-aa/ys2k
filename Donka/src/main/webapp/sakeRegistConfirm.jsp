@@ -21,9 +21,8 @@
 	登録する酒の説明：  <jsp:getProperty name="sake" property="sakeExplanation"/><br>
 	登録する酒の写真：  <jsp:getProperty name="sake" property="sImgPath"/><br>
 
-	<form action="SakeRegistPreparation" method="POST">
-		<input type="submit" value="戻る">
-	</form>
+	<button onclick="history.back()">戻る</button>
+	
 	<form action="SakeRegistConfirm" method="POST">
 		<input type="hidden" name="sakeName2" value="<jsp:getProperty name="sake" property="sakeName"/>" >
 		<input type="hidden" name="alc2" value="<jsp:getProperty name="sake" property="alc"/>" >
