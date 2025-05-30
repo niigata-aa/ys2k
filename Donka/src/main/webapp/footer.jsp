@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ヘッダー</title>
+<title>Insert title here</title>
 </head>
 <body>
-<footer>
-© 2025 YS2K
-</footer>
+
 </body>
 </html>

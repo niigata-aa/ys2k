@@ -45,8 +45,5 @@
 <a href="SakeViewServlet"><img src="img\sake.png" alt="酒リンク" class="sa"></a>
 <h3 class="sake">SAKE</h3>	
 </div>
-
-
-<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
