@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.List,model.entity.CommentBean"%>
+    pageEncoding="UTF-8" import="java.util.List,model.entity.CommentBean,model.entity.UserBean"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,22 +12,30 @@
 		<%
 			int breweryId = (Integer) request.getAttribute("breweryId");
 			String userId = (String) request.getAttribute("userId");
+			String myName = (String) request.getAttribute("myName");
 		%>
 		<%
 			List<CommentBean> commentList = (List<CommentBean>) request.getAttribute("commentList");
+			List<UserBean> userList = (List<UserBean>) request.getAttribute("userList");
+			int count = 0;
 		%>
 		<%
 				for (CommentBean comment : commentList) {
 		%>
-			<%=comment.getUserId() %><br>
+			
+			<%=userList.get(count).getNickname() %><br>
 			<%=comment.getContent() %><br>
-			<%=comment.getCommentId() %><br>
+			<%--<%=comment.getCommentId() --%><br>
+			<% count++; %>
 		<%
 				}
 		%>
 	
 		<%-- ニックネーム表示 --%>
+		ニックネーム：<br>
+		<%=myName %><br>
 		<input type="hidden" name="commentId" value="6">
+		コメント入力画面：<br>
 		<textarea id="content" name="content"></textarea><br>
 		<input type="hidden" name="userId" value=<%=userId %>>
 		<input type="hidden" name="breweryId" value=<%=breweryId %>>

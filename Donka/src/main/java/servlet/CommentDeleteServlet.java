@@ -10,7 +10,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import model.dao.CommentDAO;
 import model.entity.CommentBean;
@@ -51,9 +50,9 @@ public class CommentDeleteServlet extends HttpServlet {
 		int commentId = Integer.parseInt(request.getParameter("commentId"));
 		int breweryId = Integer.parseInt(request.getParameter("breweryId"));
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("breweryId", breweryId);
-		session.setAttribute("commentId", commentId);
+		//HttpSession session = request.getSession();
+		request.setAttribute("breweryId", breweryId);
+		request.setAttribute("commentId", commentId);
 		
 		// DAOの生成
 		CommentDAO dao = new CommentDAO();

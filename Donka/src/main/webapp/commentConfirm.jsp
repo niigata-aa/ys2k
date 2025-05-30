@@ -10,25 +10,28 @@
 		<%-- ニックネーム表示 --%>
 		<%-- 書いたコメント表示 --%> 
 	<%
-		int commentId = (Integer) session.getAttribute("commentId");
-		String content = (String) session.getAttribute("content");
-		String userId = (String) session.getAttribute("userId");
-		int breweryId = (Integer) session.getAttribute("breweryId");
+		int commentId = (Integer) request.getAttribute("commentId");
+		String content = (String) request.getAttribute("content");
+		String userId = (String) request.getAttribute("userId");
+		int breweryId = (Integer) request.getAttribute("breweryId");
+		String myName = (String) request.getAttribute("myName");
 	%>
-	<%=userId %><br>
+	<%=myName %><br>
 	<%=content %><br>
 
 	こちらで投稿してもよろしいでしょうか？<br>
 	<form action="CommentRegistConfirm" method="POST">
 	
-		<input type="hidden" name="commentId" value=<%=commentId %>>>
+		<input type="hidden" name="commentId" value=<%=commentId %>>
 		<input type="hidden" name="content" value=<%= content %>>
 		<input type="hidden" name="userId" value=<%=userId %>>
 		<input type="hidden" name="breweryId" value=<%=breweryId %>>
+		<input type="button" value="戻る" onClick="history.back()">
 		<input type=submit value="決定する">
 	</form>
+	<%-- 
 	<form action="comment.jsp" method="POST">
 		<input type=submit value="戻る">
-	</form>
+	</form>--%>
 </body>
 </html>

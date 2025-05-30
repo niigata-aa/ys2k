@@ -11,8 +11,8 @@
 	削除するコメント：
 	<%-- コメント一覧表示--%>  
 	<%
-		int commentId = (Integer) session.getAttribute("commentId");
-		int breweryId = (Integer) session.getAttribute("breweryId");
+		int commentId = (Integer) request.getAttribute("commentId");
+		int breweryId = (Integer) request.getAttribute("breweryId");
 	%>
 	<%
 		List<CommentBean> commentList = (List<CommentBean>) request.getAttribute("commentList");
@@ -20,9 +20,7 @@
 	<%
 			for (CommentBean comment : commentList) {
 	%>
-		<%=comment.getUserId() %><br>
 		<%=comment.getContent() %><br>
-		<%=comment.getCommentId() %><br>
 	<%
 			}
 	%>
@@ -33,10 +31,12 @@
 	<form action="CommentDeleteConfirm" method="POST">
 		<input type="hidden" name="commentId" value=<%=commentId %>>
 		<input type="hidden" name="breweryId" value=<%=breweryId %>>
+		<input type="button" value="戻る" onClick="history.back()">
 		<input type="submit" value="削除する">
 	</form>
+	<%-- 
 	<form action="commentDelete2.jsp" method="POST">
 		<input type="button" value="戻る">
-	</form>
+	</form>--%>
 </body>
 </html>

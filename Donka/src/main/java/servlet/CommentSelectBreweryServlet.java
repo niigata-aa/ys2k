@@ -11,22 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.dao.CommentDAO;
-import model.dao.UserDAO;
-import model.entity.CommentBean;
-import model.entity.UserBean;
+import model.dao.BreweryDAO;
+import model.entity.BreweryBean;
 
 /**
- * Servlet implementation class CommentSearchServlet
+ * Servlet implementation class CommentSelectBreweryServlet
  */
-@WebServlet("/CommentSearch")
-public class CommentSearchServlet extends HttpServlet {
+@WebServlet("/CommentSelectBreweryServlet")
+public class CommentSelectBreweryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CommentSearchServlet() {
+    public CommentSelectBreweryServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -43,35 +41,26 @@ public class CommentSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<CommentBean> commentList = null;
-		List<UserBean> userList = null;
+		List<BreweryBean> breweryList = null;
 		
 		// リクエストオブジェクトのエンコーディング方式の指定
 		request.setCharacterEncoding("UTF-8");
 
-		// リクエストパラメータの取得
-		int breweryId = Integer.parseInt(request.getParameter("breweryId"));
-		request.setAttribute("breweryId", breweryId);
-		
 		// DAOの生成
-		CommentDAO dao = new CommentDAO();
-		UserDAO dao2 = new UserDAO();
+		BreweryDAO dao = new BreweryDAO();
 		
 		try {
 			// DAOの利用
-			 commentList= dao.selectComment(breweryId);
-			 userList= dao2.selectNickname(breweryId);
+			 breweryList= dao.selectAll();
 			// リクエストスコープへの属性の設定
-			request.setAttribute("commentList", commentList);
-			request.setAttribute("userList", userList);
-			
+			request.setAttribute("breweryList", breweryList);
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
 		
 		// リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher("commentDelete2.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("commentDelete1.jsp");
 		rd.forward(request, response);
 	}
 

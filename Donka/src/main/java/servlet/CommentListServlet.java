@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.dao.CommentDAO;
+import model.dao.UserDAO;
 import model.entity.CommentBean;
+import model.entity.UserBean;
 
 /**
  * Servlet implementation class CommentListServlet
@@ -42,6 +44,8 @@ public class CommentListServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<CommentBean> commentList = null;
+		List<UserBean> userList = null;
+		String myName = null;
 		
 		// リクエストオブジェクトのエンコーディング方式の指定
 		request.setCharacterEncoding("UTF-8");
@@ -54,12 +58,17 @@ public class CommentListServlet extends HttpServlet {
 		
 		// DAOの生成
 		CommentDAO dao = new CommentDAO();
+		UserDAO dao2 = new UserDAO();
 		
 		try {
 			// DAOの利用
 			 commentList= dao.selectComment(breweryId);
+			 userList= dao2.selectNickname(breweryId);
+			 myName= dao2.selectMyNickname(userId);
 			// リクエストスコープへの属性の設定
 			request.setAttribute("commentList", commentList);
+			request.setAttribute("userList", userList);
+			request.setAttribute("myName", myName);
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();

@@ -1,7 +1,7 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,9 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import model.entity.CommentBean;
+import model.dao.UserDAO;
 
 /**
  * Servlet implementation class CommentRegistServlet
@@ -41,7 +40,7 @@ public class CommentRegistServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<CommentBean> commentList = null;
+		String myName = null;
 		
 		// リクエストオブジェクトのエンコーディング方式の指定
 		request.setCharacterEncoding("UTF-8");
@@ -52,27 +51,29 @@ public class CommentRegistServlet extends HttpServlet {
 		String userId = request.getParameter("userId");
 		int breweryId = Integer.parseInt(request.getParameter("breweryId"));
 		
-		HttpSession session = request.getSession();
+		//HttpSession session = request.getSession();
 
-		session.setAttribute("commentId", commentId);
-		session.setAttribute("content", content);
-		session.setAttribute("userId", userId);
-		session.setAttribute("breweryId", breweryId);
+		request.setAttribute("commentId", commentId);
+		request.setAttribute("content", content);
+		request.setAttribute("userId", userId);
+		request.setAttribute("breweryId", breweryId);
 		System.out.println(content);
-		/*
+		
+		
+		
 		// DAOの生成
-		CommentDAO dao = new CommentDAO();
+		UserDAO dao = new UserDAO();
 		
 		try {
 			// DAOの利用
-			 commentList= dao.selectComment(breweryId);
+			 myName= dao.selectMyNickname(userId);
 			// リクエストスコープへの属性の設定
-			request.setAttribute("commentList", commentList);
+			request.setAttribute("myName", myName);
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-		*/
+		
 		
 		// リクエストの転送
 		RequestDispatcher rd = request.getRequestDispatcher("commentConfirm.jsp");

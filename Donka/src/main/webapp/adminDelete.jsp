@@ -8,7 +8,10 @@
 </head>
 <body>
 <a href="SakeDelete">酒の削除</a><br>
-<a href="CommentDelete">コメントの削除</a><br>
+<%-- <a href="CommentDelete">コメントの削除</a>--%>
+<form action="CommentSelectBreweryServlet" method="POST">
+	<input type="submit" value="コメントの削除"><br>
+</form>
 <a href="adminTop.jsp">トップページ</a>
 
 </body>

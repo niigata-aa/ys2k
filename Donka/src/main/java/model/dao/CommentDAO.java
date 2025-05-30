@@ -111,15 +111,41 @@ public class CommentDAO {
 			
 			// 結果の操作
 			while (res.next()) {
-				String userId = res.getString("user_id"); 
+				//String userId = res.getString("user_id"); 
 				String content = res.getString("content"); 
-				int commentId = res.getInt("comment_id"); 
+				//int commentId = res.getInt("comment_id"); 
 				
 				CommentBean comment = new CommentBean();
 				
-				comment.setUserId(userId);
+				//comment.setUserId(userId);
 				comment.setContent(content);
-				comment.setCommentId(commentId);
+				//comment.setCommentId(commentId);
+				
+				commentList.add(comment);
+			}
+			return commentList;
+		}
+	}
+	
+	public List<CommentBean> selectBrewery() throws SQLException, ClassNotFoundException {
+		List<CommentBean> commentList = new ArrayList<CommentBean>();
+		
+		String sql = "SELECT brewery_id FROM sake_user_comment";
+		
+		// データベースへの接続の取得、PreparedStatementの取得
+		try (Connection con = ConnectionManager.getConnection();
+				PreparedStatement pstmt = con.prepareStatement(sql))  {
+			
+			// SQLステートメントの実行
+			ResultSet res = pstmt.executeQuery();
+			
+			// 結果の操作
+			while (res.next()) {
+				int breweryId = res.getInt("brewery_id"); 
+				
+				CommentBean comment = new CommentBean();
+				
+				comment.setBreweryId(breweryId);
 				
 				commentList.add(comment);
 			}
