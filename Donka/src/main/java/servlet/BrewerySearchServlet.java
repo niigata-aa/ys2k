@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -42,7 +43,7 @@ public class BrewerySearchServlet extends HttpServlet {
 	 */	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+	/* 一つしか検索できない
 		List<BreweryBean> breweryList = null; //値を初期化して検索結果だけ入れる
 		
 		int areaId = Integer.parseInt(request.getParameter("areaId"));
@@ -60,6 +61,31 @@ public class BrewerySearchServlet extends HttpServlet {
 		
 		RequestDispatcher rd=request.getRequestDispatcher("breweryList.jsp");
 		rd.forward(request, response);
+	*/
+		
+		String[] areaIds = request.getParameterValues("areaId"); //そもそも配列にする
+		
+		List<Integer> areaIdList = new ArrayList<>(); //文字列配列を整数リストに変換
+		
+		//何もなかった場合は変換しない
+		if (areaIds != null) { 
+	        for (String ids : areaIds) {
+	            areaIdList.add(Integer.parseInt(ids));
+	        }
+	    }
+
+	    List<BreweryBean> breweryList = null;
+		BreweryDAO dao = new BreweryDAO();
+		
+	    try {
+	        breweryList = dao.findByAreaIds(areaIdList);
+	        request.setAttribute("breweryList", breweryList);
+	    } catch (SQLException | ClassNotFoundException e) {
+	        e.printStackTrace();
+	    }
+		
+	    RequestDispatcher rd = request.getRequestDispatcher("breweryList.jsp");
+	    rd.forward(request, response);
 	}
 
 }

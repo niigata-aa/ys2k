@@ -86,37 +86,40 @@ public class BreweryDAO {
 		return breweryList;
 	}
 	
-	public List<BreweryBean> findByAreaIds(int areaId) throws SQLException, ClassNotFoundException {
+	public List<BreweryBean> findByAreaIds(List<Integer> areaIdList) throws SQLException, ClassNotFoundException {
         List<BreweryBean> breweryList = new ArrayList<>();
         
-        Connection con = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        
-        StringBuilder sql = new StringBuilder("SELECT * FROM m_brewery");
-        
-		int areaId = rs.getInt("area_id");
-        
-        if (areaId != 0) {
-            sql.append(" WHERE area_id IN (");
-            String placeholders = String.join(",", Collections.nCopies(areaId.size(), "?"));
-            sql.append(placeholders);
-            sql.append(")");
+
+        //何もなかったら空のままで
+        if (areaIdList == null || areaIdList.isEmpty()) {
+            return breweryList;
         }
-        
-            rs = ps.executeQuery();
-            
+
+        //チェック数だけプレースホルダ作成（あんまりよくわからん）
+        String placeholders = String.join(",", Collections.nCopies(areaIdList.size(), "?"));
+        String sql = "SELECT * FROM m_brewery WHERE area_id IN (" + placeholders + ")";
+        try (Connection con = ConnectionManager.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+        	//プレースホルダにareaIdの値を入れる
+            for (int i = 0; i < areaIdList.size(); i++) {
+                ps.setInt(i + 1, areaIdList.get(i));
+            }
+
+            ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 BreweryBean brewery = new BreweryBean();
-                
                 brewery.setBreweryId(rs.getInt("brewery_id"));
                 brewery.setBreweryName(rs.getString("brewery_name"));
                 brewery.setBImgPath(rs.getString("b_img_path"));
                 brewery.setAreaId(rs.getInt("area_id"));
                 breweryList.add(brewery);
             }
+        }
+
         return breweryList;
     }
+	
         
     public int insert(BreweryBean brewery) throws SQLException, ClassNotFoundException {
     	

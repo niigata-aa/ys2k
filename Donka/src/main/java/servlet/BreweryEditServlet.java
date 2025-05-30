@@ -39,7 +39,19 @@ public class BreweryEditServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		
-		RequestDispatcher rd = request.getRequestDispatcher("BreweryEditConfirm");
+		int breweryId = Integer.parseInt(request.getParameter("breweryId"));
+		String breweryExplanation = request.getParameter("breweryExplanation");
+		boolean reservationFlag = Boolean.parseBoolean(request.getParameter("reservationFlag"));
+		String reservationPath = request.getParameter("reservationPath");
+		
+        request.setAttribute("breweryId", breweryId);
+        request.setAttribute("breweryExplanation", breweryExplanation);
+        request.setAttribute("reservationFlag", reservationFlag);
+        request.setAttribute("reservationPath", reservationPath);
+		
+		String url = "breweryUpdateConfirm.jsp";
+		
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request,response);
 	}
 
