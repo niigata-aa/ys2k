@@ -12,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.dao.BreweryDAO;
+import model.dao.SakeDAO;
 import model.entity.BreweryBean;
+import model.entity.SakeBean;
 
 /**
  * Servlet implementation class BreweryDetailServlet
@@ -46,15 +48,18 @@ public class BreweryDetailServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("brewid"));
 		
 		List<BreweryBean> brewList = null;
+		List<SakeBean> sakeList = null;
 		
 		BreweryDAO brew = new BreweryDAO();
+		SakeDAO sake = new SakeDAO();
 		
 		try {
 			// DAOの利用
 			 brewList = brew.breweryDetail(id);
+			 sakeList = sake.selectBrew(id);
 			// リクエストスコープへの属性の設定
 			request.setAttribute("brewList", brewList);
-			
+			request.setAttribute("sakeList",sakeList);
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();

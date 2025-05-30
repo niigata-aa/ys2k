@@ -18,6 +18,23 @@
 	List<BreweryBean> breweryList = (List<BreweryBean>) request.getAttribute("brewList");
 	%>
 	<% for(BreweryBean brew :breweryList){ %>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<%-- 酒の口コミだけ --%>
 	<%-- この時は、酒蔵IDともしかしたらuser_id送るかも --%>
 	<%-- 酒蔵IDとuser_idを値に参照したい --%>
@@ -26,6 +43,17 @@
 			type="hidden" name="userId" value="fgh"> <input type="submit"
 			value="酒の口コミ">
 	</form>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<!-- 地図だけ -->
 	<div id='mapcontainer' style='width: 100%; height: 300px; z-index: 0;'></div>
 	
