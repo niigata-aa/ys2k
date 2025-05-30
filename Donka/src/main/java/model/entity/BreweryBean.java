@@ -66,75 +66,57 @@ public class BreweryBean implements Serializable{
 		
 	}
 
-
 	public int getBreweryId() {
 		return breweryId;
 	}
-
 
 	public void setBreweryId(int breweryId) {
 		this.breweryId = breweryId;
 	}
 
-
 	public String getBreweryName() {
 		return breweryName;
 	}
-
 
 	public void setBreweryName(String breweryName) {
 		this.breweryName = breweryName;
 	}
 
-
-	public String getBImgPath() {
+	public String getbImgPath() {
 		return bImgPath;
 	}
 
-
-	public void setBImgPath(String bImgPath) {
+	public void setbImgPath(String bImgPath) {
 		this.bImgPath = bImgPath;
 	}
-
 
 	public double getLatitude() {
 		return latitude;
 	}
 
-
-	public void setLatitude(double lattitude) {
-		this.latitude = lattitude;
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
 	}
-
 
 	public double getLongitude() {
 		return longitude;
 	}
 
-
 	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
-
 
 	public String getAddress() {
 		return address;
 	}
 
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	public Timestamp getUpdateDay() {
-		return updateDay;
-	}
-
 
 	public Boolean getReservationFlag() {
 		return reservationFlag;
 	}
-
 
 	public void setReservationFlag(Boolean reservationFlag) {
 		this.reservationFlag = reservationFlag;
@@ -144,7 +126,6 @@ public class BreweryBean implements Serializable{
 		return reservationPath;
 	}
 
-
 	public void setReservationPath(String reservationPath) {
 		this.reservationPath = reservationPath;
 	}
@@ -153,19 +134,22 @@ public class BreweryBean implements Serializable{
 		return breweryExplanation;
 	}
 
-
 	public void setBreweryExplanation(String breweryExplanation) {
 		this.breweryExplanation = breweryExplanation;
 	}
-
 
 	public int getAreaId() {
 		return areaId;
 	}
 
-
 	public void setAreaId(int areaId) {
 		this.areaId = areaId;
 	}
+
+	public Timestamp getUpdateDay() {
+		return updateDay;
+	}
+
+	
 
 }

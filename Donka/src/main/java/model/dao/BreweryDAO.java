@@ -39,7 +39,7 @@ public class BreweryDAO {
 				
 				brewery.setBreweryId(breweryId);
 				brewery.setBreweryName(breweryName);
-				brewery.setBImgPath(bImgPath);
+				brewery.setbImgPath(bImgPath);
 				brewery.setLatitude(latitude);
 				brewery.setLongitude(longitude);
 				brewery.setAddress(address);
@@ -78,52 +78,7 @@ public class BreweryDAO {
 				
 				brewery.setBreweryId(breweryId);
 				brewery.setBreweryName(breweryName);
-				brewery.setBImgPath(bImgPath);
-				
-				breweryList.add(brewery);
-			}
-		}
-		return breweryList;
-	}
-	
-	public List<BreweryBean> breweryDetail(int breweryId) throws SQLException, ClassNotFoundException {
-		
-		List<BreweryBean> breweryList = new ArrayList<BreweryBean>();
-		
-		String sql = "select * from m_brewery where brewery_id = ?";
-		
-		try (Connection con = ConnectionManager.getConnection();
-				PreparedStatement pstmt = con.prepareStatement(sql)){
-			
-			pstmt.setInt(1, breweryId);
-			
-			ResultSet res = pstmt.executeQuery();
-			
-			while (res.next()) {
-				int breweryId1 = res.getInt("brewery_id"); //酒蔵ID
-				String breweryName = res.getString("brewery_name"); //酒蔵の名前
-				String bImgPath = res.getString("b_img_path"); //酒蔵の写真のパス
-				Double latitude = res.getDouble("latitude"); //酒蔵の位置の緯度
-				Double longitude = res.getDouble("longitude"); //酒蔵の位置の経度
-				String address = res.getString("address"); //酒蔵の住所
-				//Date updateDay = res.getDate("update_day"); //データの更新日時
-				boolean reservationFlag = res.getBoolean("reservation_flag"); //酒蔵の予約可否
-				String reservationPath = res.getString("reservation_path"); //酒蔵に予約する際のURL
-				String breweryExplanation = res.getString("brewery_explanation"); //酒蔵の説明
-				int areaId = res.getInt("area_id"); //酒蔵がある地区
-				
-				BreweryBean brewery = new BreweryBean();
-				
-				brewery.setBreweryId(breweryId1);
-				brewery.setBreweryName(breweryName);
-				brewery.setBImgPath(bImgPath);
-				brewery.setLatitude(latitude);
-				brewery.setLongitude(longitude);
-				brewery.setAddress(address);
-				brewery.setReservationFlag(reservationFlag);
-				brewery.setReservationPath(reservationPath);
-				brewery.setBreweryExplanation(breweryExplanation);
-				brewery.setAreaId(areaId);
+				brewery.setbImgPath(bImgPath);
 				
 				breweryList.add(brewery);
 			}
@@ -156,7 +111,7 @@ public class BreweryDAO {
                 BreweryBean brewery = new BreweryBean();
                 brewery.setBreweryId(rs.getInt("brewery_id"));
                 brewery.setBreweryName(rs.getString("brewery_name"));
-                brewery.setBImgPath(rs.getString("b_img_path"));
+                brewery.setbImgPath(rs.getString("b_img_path"));
                 brewery.setAreaId(rs.getInt("area_id"));
                 breweryList.add(brewery);
             }
@@ -177,7 +132,7 @@ public class BreweryDAO {
              PreparedStatement pstmt = con.prepareStatement(sql)) {
             pstmt.setInt(1, brewery.getBreweryId());
             pstmt.setString(2, brewery.getBreweryName());
-            pstmt.setString(3, brewery.getBImgPath());
+            pstmt.setString(3, brewery.getbImgPath());
             pstmt.setDouble(4, brewery.getLatitude());
             pstmt.setDouble(5, brewery.getLongitude());
             pstmt.setString(6, brewery.getAddress());
