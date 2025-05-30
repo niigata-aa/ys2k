@@ -8,7 +8,7 @@
 </head>
 <body>
 	<a href="SakeRegistPreparation">酒の登録</a><br>
-	<a href="BreweryRegist">酒蔵の登録</a><br>
+	<a href="breweryRegistration.jsp">酒蔵の登録</a><br>
 	<a href="adminTop.jsp">トップページ</a>
 
 </body>

@@ -40,50 +40,81 @@ public class BreweryRegistConfirmServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		int breweryId = Integer.parseInt(request.getParameter("breweryId"));
-		String breweryName = request.getParameter("breweryName");
-		String bImgPath = request.getParameter("bImgPath");
-		String explanation = request.getParameter("explanation");
-		double latitude = Double.parseDouble(request.getParameter("latitude"));
-		double longitude = Double.parseDouble(request.getParameter("longitude"));
-		String address = request.getParameter("address");
-		int areaId = Integer.parseInt(request.getParameter("areaId"));
-		Boolean reserveFlag = Boolean.parseBoolean(request.getParameter("reserveFlag"));
-		String reservePath = request.getParameter("reservePath");
+
+		//リクエストのエンコーディングを指定
+		request.setCharacterEncoding("UTF-8");
 		
-		String url = null;
+		//遷移先URLの設定
+		String url = "adminComplete.jsp";
 		
-		BreweryBean brewery = new BreweryBean();
-		brewery.setBreweryId(breweryId);
-		brewery.setBreweryName(breweryName);
-		brewery.setBImgPath(bImgPath);
-		brewery.setBreweryExplanation(explanation);
-		brewery.setLatitude(latitude);
-		brewery.setLongitude(longitude);
-		brewery.setAddress(address);
-		brewery.setAreaId(areaId);
-		brewery.setReservationFlag(reserveFlag);
-		brewery.setReservationPath(reservePath);
+		//リクエストパラメータの取得
 		
+		String breweryId          = "300";
+		String breweryName        = request.getParameter("breweryName2");
+		String breweryExplanation = request.getParameter("breweryExplanation2");
+		String latitude           = request.getParameter("latitude2");
+		String longitude          = request.getParameter("longitude2");
+		String address            = request.getParameter("address2");
+		String areaId             = request.getParameter("areaId2");
+		String reservetionFlag    = request.getParameter("reservationFlag2");
+		String reservationPath    = request.getParameter("reservationPath2");
+		String bImgPath           = request.getParameter("bImgPath2");
+		
+		int iBreweryId = 0;
+		double dLatitude = 0;
+		double dLongitude = 0;
+		int iAreaId = 0;
+		boolean bReservetionFlag = false;
+		
+		
+		//リクエストパラメータの型を合わせる
 		try {
 			
-			BreweryDAO dao = new BreweryDAO();
+			iBreweryId = Integer.parseInt(breweryId);
+			dLatitude = Double.parseDouble(latitude);
+			dLongitude = Double.parseDouble(longitude);
+			iAreaId = Integer.parseInt(areaId);
+			bReservetionFlag = Boolean.parseBoolean(reservetionFlag);
 			
-			/*
-			dao.insert(brewery);	
+		} catch (NumberFormatException e) {
 			
-			url = "adminComplete.jsp";
-			*/
+			e.printStackTrace();
 			
-			if (dao.insert(brewery)!=0) {	//update_dayのNOT NULLを外せば動きます
-				url = "adminComplete.jsp";
-			} else {
-				url = "adminFailure.jsp";
-			}
+		}
+		
+		//breweryオブジェクトを生成、値を代入
+		BreweryBean brewery = new BreweryBean();
+		
+		brewery.setBreweryId(iBreweryId);
+		brewery.setBreweryName(breweryName);
+		brewery.setbImgPath(bImgPath);
+		brewery.setBreweryExplanation(breweryExplanation);
+		brewery.setLatitude(dLatitude);
+		brewery.setLongitude(dLongitude);
+		brewery.setAreaId(iAreaId);
+		brewery.setAddress(address);
+		brewery.setReservationFlag(bReservetionFlag);
+		brewery.setReservationPath(reservationPath);
+		
+		
+		//daoの成功を判断する変数
+		int processingNumber = 0;
+		
+		//DAOクラスの生成
+		BreweryDAO dao = new BreweryDAO();
+	
+		try {
+
+			processingNumber = dao.insert(brewery);	
 
 		} catch (SQLException | ClassNotFoundException e) {
+			
 			e.printStackTrace();
+			
+		}
+		
+		//遷移先の変更
+		if(processingNumber == 0) {//失敗した時
 			url = "adminFailure.jsp";
 		}
 		
