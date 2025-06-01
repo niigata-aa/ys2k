@@ -49,7 +49,7 @@ public class BreweryRegistConfirmServlet extends HttpServlet {
 		
 		//リクエストパラメータの取得
 		
-		String breweryId          = "220";
+		String breweryId          = request.getParameter("breweryId");
 		String breweryName        = request.getParameter("breweryName2");
 		String breweryExplanation = request.getParameter("breweryExplanation2");
 		String latitude           = request.getParameter("latitude2");
@@ -59,6 +59,10 @@ public class BreweryRegistConfirmServlet extends HttpServlet {
 		String reservetionFlag    = request.getParameter("reservationFlag2");
 		String reservationPath    = request.getParameter("reservationPath2");
 		String bImgPath           = request.getParameter("bImgPath2");
+		
+		
+		String img_name          = request.getParameter("img_name");
+		request.setAttribute("img_name", img_name);
 		
 		int iBreweryId = 0;
 		double dLatitude = 0;

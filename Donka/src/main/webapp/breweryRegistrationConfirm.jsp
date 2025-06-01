@@ -20,8 +20,11 @@
 	登録する酒蔵の予約の有無:<jsp:getProperty name="brewery" property="reservationFlag"/><br>
 	登録する予約の有無:<jsp:getProperty name="brewery" property="reservationPath"/><br>
 	
+	<%--
 	登録する酒蔵の写真のパス:<jsp:getProperty name="brewery" property="bImgPath"/><br>
+	--%>
 	
+	登録する写真：<jsp:getProperty name="brewery" property="bImgPath"/><br>
 
 	<form action="BreweryRegistConfirm" method="POST">
 		<input type ="hidden" name ="breweryName2" value="<jsp:getProperty name="brewery" property="breweryName"/>">
