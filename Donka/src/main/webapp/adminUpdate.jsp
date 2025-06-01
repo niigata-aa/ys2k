@@ -8,7 +8,7 @@
 </head>
 <body>
 	<a href="SakeUpdatePreparation">酒の変更</a><br>
-	<a href="BreweryEditServlet">酒蔵の変更</a><br>
+	<a href="BreweryUpdatePreparation">酒蔵の変更</a><br>
 	<a href="adminTop.jsp">トップページ</a>
 
 </body>
