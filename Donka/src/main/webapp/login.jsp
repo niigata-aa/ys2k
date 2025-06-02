@@ -8,16 +8,24 @@
 <link rel="stylesheet" href="login.css">
 </head>
 <body>
-<div class="container">
+<jsp:include page="header.jsp"></jsp:include>
+<div class="body"></div>
+    <div class="grad"></div>
+    <div class="header">
+      <div>ご来店<span></span></div>
+    </div>
+    <br>
+    <div class="login">
+<!--    <img class="bg-logo" src="img\logo.png" alt="">-->
 	<form action="UserLogin" method="post">
-	<p class="fsize">ログイン画面</p>
-		<input type="text" placeholder="username" name="userId"><br>
-		<input type="password" placeholder="password" name="password"><br>
+		<input type="text" placeholder="愛称" name="userId"><br>
+		<input type="password" placeholder="合言葉" name="password"><br>
 		<input type="submit" value="ログイン">
 		
 	</form>
 	</div>
 
+<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
 
