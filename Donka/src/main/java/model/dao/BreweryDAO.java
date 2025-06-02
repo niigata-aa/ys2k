@@ -152,31 +152,35 @@ public class BreweryDAO {
 
 		int processingNumber = 0;
 
-		//String sql = "UPDATE m_brewery SET brewery_explanation = ? , latitude = ?, longitude = ?, address = ? , area_id = ? , b_img_path = ? , reservation_flag = ?, reservation_path = ?"
-		//		   + "WHERE brewery_id = ?";
+        String sql = "UPDATE m_brewery SET brewery_name = ?, brewery_explanation = ?, latitude = ?, longitude = ?, "
+                + "area_id = ?, address = ?, reservation_flag = ?, reservation_path = ?, b_img_path = ? WHERE brewery_id = ?";
 
-		String sql = "UPDATE m_brewery SET reservation_flag = ? , reservation_path = ? , brewery_explanation = ?"
-				+ "WHERE brewery_id = ?";
+		//String sql = "UPDATE m_brewery SET reservation_flag = ? , reservation_path = ? , brewery_explanation = ?"
+		//		+ "WHERE brewery_id = ?";
 
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
-			/*
-            pstmt.setString(1, brewery.getBreweryExplanation());
-            pstmt.setDouble(2, brewery.getLatitude());
-            pstmt.setDouble(3, brewery.getLongitude());
-            pstmt.setString(4, brewery.getAddress());
+			
+			
+			
+            pstmt.setString(1, brewery.getBreweryName());
+            pstmt.setString(2, brewery.getBreweryExplanation());
+            pstmt.setDouble(3, brewery.getLatitude());
+            pstmt.setDouble(4, brewery.getLongitude());
             pstmt.setInt(5, brewery.getAreaId());
-            pstmt.setString(6, brewery.getBImgPath());
+            pstmt.setString(6, brewery.getAddress());
             pstmt.setBoolean(7, brewery.getReservationFlag());
             pstmt.setString(8, brewery.getReservationPath());
-            pstmt.setInt(9, brewery.getBreweryId());
-			 */
-
+            pstmt.setString(9, brewery.getbImgPath());
+            pstmt.setInt(10, brewery.getBreweryId());
+			
+			/*
 			pstmt.setBoolean(1, brewery.getReservationFlag());
 			pstmt.setString(2, brewery.getReservationPath());
 			pstmt.setString(3, brewery.getBreweryExplanation());
 			pstmt.setInt(4, brewery.getBreweryId());
-
+			*/
+			
 			processingNumber = pstmt.executeUpdate();
 
 		}

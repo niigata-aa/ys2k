@@ -37,7 +37,7 @@
 						<option value=2>中越</option>
 						<option value=3>下越</option>
 						<option value=4>佐渡</option>
-					</select><br>			]
+					</select><br>
 					
 		酒蔵の住所：<input type="text" id="address" name="address"><br>
 		予約の可否：<input type="checkbox" id="reservetionFlag" name="reservetionFlag"/><br>

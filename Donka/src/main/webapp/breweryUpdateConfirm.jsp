@@ -7,22 +7,22 @@
 <title>酒蔵変更確認画面</title>
 </head>
 <body>
-	こちらで更新してよろしいですか？<br>
+	こちらに更新してよろしいですか？<br>
 	<jsp:useBean id="brewery" scope="request" class="model.entity.BreweryBean" />
 	
-	更新する酒蔵の名前:<jsp:getProperty name="brewery" property="breweryName"/><br>
-	更新する酒蔵の説明:<jsp:getProperty name="brewery" property="breweryExplanation"/><br>
-	更新する酒蔵の緯度:<jsp:getProperty name="brewery" property="latitude"/><br>
-	更新する経度:<jsp:getProperty name="brewery" property="longitude"/><br>
-	更新する酒蔵の地域:<jsp:getProperty name="brewery" property="address"/><br>
-	更新する酒蔵の住所:<jsp:getProperty name="brewery" property="areaId"/><br>
+	酒蔵の名前:<jsp:getProperty name="brewery" property="breweryName"/><br>
+	酒蔵の説明:<jsp:getProperty name="brewery" property="breweryExplanation"/><br>
+	酒蔵の緯度:<jsp:getProperty name="brewery" property="latitude"/><br>
+	経度:<jsp:getProperty name="brewery" property="longitude"/><br>
+	酒蔵の地域:<jsp:getProperty name="brewery" property="areaId"/><br>
+	酒蔵の住所:<jsp:getProperty name="brewery" property="address"/><br>
 
-	更新する酒蔵の予約の有無:<jsp:getProperty name="brewery" property="reservationFlag"/><br>
-	更新する予約の有無:<jsp:getProperty name="brewery" property="reservationPath"/><br>
+	酒蔵の予約の可否:<jsp:getProperty name="brewery" property="reservationFlag"/><br>
+	酒蔵の予約先:<jsp:getProperty name="brewery" property="reservationPath"/><br>
 	
-	更新する酒蔵の写真のパス:<jsp:getProperty name="brewery" property="bImgPath"/><br>
+	写真のパス:<jsp:getProperty name="brewery" property="bImgPath"/><br>
 	
-	<form action="BreweryRegistConfirm" method="POST">
+	<form action="BreweryUpdateConfirm" method="POST">
 		<input type ="hidden" name ="breweryId2" value="<jsp:getProperty name="brewery" property="breweryId"/>">
 		<input type ="hidden" name ="breweryName2" value="<jsp:getProperty name="brewery" property="breweryName"/>">
 		<input type ="hidden" name ="breweryExplanation2" value="<jsp:getProperty name="brewery" property="breweryExplanation"/>">

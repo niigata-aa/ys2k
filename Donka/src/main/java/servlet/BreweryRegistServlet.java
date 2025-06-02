@@ -61,6 +61,13 @@ public class BreweryRegistServlet extends HttpServlet {
 		String reservetionFlag    = request.getParameter("reservetionFlag");
 		String reservationPath    = request.getParameter("reservetionPath");
 		
+		//リクエスト表示したい
+		System.out.print(" りくえそつとぶ： ");
+		System.out.print(breweryId + " + ");
+		System.out.print(latitude + " + ");
+		System.out.print(longitude + " + ");
+		System.out.println(areaId + " + ");
+		
 		//画像のファイル名取得
 		//アップロードしたファイルを取得
 		Part part = request.getPart("bImgPath");
@@ -106,6 +113,11 @@ public class BreweryRegistServlet extends HttpServlet {
 			dLongitude = Double.parseDouble(longitude);
 			iAreaId = Integer.parseInt(areaId);
 			
+			//変換後の値を確認したい
+			System.out.print(iBreweryId + " + ");
+			System.out.print(dLatitude + " + ");
+			System.out.print(dLongitude + " + ");
+			System.out.println(iAreaId);
 		} catch (NumberFormatException e) {
 			
 			e.printStackTrace();
@@ -131,9 +143,11 @@ public class BreweryRegistServlet extends HttpServlet {
 		
 		request.setAttribute("brewery", brewery);
 		
-		//画像のパスで使うかも
+		/*画像のパスで使うかも
 		request.setAttribute("img_name", img_name);
-
+		request.setAttribute("path", path);		
+		*/
+		
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request,response);
 	} 

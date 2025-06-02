@@ -24,9 +24,11 @@
 	登録する酒蔵の写真のパス:<jsp:getProperty name="brewery" property="bImgPath"/><br>
 	--%>
 	
-	登録する写真：<jsp:getProperty name="brewery" property="bImgPath"/><br>
+	登録する写真のURL：<jsp:getProperty name="brewery" property="bImgPath"/><br>
+	<img src="/Donka/img/<jsp:getProperty name="brewery" property="bImgPath"/>">
 
 	<form action="BreweryRegistConfirm" method="POST">
+		<input type ="hidden" name ="breweryId2" value="<jsp:getProperty name="brewery" property="breweryId"/>">
 		<input type ="hidden" name ="breweryName2" value="<jsp:getProperty name="brewery" property="breweryName"/>">
 		<input type ="hidden" name ="breweryExplanation2" value="<jsp:getProperty name="brewery" property="breweryExplanation"/>">
 		<input type ="hidden" name ="latitude2" value="<jsp:getProperty name="brewery" property="latitude"/>">
@@ -39,7 +41,7 @@
 		<input type="submit" value="登録する">
 	</form>
 	
-	<form action="未設定" method="POST">
+	<form action="adminTop.jsp" method="POST">
 		<input type="submit" value="戻る">
 	</form>
 
