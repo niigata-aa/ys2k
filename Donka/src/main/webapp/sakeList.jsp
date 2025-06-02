@@ -10,6 +10,7 @@
 </head>
 <body>
 
+<jsp:include page="header.jsp"></jsp:include>
 	<%
 List<SakeBean> sakeList=(List<SakeBean>)request.getAttribute("sakeList");
 %>
@@ -23,10 +24,10 @@ List<SakeBean> sakeList=(List<SakeBean>)request.getAttribute("sakeList");
 
 
 
-
+<div class="search">
 
 	<form action="SakeSearch" method="post">
-		<h2>検索条件</h2>
+		 <div class="box-title"><h2>検索条件</h2></div>
 		<p>
 			<label for="searchSakeName">酒の名前:</label> <input type="text"
 				name="searchSakeName" id="searchSakeName"
@@ -93,13 +94,15 @@ List<SakeBean> sakeList=(List<SakeBean>)request.getAttribute("sakeList");
 		</p>
 		<input type="submit" value="検索">
 	</form>
+</div>
 
 
-
-
+<div class="tab">
 
 	<button onclick="location.href='BreweryView'">酒蔵</button>
 	<button onclick="location.href='SakeViewServlet'">日本酒</button>
+	
+	</div>
 
 	<div class="d1">
 		<h1>酒の一覧</h1>
@@ -107,24 +110,20 @@ List<SakeBean> sakeList=(List<SakeBean>)request.getAttribute("sakeList");
 
 
 
-
-
-
 	<div class="table_box">
 		<table>
-			<tr>
-				<th class="sticky">酒の名前</th>
-				<th class="sticky">酒の写真</th>
-			</tr>
+<!--			<tr>-->
+<!--				<th class="sticky">酒の名前</th>-->
+<!--				<th class="sticky">酒の写真</th>-->
+<!--			</tr>-->
 			<%
         // サーブレットから渡された酒のリストを取得
         if (sakeList != null && !sakeList.isEmpty()) {
             // 酒のリストをループし、テーブルの行を生成
             for (SakeBean sake : sakeList) {
         %>
-			<tr>
-				<td><%= sake.getSakeName() %></td>
-				<td><a href="SakeDetail"><img src="<%=sake.getsImgPath()%>"
+			<tr><td><%= sake.getSakeName()%></td>
+		<td><a href="SakeDetail"><img src="<%=sake.getsImgPath()%>"
 						class="image"></a></td>
 			</tr>
 			<%
@@ -151,6 +150,7 @@ List<SakeBean> sakeList=(List<SakeBean>)request.getAttribute("sakeList");
 
 	</div>
 
+<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>

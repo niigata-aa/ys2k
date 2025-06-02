@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ヘッダーp</title>
+<title>ヘッダー</title>
 </head>
 <body>
 <footer>

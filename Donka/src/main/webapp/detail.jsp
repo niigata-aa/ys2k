@@ -15,6 +15,8 @@
 	crossorigin=""></script>
 </head>
 <body>
+
+<jsp:include page="header.jsp"></jsp:include>
 	<%
 	List<BreweryBean> breweryList = (List<BreweryBean>) request.getAttribute("brewList");
 	List<SakeBean> sakeList = (List<SakeBean>) request.getAttribute("sakeList");
@@ -135,5 +137,8 @@
 	<%
 	}
 	%>
+	
+	<jsp:include page="footer.jsp"></jsp:include>
+	
 </body>
 </html>

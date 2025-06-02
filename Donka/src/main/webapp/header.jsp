@@ -30,10 +30,11 @@
 
 <%} else{%>
 <%--ログインしているときの処理 --%>
+<link rel="stylesheet" href="header.css">
 <header class="header-5">
   <div class="header-inner">
     <div class="logo">
-      <h1>酒</h1>
+     <img src="img\logo.png">
     </div>
     <nav class="header-nav">
       <ul class="header-nav-list">
@@ -41,7 +42,10 @@
 <a href="home.jsp"><li class="header-nav-item">呑花臥酒</li></a>
 <a href="BreweryView"><li class="header-nav-item">一覧表示</li></a>
 <a href="showRank.jsp"><li class="header-nav-item">ランキング</li></a>
-
+<li class="header-nav-item"><form action="UserLogout" method="post">
+	<input type="submit" style="border:none;background: transparent;font-family:"游明朝";" value="ログアウト">
+</form>
+</li>
 </ul>
    <div class="header-ham">
         <div class="menu2"></div>
@@ -53,8 +57,5 @@
 </header>
 
 
-<form action="UserLogout" method="post">
-	<input type="submit" value="ログアウト">
-</form>
 
 <%} %>
