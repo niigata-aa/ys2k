@@ -21,7 +21,8 @@
 	酒蔵の予約先:<jsp:getProperty name="brewery" property="reservationPath"/><br>
 	
 	写真のパス:<jsp:getProperty name="brewery" property="bImgPath"/><br>
-	
+	<img src="/Donka/img/<jsp:getProperty name="brewery" property="bImgPath"/>">
+		
 	<form action="BreweryUpdateConfirm" method="POST">
 		<input type ="hidden" name ="breweryId2" value="<jsp:getProperty name="brewery" property="breweryId"/>">
 		<input type ="hidden" name ="breweryName2" value="<jsp:getProperty name="brewery" property="breweryName"/>">

@@ -118,7 +118,7 @@ public class BreweryRegistConfirmServlet extends HttpServlet {
 			processingNumber = dao.insert(brewery);	
 
 		} catch (SQLException | ClassNotFoundException e) {
-			
+			url = "adminFailure.jsp";
 			e.printStackTrace();
 			
 		}

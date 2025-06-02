@@ -48,6 +48,7 @@ public class BreweryRegistServlet extends HttpServlet {
 		//リクエストのエンコーディングを指定
 		request.setCharacterEncoding("UTF-8");
 		
+		
 		//リクエストパラメータの取得
 		
 		String breweryId          = request.getParameter("breweryId");
@@ -86,7 +87,6 @@ public class BreweryRegistServlet extends HttpServlet {
 		System.out.println("アップロードされたファイル：" + bImgPath);
 		System.out.println("保存先のパス：" + path + File.separator + img_name);
 		System.out.println("アップロードされたファイル内容：" + part);
-		System.out.println("保存パス: " + path + File.separator + img_name);
 		System.out.println(request.getPart("bImgPath"));
 		
 
@@ -96,6 +96,12 @@ public class BreweryRegistServlet extends HttpServlet {
 		double dLongitude = 0;
 		int iAreaId = 0;
 		boolean bReservetionFlag = false;
+		
+		//boolean bReservationFlag = reservetionFlag.isEmpty() ? false : true;
+		
+		if(reservetionFlag == null) {
+			reservetionFlag = "false";
+		}
 		
 		if(reservetionFlag.equals("on")){
 			bReservetionFlag = true; 
