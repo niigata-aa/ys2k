@@ -68,6 +68,7 @@ public class CommentRegistServlet extends HttpServlet {
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
+			System.out.println(e);
 		}
 		
 		

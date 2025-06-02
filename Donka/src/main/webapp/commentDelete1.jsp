@@ -18,12 +18,10 @@
     酒蔵
     <select name="breweryId">
     	<%
-    		int breweryNum = 1;
 			for (BreweryBean brewery : breweryList) {
 		%>
-        <option value=<%=breweryNum %>><%=brewery.getBreweryName() %></option>
+        <option value=<%=brewery.getBreweryId() %>><%=brewery.getBreweryName() %></option>
         <%
-        	breweryNum++;
 			}
 		%>
     </select><br>

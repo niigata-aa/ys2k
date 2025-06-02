@@ -40,10 +40,11 @@ public class CommentDeleteConfirmServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url="adminComplete.jsp";
+		
 		
 		// リクエストオブジェクトのエンコーディング方式の指定
 		request.setCharacterEncoding("UTF-8");
-		
 		
 
 		// リクエストパラメータの取得
@@ -64,10 +65,12 @@ public class CommentDeleteConfirmServlet extends HttpServlet {
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
+			System.out.println(e);
+			url="adminFailure.jsp";
 		}
 		
 		// リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher("adminComplete.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 

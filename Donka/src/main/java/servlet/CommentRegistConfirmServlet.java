@@ -70,6 +70,7 @@ public class CommentRegistConfirmServlet extends HttpServlet {
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
+			System.out.println(e);
 		}
 		
 		// リクエストの転送
