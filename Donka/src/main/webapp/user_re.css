@@ -7,8 +7,8 @@ body{
   background-image: url(img\logo.png);
   color: rgb(128, 128, 128);
   font-family:"游明朝";
+  font-size: 50%;
   font-weight: bold;
-  font-size: 50%
 }
 
 
@@ -72,7 +72,7 @@ body{
   font-weight: bold;
 }
 
-.login{
+.user{
   position: absolute;
   top: calc(50% - 75px);
   left: calc(50% - 50px);
@@ -83,9 +83,7 @@ body{
   font-family:"游明朝";
   font-weight: bold;
 }
-
-
-.login input[type=text]{
+.user input[type=text]{
   width: 250px;
   height: 30px;
   background: transparent;
@@ -99,7 +97,8 @@ body{
   font-family:"游明朝";
   font-weight: bold;
 }
-.login input[type=password]{
+
+.user input[type="password"]{
   width: 250px;
   height: 30px;
   background: transparent;
@@ -115,7 +114,32 @@ body{
   font-weight: bold;
 }
 
-.login input[type=submit]{
+input[type="password"] {
+  width: 200px; /*--幅--*/
+  padding: 10px; /*--余白--*/
+  font-size: 16px; /*--文字サイズ--*/
+  border: solid 2px #cccccc; /*--ボーダー線--*/
+  border-radius: 5px; /*--角丸--*/
+}
+
+.user input[type=text]{
+  width: 250px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid rgb(128, 128, 128);
+  border-radius: 2px;
+  color: rgb(128, 128, 128);
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 4px;
+  margin-top: 10px;
+  font-family:"游明朝";
+  font-weight: bold;
+}
+
+
+.user input[type=submit]{
   width: 260px;
   height: 35px;
   background: #fff;
@@ -132,25 +156,25 @@ body{
   font-weight: bold;
 }
 
-.login input[type=button]:hover{
+.user input[type=submit]:hover{
   opacity: 0.8;
 }
 
-.login input[type=submit]:active{
+.user input[type=submit]:active{
   opacity: 0.6;
 }
 
-.login input[type=text]:focus{
+.user input[type=text]:focus{
   outline: none;
   border: 1px solid rgb(128, 128, 128);
 }
 
-.login input[type=password]:focus{
+.user input[type=password]:focus{
   outline: none;
   border: 1px solid rgb(128, 128, 128);
 }
 
-.login input[type=submit]:focus{
+.user input[type=submit]:focus{
   outline: none;
 }
 
@@ -187,7 +211,7 @@ body{
   position: absolute;
   list-style: none;
   top: -50px;
-  background:  rgb(255, 181, 244);
+  background: rgb(255, 181, 244);
   border-radius: 0% 70%;  
   animation: fall 4s linear infinite, sway 2s ease-in-out infinite alternate;
 }
@@ -292,15 +316,3 @@ body{
              sway2 4s ease-in-out infinite alternate;
   animation-delay: 4s;
 }
-
-
-/*bg-logo {*/
-
-/*  width: 80%;*/
-/*  position: absolute;*/
-/*  top:50%;*/
-/*  left: 50%;*/
-/*  -webkit-transform: translate(-50%, -50%);*/
-/*  transform: translate(-50%, -50%);*/
-/*  z-index: -1;*/
-/*}*/

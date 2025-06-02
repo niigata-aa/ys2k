@@ -8,6 +8,20 @@
 <link rel="stylesheet" href="login.css">
 </head>
 <body>
+
+<ul class="sakura">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
+
 <jsp:include page="header.jsp"></jsp:include>
 <div class="body"></div>
     <div class="grad"></div>
@@ -16,7 +30,6 @@
     </div>
     <br>
     <div class="login">
-<!--    <img class="bg-logo" src="img\logo.png" alt="">-->
 	<form action="UserLogin" method="post">
 		<input type="text" placeholder="愛称" name="userId"><br>
 		<input type="password" placeholder="合言葉" name="password"><br>

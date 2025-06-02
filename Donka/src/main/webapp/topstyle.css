@@ -125,7 +125,7 @@ h2{
   position: absolute;
   list-style: none;
   top: -50px;
-  background: #ffdbed;
+  background:  rgb(255, 181, 244);
   border-radius: 0% 70%;  
   animation: fall 4s linear infinite, sway 2s ease-in-out infinite alternate;
 }
