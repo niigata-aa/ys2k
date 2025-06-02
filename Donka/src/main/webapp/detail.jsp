@@ -10,13 +10,15 @@
 	href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 	integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
 	crossorigin="" />
+	<link rel="stylesheet" href="style.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
 	integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
 	crossorigin=""></script>
+	<script src="script.js"></script>
 </head>
 <body>
 
-<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<%
 	List<BreweryBean> breweryList = (List<BreweryBean>) request.getAttribute("brewList");
 	List<SakeBean> sakeList = (List<SakeBean>) request.getAttribute("sakeList");
@@ -25,10 +27,11 @@
 	for(BreweryBean brew :breweryList){ 
 	%>
 
-	<img src="<%=brew.getbImgPath()%>" alt="<%=brew.getBreweryName()%>"><br>
+	<img src="<%=brew.getbImgPath()%>" alt="<%=brew.getBreweryName()%>">
+	<br>
 	<p><%=brew.getBreweryName() %></p>
 	<p><%=brew.getBreweryExplanation()%></p>
-	
+
 	<table>
 		<tr>
 			<th>画像</th>
@@ -39,49 +42,55 @@
 		</tr>
 		<%for(SakeBean sake:sakeList){ %>
 		<tr>
-			<th><img src=<%=sake.getsImgPath() %> alt=<%=sake.getSakeName() %>></th>
+			<th><img src=<%=sake.getsImgPath() %>
+				alt=<%=sake.getSakeName() %>></th>
 			<th><%=sake.getSakeName() %></th>
 			<th><%=sake.getAlc() %></th>
 			<th><%=sake.getfDrink() %></th>
 			<th><%=sake.getSakeExplanation() %></th>
 		</tr>
 	</table>
-	
-	
+
+
 	<%} %>
 
-
-
-		<%-- コメント一覧表示--%>  
-		<%
+	<div class="accordion-item">
+		<div class="accordion-header">
+			<h3>コメント</h3>
+			<button class="toggle-button">+</button>
+		</div>
+		<div class="accordion-content">
+			<%-- コメント一覧表示--%>
+			<%
 		    UserBean user = (UserBean) session.getAttribute("user");
 		    String userId = (user != null) ? user.getUserId() : null;
 		%>
-		<%
+			<%
 			List<CommentBean> commentList = (List<CommentBean>) request.getAttribute("commentList");
 			List<UserBean> userList = (List<UserBean>) request.getAttribute("userList");
 			int count = 0;
 		%>
-		<%
+			<%
 				for (CommentBean comment : commentList) {
 		%>
 			ユーザーのニックネーム：
-			<%=userList.get(count).getNickname() %><br>
-			コメント：
-			<%=comment.getContent() %><br>
-			<br>
+			<%=userList.get(count).getNickname() %><br> コメント：
+			<%=comment.getContent() %><br> <br>
 			<% count++; %>
-		<%
+			<%
 				}
 		%>
 
-		<form action="CommentList" method="POST">
-			<input type="hidden" name="breweryId" value=<%=breweryList.get(0).getBreweryId() %>> 
-		    <input type="hidden" name="userId" value="<%= (user != null) ? user.getUserId() : "" %>">
-		    <input type="submit" value="酒の口コミ" <%= (user == null) ? "disabled" : "" %>>
-		</form>
+			<form action="CommentList" method="POST">
+				<input type="hidden" name="breweryId"
+					value=<%=breweryList.get(0).getBreweryId() %>> <input
+					type="hidden" name="userId"
+					value="<%= (user != null) ? user.getUserId() : "" %>"> <input
+					type="submit" value="酒の口コミ" <%= (user == null) ? "disabled" : "" %>>
+			</form>
 
-
+		</div>
+	</div>
 	<%-- 酒の口コミだけ --%>
 	<%-- この時は、酒蔵IDともしかしたらuser_id送るかも --%>
 	<%-- 酒蔵IDとuser_idを値に参照したい --%>
@@ -97,14 +106,18 @@
 
 
 
+	<div class="accordion-item">
+		<div class="accordion-header">
+			<h3>地図</h3>
+			<button class="toggle-button">+</button>
+		</div>
+		<div class="accordion-content">
 
-
-
-
-
-
-	<!-- 地図だけ -->
-	<div id='mapcontainer' style='width: 100%; height: 300px; z-index: 0;'></div>
+			<!-- 地図だけ -->
+			<div id='mapcontainer'
+				style='width: 100%; height: 300px; z-index: 0;'></div>
+		</div>
+	</div>
 
 
 	<script>
@@ -134,8 +147,7 @@
 	<%
 	}
 	%>
-	
+
 	<jsp:include page="footer.jsp"></jsp:include>
-	
 </body>
 </html>
