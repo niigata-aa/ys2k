@@ -54,6 +54,29 @@ public class UserLoginServlet extends HttpServlet {
 		//操作が成功した時のURL
 		String url = "loginComplete.jsp";
 		
+		/* validation Check */
+		String errorLog = "";
+		boolean validationFlag = true;
+		
+		if(userId == null || userId.length() == 0 || password == null || password.length() == 0 ) {
+			
+			if(userId == null || userId.length() == 0) {
+				errorLog += "利用者IDを入力して下さい。<br>";
+			}
+			if(password == null || password.length() == 0) {
+				errorLog += "パスワードを入力して下さい。<br>";
+			}
+			
+			//遷移先の設定
+			url = "login.jsp";
+			validationFlag = false;
+			
+			request.setAttribute("errorLog", errorLog);
+			
+			RequestDispatcher rd = request.getRequestDispatcher(url);
+			rd.forward(request,response);
+		}
+		/*                   */
 		
 		//DAOの生成
 		UserDAO dao = new UserDAO();
@@ -91,8 +114,11 @@ public class UserLoginServlet extends HttpServlet {
 		}
 			
 		//リクエストの転送
+		
+		if(validationFlag) {
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
+		}
 	}
 
 }

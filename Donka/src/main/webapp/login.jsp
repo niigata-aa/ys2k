@@ -36,7 +36,16 @@
 		<input type="submit" value="ログイン">
 		
 	</form>
+	
+		<!-- Validation check -->
+		<% if( request.getAttribute("errorLog") != null){%>
+		<div style="color:red"><%= request.getAttribute("errorLog") %></div>
+		<% } %>
+		
 	</div>
+	
+
+	
 
 <jsp:include page="footer.jsp"></jsp:include>
 </body>

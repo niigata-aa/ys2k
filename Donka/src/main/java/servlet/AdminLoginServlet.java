@@ -52,7 +52,7 @@ public class AdminLoginServlet extends HttpServlet {
 		String errorLog = "";
 		boolean validationFlag = true;
 		
-		if(adminId.length() == 0 || password.length() == 0 ) {
+		if(adminId == null || adminId.length() == 0 || password == null || password.length() == 0 ) {
 			
 			if(adminId == null || adminId.length() == 0) {
 				errorLog += "管理者IDを入力して下さい。<br>";
@@ -71,7 +71,6 @@ public class AdminLoginServlet extends HttpServlet {
 			rd.forward(request,response);
 		}
 		
-
 		try {
 			
 			AdminDAO dao = new AdminDAO();
