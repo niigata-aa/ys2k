@@ -43,8 +43,6 @@ public class CommentDAO {
 			int commentId = comment.getCommentId();
 			int breweryId = comment.getBreweryId();
 			
-			System.out.println(commentId);
-			System.out.println(breweryId);
 			// プレースホルダへの値の設定
 			pstmt.setInt(1, commentId);
 			pstmt.setInt(2, breweryId);

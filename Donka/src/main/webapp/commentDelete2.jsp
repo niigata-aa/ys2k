@@ -52,7 +52,11 @@
 		%>
 	    </select> <br>
 	    <input type="button" value="戻る" onClick="history.back()">
+	    <% if(count != 0){%>
 		<input type="submit" value="削除する">
+		<%}else{ %>
+		<input type="submit" value="削除する" disabled>
+		<%} %>
 	</form>
 
 	</body>
