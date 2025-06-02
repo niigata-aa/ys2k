@@ -61,5 +61,6 @@
 		
 		<input type="submit" value="登録"> 
 	</form>
+		<button onclick="history.back()">戻る</button>
 </body>
 </html>
