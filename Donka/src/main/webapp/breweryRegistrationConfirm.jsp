@@ -28,7 +28,7 @@
 	<img src="/Donka/img/<jsp:getProperty name="brewery" property="bImgPath"/>">
 
 	<form action="BreweryRegistConfirm" method="POST">
-		<%-- <input type ="hidden" name ="breweryId2" value="<jsp:getProperty name="brewery" property="breweryId"/>"> --%>
+		<input type ="hidden" name ="breweryId2" value="<jsp:getProperty name="brewery" property="breweryId"/>">
 		<input type ="hidden" name ="breweryName2" value="<jsp:getProperty name="brewery" property="breweryName"/>">
 		<input type ="hidden" name ="breweryExplanation2" value="<jsp:getProperty name="brewery" property="breweryExplanation"/>">
 		<input type ="hidden" name ="latitude2" value="<jsp:getProperty name="brewery" property="latitude"/>">

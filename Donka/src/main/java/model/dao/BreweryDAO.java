@@ -126,21 +126,21 @@ public class BreweryDAO {
 
 		int processingNumber = 0;
 
-		String sql = "INSERT INTO m_brewery (brewery_name, b_img_path, latitude, longitude, address, brewery_explanation, reservation_flag, reservation_path, area_id) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO m_brewery (brewery_id, brewery_name, b_img_path, latitude, longitude, address, brewery_explanation, reservation_flag, reservation_path, area_id) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
-			//pstmt.setInt(1, brewery.getBreweryId());
-			pstmt.setString(1, brewery.getBreweryName());
-			pstmt.setString(2, brewery.getbImgPath());
-			pstmt.setDouble(3, brewery.getLatitude());
-			pstmt.setDouble(4, brewery.getLongitude());
-			pstmt.setString(5, brewery.getAddress());
-			pstmt.setString(6, brewery.getBreweryExplanation());
-			pstmt.setBoolean(7, brewery.getReservationFlag());
-			pstmt.setString(8, brewery.getReservationPath());
-			pstmt.setInt(9, brewery.getAreaId());
+			pstmt.setInt(1, brewery.getBreweryId());
+			pstmt.setString(2, brewery.getBreweryName());
+			pstmt.setString(3, brewery.getbImgPath());
+			pstmt.setDouble(4, brewery.getLatitude());
+			pstmt.setDouble(5, brewery.getLongitude());
+			pstmt.setString(6, brewery.getAddress());
+			pstmt.setString(7, brewery.getBreweryExplanation());
+			pstmt.setBoolean(8, brewery.getReservationFlag());
+			pstmt.setString(9, brewery.getReservationPath());
+			pstmt.setInt(10, brewery.getAreaId());
 
 			processingNumber = pstmt.executeUpdate();
 

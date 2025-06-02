@@ -51,7 +51,7 @@ public class SakeRegistServlet extends HttpServlet {
 //		String sakeId = request.getParameter("1000");
 	
 		//オートインクリメントだからいらない
-		//String sakeId = 1000; 
+		String sakeId = null; 
 		
 		String sakeName = request.getParameter("sakeName");
 		String breweryId = request.getParameter("breweryId");
@@ -83,20 +83,16 @@ public class SakeRegistServlet extends HttpServlet {
 		System.out.println(request.getPart("sImgPath"));
 		
 		
-		//int iSakeId = 0;
+		int iSakeId = 0;
 		int iBreweryId = 0;
 		double dAlc = 0;
 		
 		//リクエストパラメータの型を合わせる
 		try {
 			
-			//iSakeId = Integer.parseInt(sakeId);
+			iSakeId = Integer.parseInt(sakeId);
 			iBreweryId = Integer.parseInt(breweryId);
 			dAlc = Double.parseDouble(alc);
-			
-			//System.out.print(iSakeId + " + ");
-			System.out.print(iBreweryId + " + ");
-			System.out.print(dAlc + " + ");
 			
 		} catch (NumberFormatException e) {
 			
@@ -113,7 +109,7 @@ public class SakeRegistServlet extends HttpServlet {
 		//リクエストスコープへの属性の設定
 		SakeBean sake = new SakeBean();
 		
-		//sake.setSakeId(iSakeId);
+		sake.setSakeId(iSakeId);
 		sake.setSakeName(sakeName);
 		sake.setBreweryId(iBreweryId);
 		sake.setAlc(dAlc);

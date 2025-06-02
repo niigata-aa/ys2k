@@ -51,7 +51,7 @@ public class BreweryRegistServlet extends HttpServlet {
 		
 		//リクエストパラメータの取得
 		
-		//String breweryId          = request.getParameter("breweryId");
+		String breweryId          = request.getParameter("breweryId");
 		String breweryName        = request.getParameter("breweryName");
 		//String bImgPath           = request.getParameter("bImgPath");
 		String breweryExplanation = request.getParameter("breweryExplanation");
@@ -64,7 +64,7 @@ public class BreweryRegistServlet extends HttpServlet {
 		
 		//リクエスト表示したい
 		System.out.print(" りくえそつとぶ： ");
-		//System.out.print(breweryId + " + ");
+		System.out.print(breweryId + " + ");
 		System.out.print(latitude + " + ");
 		System.out.print(longitude + " + ");
 		System.out.println(areaId + " + ");
@@ -91,7 +91,7 @@ public class BreweryRegistServlet extends HttpServlet {
 		
 
 		//フォームから取得した文字列の数値変換？
-		//int iBreweryId = 0;
+		int iBreweryId = 0;
 		double dLatitude = 0;
 		double dLongitude = 0;
 		int iAreaId = 0;
@@ -114,13 +114,13 @@ public class BreweryRegistServlet extends HttpServlet {
 		//リクエストパラメータの型を合わせる
 		try {
 			
-			//iBreweryId = Integer.parseInt(breweryId);
+			iBreweryId = Integer.parseInt(breweryId);
 			dLatitude = Double.parseDouble(latitude);
 			dLongitude = Double.parseDouble(longitude);
 			iAreaId = Integer.parseInt(areaId);
 			
 			//変換後の値を確認したい
-			//System.out.print(iBreweryId + " + ");
+			System.out.print(iBreweryId + " + ");
 			System.out.print(dLatitude + " + ");
 			System.out.print(dLongitude + " + ");
 			System.out.println(iAreaId);
@@ -136,7 +136,7 @@ public class BreweryRegistServlet extends HttpServlet {
 		//リクエストスコープへの属性の設定
 		BreweryBean brewery = new BreweryBean();
 		
-		//brewery.setBreweryId(iBreweryId);
+		brewery.setBreweryId(iBreweryId);
 		brewery.setBreweryName(breweryName);
 		brewery.setbImgPath(img_name);
 		brewery.setBreweryExplanation(breweryExplanation);
