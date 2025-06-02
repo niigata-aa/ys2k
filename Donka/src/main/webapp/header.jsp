@@ -15,7 +15,7 @@
       <ul class="header-nav-list">
 <a href="home.jsp"><li class="header-nav-item">呑花臥酒</li></a>
 <a href="BreweryView"><li class="header-nav-item">一覧表示</li></a>
-<a href="showRank.jsp"><li class="header-nav-item">ランキング</li></a>
+<a href="RankingView"><li class="header-nav-item">ランキング</li></a>
 <a href="login.jsp"><li class="header-nav-item">ログイン</li></a>
 <a href="userRegistration.jsp"><li class="header-nav-item">登録</li></a>
     </ul>

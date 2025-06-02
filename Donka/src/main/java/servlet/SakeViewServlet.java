@@ -10,9 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession; // HttpSessionをインポートします
 
 import model.dao.SakeDAO;
+import model.dao.VoteDAO; // VoteDAOをインポートします
 import model.entity.SakeBean;
+import model.entity.UserBean; // UserBeanをインポートします
 
 /**
  * Servlet implementation class SakeViewServlet
@@ -33,7 +36,6 @@ public class SakeViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request,response);
 	}
 
@@ -42,22 +44,39 @@ public class SakeViewServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<SakeBean> sakeList=null;
+		List<SakeBean> sakeList = null;
 		
-		
-		SakeDAO dao=new SakeDAO();
+		SakeDAO sakeDAO = new SakeDAO();
+		VoteDAO voteDAO = new VoteDAO(); // VoteDAOのインスタンスを生成
+
+		HttpSession session = request.getSession();
+		UserBean user = (UserBean) session.getAttribute("user"); // セッションからUserBeanを取得
+		String userId = (user != null) ? user.getUserId() : null; // ユーザーIDをセット（ログインしていなければnull）
 		
 		try {
-			sakeList=dao.selectAll();
+			sakeList = sakeDAO.selectAll(); // すべての酒のリストを取得
+
+			// 各酒のいいね数と、ログインユーザーがいいね済みかどうかを設定
+			if (sakeList != null) {
+				for (SakeBean sake : sakeList) {
+					sake.setVoteCount(voteDAO.getVoteCount(sake.getSakeId())); // 各酒のいいね数を設定
+					if (userId != null) {
+						// ユーザーがログインしている場合のみ、その酒にいいね済みかを確認
+						sake.setVotedByUser(voteDAO.hasVoted(userId, sake.getSakeId())); //
+					} else {
+						sake.setVotedByUser(false); // ログインしていない場合はfalse
+					}
+				}
+			}
+
 		}catch(SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
+			// エラー発生時は、JSPにエラーメッセージを渡すなどの処理を検討
 		}
 		
-		request.setAttribute("sakeList", sakeList);
+		request.setAttribute("sakeList", sakeList); // 更新されたsakeListをリクエストスコープにセット
 		
 		RequestDispatcher rd=request.getRequestDispatcher("sakeList.jsp");
 		rd.forward(request, response);
 	}
-	
-
 }

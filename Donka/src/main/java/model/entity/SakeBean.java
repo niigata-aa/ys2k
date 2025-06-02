@@ -51,6 +51,16 @@ public class SakeBean implements Serializable{
 	private String sakeExplanation;
 	
 	/*
+	 * いいねの数
+	 */
+	private int voteCount; //
+	
+	/*
+	 * ログインユーザーがいいね済みかどうか
+	 */
+	private boolean votedByUser; //
+	
+	/*
 	 * SakeBeanを構築
 	 */
 	
@@ -122,5 +132,21 @@ public class SakeBean implements Serializable{
 
 	public Timestamp getUpdateDay() {
 		return updateDay;
+	}
+	
+	public int getVoteCount() { //
+		return voteCount;
+	}
+
+	public void setVoteCount(int voteCount) { //
+		this.voteCount = voteCount;
+	}
+
+	public boolean isVotedByUser() { //
+		return votedByUser;
+	}
+
+	public void setVotedByUser(boolean votedByUser) { //
+		this.votedByUser = votedByUser;
 	}
 }

@@ -10,7 +10,6 @@ public class VoteBean implements Serializable{
 	public VoteBean() {
 		
 	}
-	
 	public int getVoteId() {
 		return voteId;
 	}

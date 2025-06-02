@@ -240,4 +240,41 @@ public class SakeDAO {
 				}
 				return sakeList;
 	}
+
+    /**
+     * いいね数でソートされた酒のリストを取得する（ランキング用）
+     * @return いいね数が多い順にソートされたSakeBeanのリスト
+     * @throws SQLException
+     * @throws ClassNotFoundException
+     */
+    public List<SakeBean> selectSakeRanking() throws SQLException, ClassNotFoundException {
+        List<SakeBean> sakeList = new ArrayList<>();
+        String sql = "SELECT s.sake_id, s.sake_name, s.s_img_path, s.alc, s.f_drink, s.taste, s.brewery_id, s.sake_explanation, " +
+                     "COUNT(v.sake_id) AS vote_count " +
+                     "FROM m_sake s " +
+                     "LEFT JOIN t_vote v ON s.sake_id = v.sake_id " +
+                     "GROUP BY s.sake_id, s.sake_name, s.s_img_path, s.alc, s.f_drink, s.taste, s.brewery_id, s.sake_explanation " +
+                     "ORDER BY vote_count DESC, s.sake_id ASC"; // いいね数が多い順、同数の場合はsake_id順
+
+        try (Connection con = ConnectionManager.getConnection();
+             PreparedStatement pstmt = con.prepareStatement(sql);
+             ResultSet res = pstmt.executeQuery()) {
+
+            while (res.next()) {
+                SakeBean sake = new SakeBean();
+                sake.setSakeId(res.getInt("sake_id"));
+                sake.setSakeName(res.getString("sake_name"));
+                sake.setsImgPath(res.getString("s_img_path"));
+                sake.setAlc(res.getDouble("alc"));
+                sake.setfDrink(res.getString("f_drink"));
+                sake.setTaste(res.getString("taste"));
+                sake.setBreweryId(res.getInt("brewery_id"));
+                sake.setSakeExplanation(res.getString("sake_explanation"));
+                sake.setVoteCount(res.getInt("vote_count")); // いいね数をSakeBeanにセット
+
+                sakeList.add(sake);
+            }
+        }
+        return sakeList;
+    }
 }

@@ -13,9 +13,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession; // HttpSession をインポート
 
 import model.dao.SakeDAO;
+import model.dao.VoteDAO; // VoteDAO をインポート
 import model.entity.SakeBean;
+import model.entity.UserBean; // UserBean をインポート
 
 /**
  * Servlet implementation class SakeSearchServlet
@@ -44,14 +47,19 @@ public class SakeSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8"); // リクエストの文字エンコーディングをUTF-8に設定
 
 		SakeDAO sakeDAO = new SakeDAO(); // SakeDAOのインスタンスを生成
+		VoteDAO voteDAO = new VoteDAO(); // VoteDAOのインスタンスを生成
 
 		List<SakeBean> sakeList = null; // 最終的に表示する酒のリスト
 
 		String errorMsg = null; // エラーメッセージを格納する変数
+
+		// セッションからログインユーザー情報を取得
+		HttpSession session = request.getSession();
+		UserBean user = (UserBean) session.getAttribute("user");
+		String userId = (user != null) ? user.getUserId() : null;
 
 		// --- 検索条件の取得と加工 ---
 		String searchSakeName = request.getParameter("searchSakeName");
@@ -102,7 +110,6 @@ public class SakeSearchServlet extends HttpServlet {
 		}
 
 		// --- 検索実行ロジック ---
-		// 全ての検索条件がnullであるかチェック
 		boolean allConditionsNull = (searchSakeName == null &&
 				selectedAlcRanges == null &&
 				selectedTaste == null &&
@@ -117,6 +124,20 @@ public class SakeSearchServlet extends HttpServlet {
 				// いずれかの検索条件が指定された場合、通常の検索を実行
 				sakeList = sakeDAO.searchSakes(searchSakeName, selectedAlcRanges, selectedTaste, selectedFDrink);
 			}
+
+			// ここからいいね数とユーザーのいいね済み状態を設定するロジックを追加
+			if (sakeList != null) {
+				for (SakeBean sake : sakeList) {
+					sake.setVoteCount(voteDAO.getVoteCount(sake.getSakeId())); // いいね数を設定
+					if (userId != null) {
+						// ユーザーがログインしている場合のみ、その酒にいいね済みかを確認
+						sake.setVotedByUser(voteDAO.hasVoted(userId, sake.getSakeId())); //
+					} else {
+						sake.setVotedByUser(false); // ログインしていない場合はfalse
+					}
+				}
+			}
+
 		} catch (SQLException | ClassNotFoundException e) {
 			errorMsg = "酒の検索中にデータベースエラーが発生しました: " + e.getMessage();
 			e.printStackTrace();
@@ -139,4 +160,3 @@ public class SakeSearchServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 }
-
