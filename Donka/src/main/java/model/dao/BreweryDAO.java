@@ -34,6 +34,7 @@ public class BreweryDAO {
 				String reservationPath = res.getString("reservation_path"); //酒蔵に予約する際のURL
 				String breweryExplanation = res.getString("brewery_explanation"); //酒蔵の説明
 				int areaId = res.getInt("area_id"); //酒蔵がある地区
+				
 
 				BreweryBean brewery = new BreweryBean();
 

@@ -42,7 +42,6 @@ public class AdminLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		//shibuya
 		String id = request.getParameter("id");
 		String pass = request.getParameter("password");
 		
@@ -61,7 +60,7 @@ public class AdminLoginServlet extends HttpServlet {
 				
 				
 			} else {
-				url = "adminFailure.jsp";
+				url = "adminLoginFailure.jsp";
 			}
 			
 		} catch (SQLException | ClassNotFoundException e) {
