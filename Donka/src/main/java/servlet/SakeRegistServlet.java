@@ -80,7 +80,7 @@ public class SakeRegistServlet extends HttpServlet {
 		System.out.println("アップロードされたファイル：" + sImgPath);
 		System.out.println("保存先のパス：" + path + File.separator + img_name);
 		System.out.println("アップロードされたファイル内容：" + part);
-		System.out.println(request.getPart("bImgPath"));
+		System.out.println(request.getPart("sImgPath"));
 		
 		
 		int iSakeId = 0;
