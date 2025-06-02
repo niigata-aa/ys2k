@@ -1,4 +1,4 @@
-body{
+.body{
 	height: 100%;
 	margin: 0;
 	display: flex;
@@ -8,6 +8,7 @@ body{
 }
 
 .search{
+	text-align: center;
 	 margin: 2em 0;
 	 background: #f1f1f1;
 	 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
@@ -60,6 +61,11 @@ table {
   border-right: none;
  
 }
+
+.tab{
+	text-align: center;
+}
+
 .sticky::before {
   content: "";
   position: absolute;

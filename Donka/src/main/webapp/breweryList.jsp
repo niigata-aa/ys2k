@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 
 	<div class="search">
 		<h1>地域</h1>
@@ -21,9 +21,13 @@
 
 			<input type="submit" value="検索">
 		</form>
+	</div>
+
+	<div class="tab">
 
 		<button onclick="location.href='BreweryView'">酒蔵</button>
 		<button onclick="location.href='SakeViewServlet'">日本酒</button>
+
 	</div>
 
 
@@ -63,7 +67,7 @@
 		</table>
 	</div>
 
-<jsp:include page="footer.jsp"></jsp:include>
+	<jsp:include page="footer.jsp"></jsp:include>
 
 </body>
 </html>
