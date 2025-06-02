@@ -121,14 +121,11 @@
 							}).addTo(map);
 
 			//マーカーの配置
-			L.marker([<%=brew.getLatitude()%>,<%=brew.getLongitude()%>]).on(
-					'contextmenu',
-					function(e) {
-						window.open("https://www.google.co.jp/maps/place/"
-								+ e.latlng.lat + "," + e.latlng.lng + "/@"
-								+ e.latlng.lat + "," + e.latlng.lng
-								+ ",15z/data");
-					}).addTo(map);
+			// ポップアップ表示
+			 L.marker([<%=brew.getLatitude()%>,<%=brew.getLongitude()%>]).addTo(map)
+			var marker = L.marker([<%=brew.getLatitude()%>,<%=brew.getLongitude()%>]).addTo(map);
+			    //上のマーカーにポップアップを追加する。
+			marker.bindPopup("<%=brew.getBreweryName()%></br><%=brew.getAddress()%>").openPopup();
 		}
 			
 		//ダウンロード時に初期化する
