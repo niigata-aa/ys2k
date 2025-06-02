@@ -6,12 +6,14 @@
 <meta charset="UTF-8">
 <title>管理者トップページ</title>
 </head>
+
 <body>
-<a href="adminRegistration.jsp">登録</a><br>
-<a href="adminUpdate.jsp">変更</a><br>
-<a href="adminDelete.jsp">削除</a><br>
-<a href="logConfirm.jsp">ログ確認</a><br>
-<a href="adminLogout.jsp">ログアウト</a>
+	<a href="adminList.jsp">一覧確認</a><br>
+	<a href="adminRegistration.jsp">登録</a><br>
+	<a href="adminUpdate.jsp">変更</a><br>
+	<a href="adminDelete.jsp">削除</a><br>
+	<a href="logConfirm.jsp">ログ確認</a><br>
+	<a href="adminLogout.jsp">ログアウト</a>
 
 </body>
 </html>
