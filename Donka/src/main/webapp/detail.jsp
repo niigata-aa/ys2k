@@ -152,9 +152,7 @@
 			 L.marker([<%=brew.getLatitude()%>,<%=brew.getLongitude()%>]).addTo(map)
 			var marker = L.marker([<%=brew.getLatitude()%>,<%=brew.getLongitude()%>]).addTo(map);
 			    //上のマーカーにポップアップを追加する。
-			marker.bindPopup("<%=brew.getBreweryName()%></br><%=brew.getAddress()%>
-		")
-					.openPopup();
+			marker.bindPopup("<%=brew.getBreweryName()%></br><%=brew.getAddress()%>").openPopup();
 		}
 
 		//ダウンロード時に初期化する
