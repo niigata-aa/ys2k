@@ -17,7 +17,8 @@
 変更する酒の飲み方：<jsp:getProperty name="sake" property="fDrink"/><br>
 変更する酒の味わい：<jsp:getProperty name="sake" property="taste"/><br>
 変更する酒の説明：  <jsp:getProperty name="sake" property="sakeExplanation"/><br>
-変更する酒の写真：  <jsp:getProperty name="sake" property="sImgPath"/><br>
+変更する写真のURL：<jsp:getProperty name="sake" property="sImgPath"/><br>
+<img src="/Donka/img/<jsp:getProperty name="sake" property="sImgPath"/>">
 
 <button onclick="history.back()">戻る</button>
 

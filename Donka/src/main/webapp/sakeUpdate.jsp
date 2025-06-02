@@ -11,7 +11,7 @@
 	List<SakeBean> sakeList = (List<SakeBean>)request.getAttribute("sakeList");
 	List<BreweryBean> breweryList = (List<BreweryBean>)request.getAttribute("breweryList");
 	%>
-	<form action="SakeUpdate" method="post">
+	<form action="SakeUpdate" method="post" enctype="multipart/form-data">
 		変更する酒の詳細<br>
 		変更したい酒の名前を選択
 		<select name="sakeId">
@@ -24,7 +24,7 @@
 		
 		</select><br>
 		
-		変更する酒の名前:<input type="text" name="sakeName"><br>
+		変更する酒の名前:<input type="text" name="sakeName" required><br>
 		
 		変更する酒蔵を選択:
 		<select name="breweryId">
@@ -56,8 +56,8 @@
 			<option value="辛口">辛口</option>
 		</select><br>
 			
-		変更する酒の説明:<textarea name="sakeExplanation" cols="30" rows="2"></textarea><br>
-		変更する酒の写真URL:<input type="text" name="sImgPath"><br>
+		変更する酒の説明:<textarea name="sakeExplanation" cols="30" rows="2" required></textarea><br>
+		変更する酒の写真:<input type="file" name="sImgPath" accept="image/jpeg" required><br>
 		
 		<input type="submit" value="登録"> 
 	</form>

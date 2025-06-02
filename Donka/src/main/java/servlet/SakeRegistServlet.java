@@ -1,13 +1,17 @@
 package servlet;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import model.entity.SakeBean;
 
@@ -15,6 +19,7 @@ import model.entity.SakeBean;
  * Servlet implementation class SakeRegistServlet
  */
 @WebServlet("/SakeRegist")
+@MultipartConfig
 public class SakeRegistServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -44,8 +49,9 @@ public class SakeRegistServlet extends HttpServlet {
 		
 		//リクエストパラメータの取得
 //		String sakeId = request.getParameter("1000");
-		
-		String sakeId = "1000";
+	
+		//オートインクリメントだからいらない
+//		String sakeId = "1000"; 
 		
 		String sakeName = request.getParameter("sakeName");
 		String breweryId = request.getParameter("breweryId");
@@ -53,7 +59,29 @@ public class SakeRegistServlet extends HttpServlet {
 		String fDrink = request.getParameter("fDrink");
 		String taste = request.getParameter("taste");
 		String sakeExplanation = request.getParameter("sakeExplanation");
-		String sImgPath = request.getParameter("sImgPath");
+		//String sImgPath = request.getParameter("sImgPath");
+		
+
+		//画像のファイル名取得
+		//アップロードしたファイルを取得
+		Part part = request.getPart("sImgPath");
+		//選択したファイルの名前を取得→パス全体からファイル名だけを取り出す
+		String sImgPath = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+		//ファイル名が空なら空文字で、違ったらそのまま
+		//if(sImgPath.isEmpty)ならimg_nameが"",違うなら"sImgPath"という意味
+		String img_name = sImgPath.isEmpty() ? "" : sImgPath;
+		
+		// 画像アップロード
+		//./img配下のパスを取得
+		String path = getServletContext().getRealPath("/img");
+		//取得したディレクトリに画像を保存
+		part.write(path + File.separator + img_name);
+		
+		System.out.println("アップロードされたファイル：" + sImgPath);
+		System.out.println("保存先のパス：" + path + File.separator + img_name);
+		System.out.println("アップロードされたファイル内容：" + part);
+		System.out.println(request.getPart("bImgPath"));
+		
 		
 		int iSakeId = 0;
 		int iBreweryId = 0;
@@ -62,7 +90,7 @@ public class SakeRegistServlet extends HttpServlet {
 		//リクエストパラメータの型を合わせる
 		try {
 			
-			iSakeId = Integer.parseInt(sakeId);
+			//iSakeId = Integer.parseInt(sakeId);
 			iBreweryId = Integer.parseInt(breweryId);
 			dAlc = Double.parseDouble(alc);
 			
