@@ -32,8 +32,6 @@
 </form>
 
 
-<!-- または「戻る」ボタンはJavaScriptでブラウザの戻るを実装 -->
-<!-- <input type="button" value="戻る" onclick="history.back();"> -->
 
 </body>
 </html>

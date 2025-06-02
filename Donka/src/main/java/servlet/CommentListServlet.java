@@ -43,6 +43,8 @@ public class CommentListServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url="comment.jsp";
+		
 		List<CommentBean> commentList = null;
 		List<UserBean> userList = null;
 		String myName = null;
@@ -73,10 +75,11 @@ public class CommentListServlet extends HttpServlet {
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 			System.out.println(e);
+			url="comment.jsp";
 		}
 		
 		// リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher("comment.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 

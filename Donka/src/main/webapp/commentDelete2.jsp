@@ -40,7 +40,7 @@
 	<%-- breweryIdをCommentDeleteに送る --%>
 	<input type="hidden" name="breweryId" value=<%=breweryId %>>
 		<%-- selectでコメントidを選択できるようにする（参照してくる） --%>
-		<%-- コメント数を取得できたほうがいいかも --%>
+		
 		コメントIDを選択する
 	    <select name="commentId">
 		<%

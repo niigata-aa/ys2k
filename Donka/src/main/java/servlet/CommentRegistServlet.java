@@ -39,6 +39,8 @@ public class CommentRegistServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url="commentConfirm.jsp";
+		
 		// TODO Auto-generated method stub
 		String myName = null;
 		
@@ -53,7 +55,6 @@ public class CommentRegistServlet extends HttpServlet {
 		request.setAttribute("content", content);
 		request.setAttribute("userId", userId);
 		request.setAttribute("breweryId", breweryId);
-		System.out.println(content);
 		
 		
 		
@@ -69,11 +70,12 @@ public class CommentRegistServlet extends HttpServlet {
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 			System.out.println(e);
+			url="failure.jsp";
 		}
 		
 		
 		// リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher("commentConfirm.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 

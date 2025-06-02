@@ -40,24 +40,21 @@ public class CommentRegistConfirmServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		String url= "home.jsp";
+		
 		// リクエストオブジェクトのエンコーディング方式の指定
 		request.setCharacterEncoding("UTF-8");
 		
 		CommentBean comment = new CommentBean();
 
 		// リクエストパラメータの取得
-		//int commentId = Integer.parseInt(request.getParameter("commentId"));
 		String content = request.getParameter("content");
-		//String insertDay = request.getParameter("insertDay");
 		String userId = request.getParameter("userId");
 		int breweryId = Integer.parseInt(request.getParameter("breweryId"));
 		
-		//comment.setCommentId(commentId);
 		comment.setContent(content);
         comment.setUserId(userId);
         comment.setBreweryId(breweryId);
-        //System.out.println("brewery_id" + breweryId);
   
 		
 		// DAOの生成
@@ -66,15 +63,15 @@ public class CommentRegistConfirmServlet extends HttpServlet {
 		try {
 			// DAOの利用
 			 int count= dao.insert(comment);
-			 //System.out.println(count);
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 			System.out.println(e);
+			url="failure.jsp";
 		}
 		
 		// リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 

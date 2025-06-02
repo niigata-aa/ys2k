@@ -21,7 +21,6 @@ public class CommentDAO {
 	    try (Connection con = ConnectionManager.getConnection();
 	         PreparedStatement pstmt = con.prepareStatement(sql)) {
 	        
-	    	//pstmt.setInt(1, comment.getCommentId());
 	        pstmt.setString(1, comment.getContent());
 	        pstmt.setString(2, comment.getUserId());
 	        pstmt.setInt(3, comment.getBreweryId());
@@ -111,15 +110,12 @@ public class CommentDAO {
 			
 			// 結果の操作
 			while (res.next()) {
-				//String userId = res.getString("user_id"); 
 				String content = res.getString("content"); 
-				//int commentId = res.getInt("comment_id"); 
 				
 				CommentBean comment = new CommentBean();
-				
-				//comment.setUserId(userId);
+
 				comment.setContent(content);
-				//comment.setCommentId(commentId);
+
 				
 				commentList.add(comment);
 			}

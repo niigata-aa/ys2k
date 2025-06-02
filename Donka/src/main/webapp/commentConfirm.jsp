@@ -22,7 +22,6 @@
 	こちらで投稿してもよろしいでしょうか？<br>
 	<form action="CommentRegistConfirm" method="POST">
 	
-		<%-- <input type="hidden" name="commentId" value="8">--%>
 		<input type="hidden" name="content" value=<%= content %>>
 		<input type="hidden" name="userId" value=<%=userId %>>
 		<input type="hidden" name="breweryId" value=<%=breweryId %>>

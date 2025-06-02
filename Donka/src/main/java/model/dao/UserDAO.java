@@ -82,7 +82,7 @@ public class UserDAO {
 					user.setNickname(nickName);
 					
 					userList.add(user);
-					//System.out.println(user);
+					
 				}
 				
 			}
@@ -109,12 +109,6 @@ public class UserDAO {
 				while (res.next()) {
 					myName = res.getString("nickname"); 
 					
-					//UserBean user = new UserBean();
-					
-					//user.setNickname(nickName);
-					
-					//userList.add(user);
-					//System.out.println(user);
 				}
 				
 			}

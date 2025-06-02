@@ -41,6 +41,8 @@ public class CommentSelectBreweryServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url="commentDelete1.jsp";
+		
 		List<BreweryBean> breweryList = null;
 		
 		// リクエストオブジェクトのエンコーディング方式の指定
@@ -58,10 +60,11 @@ public class CommentSelectBreweryServlet extends HttpServlet {
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 			System.out.println(e);
+			url="adminFailure.jsp";
 		}
 		
 		// リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher("commentDelete1.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}
 
