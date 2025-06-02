@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="BreweryRegist" method="POST" enctype="multipart/form-data">
-	酒蔵のid：<input type="text" id="breweryId" name="breweryId" required><br>
+	<%--酒蔵のid：<input type="text" id="breweryId" name="breweryId" required><br> --%>
 	酒蔵の名前：<input type="text" id="breweryName" name="breweryName" required><br>
 	酒蔵の説明：<input type="text" id="breweryExplanation" name="breweryExplanation" required><br>
 	酒蔵の緯度：<input type="text" id="latitude" name="latitude" required><br>
