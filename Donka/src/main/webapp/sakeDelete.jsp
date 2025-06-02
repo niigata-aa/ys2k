@@ -20,7 +20,8 @@
 			 }
 		%>
 		</select>
-		<input type="submit" value="削除">
+		<br><input type="submit" value="削除">
 	</form>
+		<button onclick="history.back()">戻る</button>
 </body>
 </html>

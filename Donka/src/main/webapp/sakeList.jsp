@@ -123,8 +123,7 @@ List<SakeBean> sakeList=(List<SakeBean>)request.getAttribute("sakeList");
             for (SakeBean sake : sakeList) {
         %>
 			<tr><td><%= sake.getSakeName()%></td>
-		<td><a href="SakeDetail"><img src="<%=sake.getsImgPath()%>"
-						class="image"></a></td>
+		<td><a href="SakeDetail"><img src="/Donka/img/<%=sake.getSakeName()%>"></a></td>
 			</tr>
 			<%
             }

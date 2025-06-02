@@ -55,6 +55,7 @@
 							value=<%=brewery.getBreweryId()%>>
 						<button style="background: transparent; border: none;">
 							<img src="<%=brewery.getbImgPath()%>" class="image">
+						<%--<img src="/Donka/img/<%=brewery.getbImgPath()%>">--%>
 						</button>
 					</form>
 				</td>
