@@ -27,10 +27,11 @@
 	for (BreweryBean brew : breweryList) {
 	%>
 
+    <p class="name"><h1><%=brew.getBreweryName()%></h1></p>
 	<img src="<%=brew.getbImgPath()%>" alt="<%=brew.getBreweryName()%>">
 	<br>
-	<p><%=brew.getBreweryName()%></p>
-	<p><%=brew.getBreweryExplanation()%></p>
+
+	<p class="ex"><%=brew.getBreweryExplanation()%></p>
 
 	<div class="accordion-item">
 		<div class="accordion-header">

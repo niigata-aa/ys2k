@@ -1,4 +1,10 @@
-@charset "UTF-8";
+body{
+	font-family:"游明朝";
+		text-align: center;
+		align-items: center;
+}
+
+
 
 .accordion-item {
     background-color: #fff;
@@ -56,3 +62,17 @@
     max-height: 500px; /* 十分に大きな値に設定し、コンテンツの高さに合わせて調整 */
     padding-bottom: 15px;
 }
+
+.name{ 
+	margin-top: 5%;
+	margin-bottom: 10%;
+	    color: #333333;
+	}
+
+	.name:first-letter {
+	    color: #fec3ee;
+	    font-size: 2em;
+	}
+
+
+
