@@ -11,8 +11,7 @@
 	
 	<jsp:useBean id="sake" scope="request" class="model.entity.SakeBean" />
 	
-	登録する酒のID:
-
+<%--登録する酒のID:  	<jsp:getProperty name="sake" property="sakeId"/><br>--%>
 	登録する酒の名前：  <jsp:getProperty name="sake" property="sakeName"/><br>
 	登録する酒の度数：  <jsp:getProperty name="sake" property="alc"/><br>
 	登録する酒蔵のID：  <jsp:getProperty name="sake" property="breweryId"/><br>

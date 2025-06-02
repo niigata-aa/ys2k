@@ -51,7 +51,7 @@ public class SakeRegistServlet extends HttpServlet {
 //		String sakeId = request.getParameter("1000");
 	
 		//オートインクリメントだからいらない
-//		String sakeId = "1000"; 
+		String sakeId = null; 
 		
 		String sakeName = request.getParameter("sakeName");
 		String breweryId = request.getParameter("breweryId");
@@ -90,7 +90,7 @@ public class SakeRegistServlet extends HttpServlet {
 		//リクエストパラメータの型を合わせる
 		try {
 			
-			//iSakeId = Integer.parseInt(sakeId);
+			iSakeId = Integer.parseInt(sakeId);
 			iBreweryId = Integer.parseInt(breweryId);
 			dAlc = Double.parseDouble(alc);
 			
