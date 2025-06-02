@@ -12,9 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.dao.BreweryDAO;
+import model.dao.CommentDAO;
 import model.dao.SakeDAO;
+import model.dao.UserDAO;
 import model.entity.BreweryBean;
+import model.entity.CommentBean;
 import model.entity.SakeBean;
+import model.entity.UserBean;
 
 /**
  * Servlet implementation class BreweryDetailServlet
@@ -49,17 +53,26 @@ public class BreweryDetailServlet extends HttpServlet {
 		
 		List<BreweryBean> brewList = null;
 		List<SakeBean> sakeList = null;
+		List<CommentBean> commentList = null;
+		List<UserBean> userList = null;
 		
 		BreweryDAO brew = new BreweryDAO();
 		SakeDAO sake = new SakeDAO();
+		CommentDAO dao = new CommentDAO();
+		UserDAO dao2 = new UserDAO();
 		
 		try {
 			// DAOの利用
 			 brewList = brew.breweryDetail(id);
 			 sakeList = sake.selectBrew(id);
+			 commentList= dao.selectComment(id);
+			 userList= dao2.selectNickname(id);
+
 			// リクエストスコープへの属性の設定
 			request.setAttribute("brewList", brewList);
 			request.setAttribute("sakeList",sakeList);
+			request.setAttribute("commentList", commentList);
+			request.setAttribute("userList", userList);
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();

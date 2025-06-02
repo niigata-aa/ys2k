@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"
-	import="java.util.List,model.entity.BreweryBean,model.entity.SakeBean"%>
+	import="java.util.List,model.entity.BreweryBean,model.entity.SakeBean,model.entity.UserBean,model.entity.CommentBean"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,19 +50,46 @@
 
 
 
+		<%-- コメント一覧表示--%>  
+		<%
+		    UserBean user = (UserBean) session.getAttribute("user");
+		    String userId = (user != null) ? user.getUserId() : null;
+		%>
+		<%
+			List<CommentBean> commentList = (List<CommentBean>) request.getAttribute("commentList");
+			List<UserBean> userList = (List<UserBean>) request.getAttribute("userList");
+			int count = 0;
+		%>
+		<%
+				for (CommentBean comment : commentList) {
+		%>
+			ユーザーのニックネーム：
+			<%=userList.get(count).getNickname() %><br>
+			コメント：
+			<%=comment.getContent() %><br>
+			<br>
+			<% count++; %>
+		<%
+				}
+		%>
 
-
-
+		<form action="CommentList" method="POST">
+			<input type="hidden" name="breweryId" value=<%=breweryList.get(0).getBreweryId() %>> 
+		    <input type="hidden" name="userId" value="<%= (user != null) ? user.getUserId() : "" %>">
+		    <input type="submit" value="酒の口コミ" <%= (user == null) ? "disabled" : "" %>>
+		</form>
 
 
 	<%-- 酒の口コミだけ --%>
 	<%-- この時は、酒蔵IDともしかしたらuser_id送るかも --%>
 	<%-- 酒蔵IDとuser_idを値に参照したい --%>
+	<%-- 
 	<form action="CommentList" method="POST">
-		<input type="hidden" name="breweryId" value="1"> <input
-			type="hidden" name="userId" value="fgh"> <input type="submit"
-			value="酒の口コミ">
-	</form>
+		<input type="hidden" name="breweryId" value=<%=breweryList.get(0).getBreweryId() %>> 
+		<input type="hidden" name="userId" value=> 
+		<input type="submit" value="酒の口コミ">
+	</form>--%>
+
 
 
 

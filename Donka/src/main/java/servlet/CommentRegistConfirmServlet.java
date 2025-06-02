@@ -73,7 +73,7 @@ public class CommentRegistConfirmServlet extends HttpServlet {
 		}
 		
 		// リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher("adminComplete.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
 		rd.forward(request, response);
 	}
 
