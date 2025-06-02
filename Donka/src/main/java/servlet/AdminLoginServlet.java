@@ -42,21 +42,45 @@ public class AdminLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("id");
-		String pass = request.getParameter("password");
+		String adminId = request.getParameter("adminId");
+		String password = request.getParameter("password");
 		
-		String url = null;
+		//遷移先の設定
+		String url = "adminTop.jsp";
+		
+		/* validation Check */
+		String errorLog = "";
+		boolean validationFlag = true;
+		
+		if(adminId.length() == 0 || password.length() == 0 ) {
+			
+			if(adminId == null || adminId.length() == 0) {
+				errorLog += "管理者IDを入力して下さい。<br>";
+			}
+			if(password == null || password.length() == 0) {
+				errorLog += "パスワードを入力して下さい。<br>";
+			}
+			
+			//遷移先の設定
+			url = "adminLogin.jsp";
+			validationFlag = false;
+			
+			request.setAttribute("errorLog", errorLog);
+			
+			RequestDispatcher rd = request.getRequestDispatcher(url);
+			rd.forward(request,response);
+		}
+		
+
 		try {
 			
 			AdminDAO dao = new AdminDAO();
 			
-			if (dao.loginCheck(id,pass)) {
-				
-				url = "adminTop.jsp";
+			if (dao.loginCheck(adminId,password)) {
 				
 				HttpSession session = request.getSession();
 				
-				session.setAttribute("userid", id);
+				session.setAttribute("userid", adminId);
 				
 				
 			} else {
@@ -66,9 +90,11 @@ public class AdminLoginServlet extends HttpServlet {
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-
-		RequestDispatcher rd = request.getRequestDispatcher(url);
-		rd.forward(request,response);
+		
+		if(validationFlag) {
+			RequestDispatcher rd = request.getRequestDispatcher(url);
+			rd.forward(request,response);
+		}
 	} 
 		
 
