@@ -8,7 +8,6 @@
 </head>
 <body>
 	
-	
 	こちらを変更してよろしいですか？<br>
 	<jsp:useBean id="sake" scope="request" class="model.entity.SakeBean" />
 	
@@ -19,10 +18,6 @@
 	変更する酒の味わい：<jsp:getProperty name="sake" property="taste"/><br>
 	変更する酒の説明：  <jsp:getProperty name="sake" property="sakeExplanation"/><br>
 	変更する酒の写真：  <jsp:getProperty name="sake" property="sImgPath"/><br>
-	
-		<!-- 遷移が1:1なので、そのまま戻す -->
-	<button onclick="history.back()">戻る</button>
-
 	
 	<form action="SakeUpdateConfirm" method="POST">
 		<input type="hidden" name="sakeId2" value="<jsp:getProperty name="sake" property="sakeId"/>" >
@@ -35,6 +30,8 @@
 		<input type="hidden" name="sImgPath2" value="<jsp:getProperty name="sake" property="sImgPath"/>" >
 		<input type="submit" value="変更する">
 	</form>
+	
+	<button onclick="history.back()">戻る</button>
 
 </body>
 </html>

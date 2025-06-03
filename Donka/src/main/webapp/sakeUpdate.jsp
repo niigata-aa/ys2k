@@ -66,8 +66,9 @@
 			<div style="color:red"><%= request.getAttribute("errorLog") %></div>
 		<% } %>
 		
-		
 	</form>
+	
 		<button onclick="history.back()">戻る</button>
+		
 </body>
 </html>

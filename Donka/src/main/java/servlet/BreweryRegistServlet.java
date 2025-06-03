@@ -52,7 +52,6 @@ public class BreweryRegistServlet extends HttpServlet {
 		//リクエストパラメータの取得
 		
 		String breweryName        = request.getParameter("breweryName");
-		//String bImgPath           = request.getParameter("bImgPath");
 		String breweryExplanation = request.getParameter("breweryExplanation");
 		String latitude           = request.getParameter("latitude");
 		String longitude          = request.getParameter("longitude");

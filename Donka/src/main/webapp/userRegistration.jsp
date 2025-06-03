@@ -8,24 +8,23 @@
 <link rel="stylesheet" href="user_re.css">
 </head>
 <body>
+	<ul class="sakura">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
 
-<ul class="sakura">
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-</ul>
-
-<jsp:include page="header.jsp"></jsp:include>
-<div class="body"></div>
+	<jsp:include page="header.jsp"></jsp:include>
+	<div class="body"></div>
     <div class="grad"></div>
     <div class="header">
-      <div>会員登録<span></span></div>
+    <div>会員登録<span></span></div>
     </div>
     <br>
     <div class="user">
@@ -43,9 +42,7 @@
 	<% } %>
 	</div>
 	
-
-	
-	
 	<jsp:include page="footer.jsp"></jsp:include>
+	
 </body>
 </html>

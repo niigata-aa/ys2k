@@ -71,10 +71,26 @@ public class UserRegistServlet extends HttpServlet {
 			url = "userRegistration.jsp";
 			validationFlag = false;
 			
-			request.setAttribute("errorLog", errorLog);
+		}
+		
+		if(!validationFlag || userId.length() > 10) {
 			
-			RequestDispatcher rd = request.getRequestDispatcher(url);
-			rd.forward(request,response);
+			errorLog += "会員番号は10文字以下で入力してください。<br>";
+			
+			//遷移先の設定
+			url = "userRegistration.jsp";
+			validationFlag = false;
+				
+		}
+		
+		if(!validationFlag || nickname.length() > 20) {
+			
+			errorLog += "愛称は20文字以下で入力してください。<br>";
+			
+			//遷移先の設定
+			url = "userRegistration.jsp";
+			validationFlag = false;
+				
 		}
 		
 		if(!validationFlag || password.length() < 8 || password.length() > 20) {
@@ -85,12 +101,16 @@ public class UserRegistServlet extends HttpServlet {
 			url = "userRegistration.jsp";
 			validationFlag = false;
 			
-			request.setAttribute("errorLog", errorLog);
+		}
+		
+		if(!validationFlag) {
 			
+			request.setAttribute("errorLog", errorLog);
 			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request,response);
-				
+			
 		}
+		
 		/*                   */
 		
 		//リクエストスコープへの属性の設定
