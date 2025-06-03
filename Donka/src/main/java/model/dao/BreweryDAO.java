@@ -155,9 +155,6 @@ public class BreweryDAO {
         String sql = "UPDATE m_brewery SET brewery_name = ?, brewery_explanation = ?, latitude = ?, longitude = ?, "
                 + "area_id = ?, address = ?, reservation_flag = ?, reservation_path = ?, b_img_path = ? WHERE brewery_id = ?";
 
-		//String sql = "UPDATE m_brewery SET reservation_flag = ? , reservation_path = ? , brewery_explanation = ?"
-		//		+ "WHERE brewery_id = ?";
-
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
 			
@@ -173,14 +170,7 @@ public class BreweryDAO {
             pstmt.setString(8, brewery.getReservationPath());
             pstmt.setString(9, brewery.getbImgPath());
             pstmt.setInt(10, brewery.getBreweryId());
-			
-			/*
-			pstmt.setBoolean(1, brewery.getReservationFlag());
-			pstmt.setString(2, brewery.getReservationPath());
-			pstmt.setString(3, brewery.getBreweryExplanation());
-			pstmt.setInt(4, brewery.getBreweryId());
-			*/
-			
+
 			processingNumber = pstmt.executeUpdate();
 
 		}
