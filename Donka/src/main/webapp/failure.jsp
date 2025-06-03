@@ -8,9 +8,9 @@
 </head>
 <body>
 	何らかの不具合が発生しました。
-	５秒後にxxxxページに戻ります。
+	５秒後にトップページに戻ります。
 	
-	<a href="<%= request.getAttribute("url")%>">戻らない場合はこちら</a>
+	<a href="home.jsp">戻らない場合はこちら</a>
 	
 </body>
 </html>
