@@ -8,6 +8,10 @@
 <title>日本酒ランキング</title>
 <link rel="stylesheet" href="sakeTable.css"> <%-- 必要であれば酒一覧のCSSを流用 --%>
 <style>
+   body{
+	background:	 -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(253, 213, 255,0.4
+					 )), color-stop(100%,rgba(255, 255, 185,0.5)));
+					 }
     /* ランキング表示用の追加スタイル */
     .ranking-container {
         width: 80%;
