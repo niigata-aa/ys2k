@@ -51,7 +51,6 @@ public class BreweryRegistServlet extends HttpServlet {
 		
 		//リクエストパラメータの取得
 		
-		String breweryId          = request.getParameter("breweryId");
 		String breweryName        = request.getParameter("breweryName");
 		//String bImgPath           = request.getParameter("bImgPath");
 		String breweryExplanation = request.getParameter("breweryExplanation");
@@ -62,12 +61,14 @@ public class BreweryRegistServlet extends HttpServlet {
 		String reservetionFlag    = request.getParameter("reservetionFlag");
 		String reservationPath    = request.getParameter("reservetionPath");
 		
-		//リクエスト表示したい
-		System.out.print(" りくえそつとぶ： ");
-		System.out.print(breweryId + " + ");
-		System.out.print(latitude + " + ");
-		System.out.print(longitude + " + ");
-		System.out.println(areaId + " + ");
+		
+		//遷移先URLの設定
+		String url = "breweryRegistrationConfirm.jsp";	
+		
+		/* validation Check */
+		String errorLog = "";
+		boolean validationFlag = true;
+		/*                  */
 		
 		//画像のファイル名取得
 		//アップロードしたファイルを取得
@@ -91,7 +92,6 @@ public class BreweryRegistServlet extends HttpServlet {
 		
 
 		//フォームから取得した文字列の数値変換？
-		int iBreweryId = 0;
 		double dLatitude = 0;
 		double dLongitude = 0;
 		int iAreaId = 0;
@@ -112,31 +112,59 @@ public class BreweryRegistServlet extends HttpServlet {
 		
 		
 		//リクエストパラメータの型を合わせる
+		//if 値の型が合わなかった場合errorログを飛ばす
 		try {
 			
-			iBreweryId = Integer.parseInt(breweryId);
 			dLatitude = Double.parseDouble(latitude);
+
+		} catch (NumberFormatException e) {
+			
+			//エラーメッセージの生成
+			errorLog += "緯度は小数を入力してください。<br>";
+			
+			//遷移先の設定
+			url = "breweryRegistration.jsp";
+			validationFlag = false;	
+			e.printStackTrace();
+			
+		}
+		try {
+		
 			dLongitude = Double.parseDouble(longitude);
+		
+		} catch (NumberFormatException e) {
+			
+			//エラーメッセージの生成
+			errorLog += "経度は小数を入力してください。<br>";
+			
+			//遷移先の設定
+			url = "breweryRegistration.jsp";
+			validationFlag = false;	
+			
+			e.printStackTrace();
+			
+		}
+		
+		try {
+			
 			iAreaId = Integer.parseInt(areaId);
 			
-			//変換後の値を確認したい
-			System.out.print(iBreweryId + " + ");
-			System.out.print(dLatitude + " + ");
-			System.out.print(dLongitude + " + ");
-			System.out.println(iAreaId);
 		} catch (NumberFormatException e) {
 			
 			e.printStackTrace();
 			
 		}
 		
-		//遷移先URLの設定
-		String url = "breweryRegistrationConfirm.jsp";
-		
+		if(!validationFlag) {
+			request.setAttribute("errorLog", errorLog);
+			
+			RequestDispatcher rd = request.getRequestDispatcher(url);
+			rd.forward(request,response);
+		}
+	
 		//リクエストスコープへの属性の設定
 		BreweryBean brewery = new BreweryBean();
 		
-		brewery.setBreweryId(iBreweryId);
 		brewery.setBreweryName(breweryName);
 		brewery.setbImgPath(img_name);
 		brewery.setBreweryExplanation(breweryExplanation);
@@ -154,8 +182,10 @@ public class BreweryRegistServlet extends HttpServlet {
 		request.setAttribute("path", path);		
 		*/
 		
+		if(validationFlag) {
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request,response);
+		}
 	} 
 
 }

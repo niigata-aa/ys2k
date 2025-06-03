@@ -49,7 +49,6 @@ public class BreweryRegistConfirmServlet extends HttpServlet {
 		
 		//リクエストパラメータの取得
 		
-		String breweryId          = request.getParameter("breweryId2");
 		String breweryName        = request.getParameter("breweryName2");
 		String breweryExplanation = request.getParameter("breweryExplanation2");
 		String latitude           = request.getParameter("latitude2");
@@ -65,7 +64,6 @@ public class BreweryRegistConfirmServlet extends HttpServlet {
 		String img_name          = request.getParameter("img_name");
 		request.setAttribute("img_name", img_name);
 		
-		int iBreweryId = 0;
 		double dLatitude = 0;
 		double dLongitude = 0;
 		int iAreaId = 0;
@@ -79,7 +77,6 @@ public class BreweryRegistConfirmServlet extends HttpServlet {
 		//リクエストパラメータの型を合わせる
 		try {
 			
-			iBreweryId = Integer.parseInt(breweryId);
 			dLatitude = Double.parseDouble(latitude);
 			dLongitude = Double.parseDouble(longitude);
 			iAreaId = Integer.parseInt(areaId);
@@ -95,7 +92,6 @@ public class BreweryRegistConfirmServlet extends HttpServlet {
 		//breweryオブジェクトを生成、値を代入
 		BreweryBean brewery = new BreweryBean();
 		
-		brewery.setBreweryId(iBreweryId);
 		brewery.setBreweryName(breweryName);
 		brewery.setbImgPath(bImgPath);
 		brewery.setBreweryExplanation(breweryExplanation);

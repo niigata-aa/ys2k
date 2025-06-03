@@ -8,7 +8,6 @@
 </head>
 <body>
 	<form action="BreweryRegist" method="POST" enctype="multipart/form-data">
-	酒蔵のid：<input type="text" id="breweryId" name="breweryId" required><br>
 	酒蔵の名前：<input type="text" id="breweryName" name="breweryName" required><br>
 	酒蔵の説明：<input type="text" id="breweryExplanation" name="breweryExplanation" required><br>
 	酒蔵の緯度：<input type="text" id="latitude" name="latitude" required><br>
@@ -26,12 +25,18 @@
 	予約の可否：<input type="checkbox" id="reservetionFlag" name="reservetionFlag" required/><br>
 	
 	
-<%-- 酒蔵の写真：<input type="text" id="bImgPath" name="bImgPath" value="写真のURL"><br> --%>
+	<%-- 酒蔵の写真：<input type="text" id="bImgPath" name="bImgPath" value="写真のURL"><br> --%>
 	酒蔵の写真：<input type="file" id="bImgPath" name="bImgPath" accept="image/jpeg" required><br>
 	予約先URL：<input type="text" id="reservetionPath" name="reservetionPath"><br>
 	<input type="submit" value="登録する">
 	</form>
 	<%-- チェックされている場合に、予約先URLを入力できるようにしたい --%>
+	
+	<!-- Validation check -->
+	<% if( request.getAttribute("errorLog") != null){%>
+		<div style="color:red"><%= request.getAttribute("errorLog") %></div>
+	<% } %>
+	
 
 	<form action="adminRegistration.jsp" method="POST">
 		<input type="submit" value="戻る">
