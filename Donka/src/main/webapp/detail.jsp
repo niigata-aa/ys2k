@@ -106,15 +106,6 @@
 
 		</div>
 	</div>
-	<%-- 酒の口コミだけ --%>
-	<%-- この時は、酒蔵IDともしかしたらuser_id送るかも --%>
-	<%-- 酒蔵IDとuser_idを値に参照したい --%>
-	<%-- 
-	<form action="CommentList" method="POST">
-		<input type="hidden" name="breweryId" value=<%=breweryList.get(0).getBreweryId() %>> 
-		<input type="hidden" name="userId" value=> 
-		<input type="submit" value="酒の口コミ">
-	</form>--%>
 
 
 
