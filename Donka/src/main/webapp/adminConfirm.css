@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/* 確認画面の表示詳細 */
+.confirmation-details {
+    background-color: #f9f9f9; /* 薄いグレーの背景 */
+    border: 1px solid #e0e0e0; /* 薄いボーダー */
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 30px; /* フォームとの間隔 */
+    text-align: left; /* テキストは左寄せ */
+}
+
+.detail-item {
+    margin-bottom: 10px; /* 各詳細項目間のスペース */
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+.detail-item span {
+    font-weight: bold;
+    color: #333;
+    display: inline-block; /* 項目名と値の配置を調整 */
+    width: 150px; /* 項目名の幅を固定して揃える */
+    margin-right: 10px;
+}
+
+.image-preview {
+    text-align: center; /* 画像を中央寄せ */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px dashed #ccc; /* 点線ボーダー */
+    padding: 10px;
+    background-color: #f5f5f5;
+}
+
+.image-preview img {
+    max-width: 100%; /* コンテナに収まるように画像を縮小 */
+    height: auto; /* アスペクト比を維持 */
+    display: block; /* 中央寄せのためにブロック要素に */
+    margin: 0 auto; /* 中央寄せ */
+    border: 1px solid #ddd; /* 画像のボーダー */
+}
+
+/* 確認フォーム（ボタンを内包）のスタイル */
+.confirmation-form {
+    margin-top: 20px; /* 上部のマージン */
+}

@@ -1,0 +1,141 @@
+/* テーブル全体を囲むコンテナ */
+.table-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    /* --- 縦スクロールのための追記 --- */
+    max-height: 400px; /* テーブルコンテナの最大高さを設定。この高さを超えると縦スクロールが発生します。 */
+    overflow-y: auto;  /* 縦方向のスクロールを可能にする */
+    -webkit-overflow-scrolling: touch; /* iOSでのスムーズなスクロール */
+}
+
+/* テーブルのスタイル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* テーブルキャプション */
+caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+    position: sticky; /* キャプションをスクロールしても上部に固定 */
+    top: 0; /* 固定位置 */
+    background-color: inherit; /* 背景色を継承 */
+    z-index: 2; /* ヘッダーより手前に表示（ヘッダーがz-index:1なので、キャプションはそれより大きくする） */
+    padding-bottom: 5px; /* ヘッダーとの間に少しスペースを追加 */
+}
+
+/* テーブルヘッダー (th) のスタイル */
+th {
+    background-color: #eee; /* 固定時に背景色が透けないように再設定 */
+    color: #333;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-weight: bold;
+    position: sticky; /* ★ヘッダーをスクロールしても上部に固定 */
+    top: 43px; /* ★ キャプションの高さ (約38px + padding-bottom 5px) を考慮して調整 */
+                   /* 実際のキャプションの高さによってこの値を微調整してください (例: font-size, line-height, padding, margin-bottomの影響を受ける) */
+    z-index: 1; /* 他のセルより手前に表示 */
+}
+
+/* テーブルデータ (td) のスタイル */
+td {
+    background-color: #fff;
+    color: #555;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+    vertical-align: top;
+}
+
+/* 偶数行の背景色 */
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* ホバー時の行のスタイル */
+tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* --- 既存の追加スタイル --- */
+
+/* アクションボタンを含むセル */
+td.action-buttons {
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    min-width: 150px;
+}
+
+/* ボタンを横並びにするためのフォームスタイル */
+form.inline-form {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+/* 各アクションボタンの共通スタイル */
+input.action-button {
+    padding: 6px 10px;
+    font-size: 0.9em;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    min-width: 60px;
+    box-sizing: border-box;
+}
+
+/* 更新ボタンのスタイル */
+input.update-button {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+}
+
+input.update-button:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* 削除ボタンのスタイル */
+input.delete-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: 1px solid #dc3545;
+}
+
+input.delete-button:hover {
+    background-color: #c82333;
+    border-color: #c82333;
+}
+
+/* 画像表示用のセルスタイル */
+td.table-image {
+    text-align: center;
+    vertical-align: middle;
+    width: 100px;
+    max-width: 100px;
+}
+
+td.table-image img {
+    max-width: 80px;
+    height: auto;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    vertical-align: middle;
+}

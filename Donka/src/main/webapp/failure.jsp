@@ -6,6 +6,29 @@
 <meta charset="UTF-8">
 <title>失敗画面</title>
 <link rel="stylesheet" href="failure.css">
+<script>
+    window.onload = function() {
+        let countdownElement = document.getElementById('countdown'); // カウントダウンを表示する要素
+        let timeLeft = 5; // 初期秒数
+
+        // カウントダウン表示を更新する関数
+        function updateCountdown() {
+            countdownElement.textContent = timeLeft;
+            timeLeft--;
+
+            if (timeLeft < 0) {
+                // カウントが0になったら遷移
+                window.location.href = "home.jsp"; // 遷移先のURL
+            } else {
+                // 1秒ごとに更新
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+
+        // 最初のカウントダウンを開始
+        updateCountdown();
+    };
+</script>
 </head>
 <body>
 
@@ -34,7 +57,7 @@
 	    <%} else{ %>
 			<div>何らかの不具合が発生しました。</div>
 		<%} %>	
-		<div>５秒後にトップページに戻ります。</div>
+		<div id="countdownMessage"><span id="countdown">5</span>秒後にトップページに戻ります。</div>
 		
 		<a href="home.jsp">戻らない場合はこちら</a>
 	

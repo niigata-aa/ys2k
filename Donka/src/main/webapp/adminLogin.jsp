@@ -4,33 +4,37 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="adminLogin.css">
 <title>管理者ログイン</title>
+<link rel="stylesheet" type="text/css" href="adminLogin.css"> <%-- 新しいログイン画面用CSSを読み込む --%>
 </head>
 <body>
 
+<div class="login-container"> <%-- ここでコンテンツを囲みます --%>
+	<h1>管理者ログイン</h1>
+
 	<form action="AdminLogin" method="post">
 	
-		<label id="adminId">
-			管理者ID:<input type="text" name="adminId"><br>
-		</label>
+		<div class="form-group"> <%-- form-groupで入力フィールドを囲む --%>
+			<label for="adminId">管理者ID:</label>
+			<input type="text" id="adminId" name="adminId">
+		</div>
 		
-		<label id="password">
-			パスワード:<input type="password"name="password"><br>
-		</label>
+		<div class="form-group"> <%-- form-groupで入力フィールドを囲む --%>
+			<label for="password">パスワード:</label>
+			<input type="password" id="password" name="password">
+		</div>
 		
-		<label class="validation">
-			<!-- Validation check -->
+		<div class="validation-message"> <%-- エラーメッセージ表示用のdiv --%>
 			<% if( request.getAttribute("errorLog") != null){%>
-				<div style="color:red"><%= request.getAttribute("errorLog") %></div>
+				<%= request.getAttribute("errorLog") %>
 			<% } %>
-		</label>
+		</div>
 		
-		<label id="login">
-			<input type="submit" value="ログイン">
-		</label>
+		<input type="submit" value="ログイン" class="submit-button">
 		
 	</form>
+
+</div>
 
 </body>
 </html>

@@ -48,26 +48,24 @@ public class SakeDAO {
 			}
 		}
 		return sakeList;
-
 	}
 
 	public int insert(SakeBean sake) throws SQLException, ClassNotFoundException {
 
 		int processingNumber = 0;
 
-		String sql = "insert into m_sake(sake_id,sake_name,s_img_path,alc,f_drink,taste,brewery_id,sake_explanation) values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into m_sake(sake_name,s_img_path,alc,f_drink,taste,brewery_id,sake_explanation) values(?,?,?,?,?,?,?)";
 
 		try(Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)){
 
-			pstmt.setInt(1,sake.getSakeId());
-			pstmt.setString(2,sake.getSakeName());
-			pstmt.setString(3,sake.getsImgPath());
-			pstmt.setDouble(4, sake.getAlc());
-			pstmt.setString(5,sake.getfDrink());
-			pstmt.setString(6,sake.getTaste());
-			pstmt.setInt(7,sake.getBreweryId());
-			pstmt.setString(8,sake.getSakeExplanation());
+			pstmt.setString(1,sake.getSakeName());
+			pstmt.setString(2,sake.getsImgPath());
+			pstmt.setDouble(3, sake.getAlc());
+			pstmt.setString(4,sake.getfDrink());
+			pstmt.setString(5,sake.getTaste());
+			pstmt.setInt(6,sake.getBreweryId());
+			pstmt.setString(7,sake.getSakeExplanation());
 
 			processingNumber = pstmt.executeUpdate();
 		}
@@ -276,5 +274,30 @@ public class SakeDAO {
             }
         }
         return sakeList;
+    }
+    
+    public SakeBean selectById(int sakeId) throws SQLException, ClassNotFoundException {
+        SakeBean sake = null;
+        String sql = "SELECT sake_id, sake_name, s_img_path, alc, f_drink, taste, brewery_id, sake_explanation FROM m_sake WHERE sake_id = ?";
+
+        try (Connection con = ConnectionManager.getConnection();
+             PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+            pstmt.setInt(1, sakeId);
+            try (ResultSet res = pstmt.executeQuery()) {
+                if (res.next()) {
+                    sake = new SakeBean();
+                    sake.setSakeId(res.getInt("sake_id"));
+                    sake.setSakeName(res.getString("sake_name"));
+                    sake.setsImgPath(res.getString("s_img_path"));
+                    sake.setAlc(res.getDouble("alc"));
+                    sake.setfDrink(res.getString("f_drink"));
+                    sake.setTaste(res.getString("taste"));
+                    sake.setBreweryId(res.getInt("brewery_id"));
+                    sake.setSakeExplanation(res.getString("sake_explanation"));
+                }
+            }
+        }
+        return sake;
     }
 }

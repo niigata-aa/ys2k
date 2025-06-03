@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/* コメント一覧コンテナ */
+.comment-list-container {
+    max-height: 300px; /* コメント一覧の最大高さを設定 */
+    overflow-y: auto; /* 縦方向のスクロールを可能にする */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 30px;
+    background-color: #f9f9f9;
+    text-align: left; /* コメント内容は左寄せ */
+}
+
+/* 各コメントアイテム */
+.comment-item {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.comment-item p {
+    margin: 0 0 5px 0; /* 段落間のマージン調整 */
+    line-height: 1.4;
+    color: #555;
+}
+
+.comment-item .comment-nickname {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+}
+
+.comment-item .comment-id {
+    font-size: 0.9em;
+    color: #888;
+    text-align: right; /* コメントIDを右寄せ */
+}
+
+/* コメントがない場合のメッセージ */
+.no-comments {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+    font-style: italic;
+}

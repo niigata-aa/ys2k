@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* ログイン失敗画面のメッセージ */
+.main-content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #cc0000; /* エラーを示す赤色 */
+    text-align: center;
+}
+
+/* カウントダウン表示用のスタイル */
+#countdown {
+    font-size: 1.2em; /* 数字を少し大きく */
+    font-weight: bold;
+    color: #007bff; /* 青色（または強調したい色） */
+}
+
+/* リダイレクトリンクのスタイル（adminTopStyle.cssのaタグスタイルを適用する） */
+.main-content .redirect-link {
+    /* adminTopStyle.cssのaタグのスタイルを継承 */
+    margin-top: 20px; /* 上部のマージンを調整 */
+}

@@ -1,3 +1,4 @@
+/* style.css */
 body{
 	font-family:"游明朝";
 		text-align: center;
@@ -63,11 +64,11 @@ body{
 
 /* activeクラスが付与されたときにコンテンツを表示 */
 .accordion-item.active .accordion-content {
-    max-height: 500px; /* 十分に大きな値に設定し、コンテンツの高さに合わせて調整 */
+    max-height: auto; /* JavaScriptで高さを設定するので、CSSでは自動に設定 */
     padding-bottom: 15px;
 }
 
-.name{ 
+.name{
 	margin-top: 5%;
 	margin-bottom: 10%;
 	    color: #333333;
@@ -78,7 +79,7 @@ body{
 	    font-size: 2em;
 	}
 
-	.table_box{
+	.table_box{ /* このスタイルは .table-container と統合されるため、最終的には不要になる可能性があります */
 		margin-top: 0%;
 		width:60%;
 		height: 100%;
@@ -91,12 +92,11 @@ body{
 	overflow: auto;
 	    border-collapse: collapse;
 
-		  	
 	}
 
 
 
-	.td{
+	.td{ /* このスタイルは .sake-table td, .comment-table td と統合されるため、最終的には不要になる可能性があります */
 	    margin-top: 10%;
 		white-space: nowrap;
 	    border-right: 1px solid #999;
@@ -111,7 +111,7 @@ body{
 	}
 
 
-	.image{
+	.image{ /* このスタイルは .sake-image-small, .brewery-image と統合されるため、最終的には不要になる可能性があります */
 	    text-align: center;
 		height:auto;
 		width:700px;
@@ -130,9 +130,104 @@ body{
 		width: 35%;
 		font-family:"游明朝";
 			font-size: large;
-		
+
 	}
 
+/* テーブル全体を囲むコンテナ */
+.table-container {
+    width: 90%; /* テーブルの幅を調整 */
+    margin: 20px auto; /* 中央寄せと上下のマージン */
+    max-height: 300px; /* 必要に応じて高さを調整 */
+    overflow-y: auto; /* 縦方向のスクロールを有効にする */
+    border: 1px solid #ddd; /* コンテナのボーダー */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 影 */
+    background-color: #f9f9f9; /* 背景色 */
+}
 
+/* 各テーブルのスタイル */
+.sake-table, .comment-table {
+    width: 100%; /* コンテナに合わせて幅100% */
+    border-collapse: collapse; /* セルのボーダーを結合 */
+    margin: 0; /* 親要素のパディングに任せるため、マージンを0に */
+}
 
+.sake-table thead, .comment-table thead {
+    position: sticky; /* ヘッダーを固定 */
+    top: 0;
+    background-color: #e0e0e0; /* ヘッダーの背景色 */
+    z-index: 1; /* 他のコンテンツの上に表示 */
+}
 
+.sake-table th, .comment-table th {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    white-space: nowrap; /* ヘッダーのテキストが折り返されないように */
+}
+
+.sake-table td, .comment-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    vertical-align: top; /* セル内のコンテンツを上揃えに */
+}
+
+.sake-table tbody tr:nth-child(even), .comment-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* 偶数行の背景色 */
+}
+
+.sake-table tbody tr:hover, .comment-table tbody tr:hover {
+    background-color: #ddd; /* ホバー時の背景色 */
+}
+
+.sake-image-small {
+    max-width: 80px; /* 酒の画像の最大幅を調整 */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* 画像を中央寄せ */
+}
+
+.brewery-image {
+    max-width: 80%;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+}
+
+.comment-form {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.comment-form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical; /* 縦方向のみリサイズ可能に */
+}
+
+.comment-form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.comment-form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.comment-form input[type="submit"]:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}

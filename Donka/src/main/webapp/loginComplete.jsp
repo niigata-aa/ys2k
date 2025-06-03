@@ -28,15 +28,29 @@
     </div>
     <br>
     <div class="login_ok">
-    
-    ログインが完了しました。
-	5秒後にトップページに戻ります。
-	<a href="home.jsp">戻らない場合はこちら</a>
 
-	
+    ログインが完了しました。<br>
+	<span id="countdown">5</span>秒後に酒一覧ページに戻ります。<br>
+	<a href="home.jsp">戻らない場合はこちら</a>
 	
 	</div>
-	
-	
+
+<script type="text/javascript">
+    window.onload = function() {
+        let count = 5;
+        const countdownElement = document.getElementById('countdown');
+
+        const timer = setInterval(function() {
+            count--;
+            countdownElement.textContent = count;
+
+            if (count <= 0) {
+                clearInterval(timer); // カウントダウンを停止
+                // 酒一覧ページへ遷移
+                window.location.href = "home.jsp";
+            }
+        }, 1000); // 1秒ごとに実行
+    };
+</script>
 </body>
 </html>

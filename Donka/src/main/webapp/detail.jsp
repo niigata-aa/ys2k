@@ -27,43 +27,59 @@
 	for (BreweryBean brew : breweryList) {
 	%>
 
-    <p class="name"><h1><%=brew.getBreweryName()%></h1></p>
+	<p class="name">
+	<h1><%=brew.getBreweryName()%></h1>
+	</p>
 	<img src="<%=brew.getbImgPath()%>" alt="<%=brew.getBreweryName()%>">
 	<br>
 
 	<p class="ex"><%=brew.getBreweryExplanation()%></p>
 
 	<div class="accordion-item">
-		<div class="accordion-header">
-			<h3>日本酒</h3>
-			<button class="toggle-button">+</button>
-		</div>
-		<div class="accordion-content table_box">
-			<table>
-				<tr>
-					<th>画像</th>
-					<th>名前</th>
-					<th>度数</th>
-					<th>おすすめの飲み方</th>
-					<th>味わい</th>
-				</tr>
-				<%
-				for (SakeBean sake : sakeList) {
-				%>
-				<tr>
-					<th><img src=<%=sake.getsImgPath()%>
-						alt=<%=sake.getSakeName()%>></th>
-					<th><%=sake.getSakeName()%></th>
-					<th><%=sake.getAlc()%></th>
-					<th><%=sake.getfDrink()%></th>
-					<th><%=sake.getSakeExplanation()%></th>
-				</tr>
-				<%
-	}
-	%>
-			</table>
-		</div>
-	</div>
+    <div class="accordion-header">
+        <h3>日本酒</h3>
+        <button class="toggle-button">+</button>
+    </div>
+    <%-- ここにテーブルスクロール機能を追加するために table-container クラスを適用 --%>
+    <div class="accordion-content table-container">
+        <table class="sake-table"> <%-- sake-table クラスを適用 --%>
+            <thead>
+                <tr>
+                    <th>画像</th>
+                    <th>名前</th>
+                    <th>度数</th>
+                    <th>おすすめの飲み方</th>
+                    <th>味わい</th>
+                    <th>説明</th> <%-- SakeBeanにsakeExplanationがあるため、説明カラムを追加します --%>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                if (sakeList != null && !sakeList.isEmpty()) { // sakeListがnullまたは空でない場合のみループ
+                    for (SakeBean sake : sakeList) {
+                %>
+                <tr>
+                    <td><img src="img/<%=sake.getsImgPath()%>" alt="<%=sake.getSakeName()%>" class="sake-image-small"></td>
+                    <td><%=sake.getSakeName()%></td>
+                    <td><%=sake.getAlc()%></td>
+                    <td><%=sake.getfDrink()%></td>
+                    <td><%=sake.getTaste()%></td>
+                    <td><%=sake.getSakeExplanation()%></td>
+                </tr>
+                <%
+                    }
+                } else {
+                %>
+                <tr>
+                    <td colspan="6">この酒蔵にはまだ酒が登録されていません。</td> <%-- colspan を6に変更 --%>
+                </tr>
+                <%
+                }
+                %>
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
 

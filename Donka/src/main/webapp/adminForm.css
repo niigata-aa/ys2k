@@ -1,0 +1,101 @@
+@charset "UTF-8";
+/* フォームグループのスタイル */
+.form-group {
+    margin-bottom: 15px; /* 各入力フィールドグループ間のスペース */
+    text-align: left; /* ラベルと入力フィールドを左寄せ */
+}
+
+.form-group label {
+    display: block; /* ラベルをブロック要素にして改行 */
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select,
+.form-group input[type="file"] {
+    width: calc(100% - 22px); /* パディングとボーダーを考慮した幅 */
+    padding: 10px;
+    border: 1px solid #ccc; /* ボーダー */
+    border-radius: 5px; /* 角を丸くする */
+    box-sizing: border-box; /* パディングとボーダーを幅に含める */
+    font-size: 1em;
+    color: #555;
+    background-color: #fff; /* 白い背景 */
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #888; /* フォーカス時のボーダー色 */
+    outline: none; /* デフォルトのアウトラインを消す */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* 軽い影 */
+}
+
+/* チェックボックスのグループ */
+.checkbox-group {
+    display: flex; /* チェックボックスとラベルを横並びにする */
+    align-items: center; /* 垂直方向中央揃え */
+    margin-bottom: 15px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px; /* チェックボックスとラベルの間のスペース */
+    width: auto; /* 幅を自動調整 */
+    height: auto; /* 高さも自動調整 */
+}
+
+.checkbox-group label {
+    margin-bottom: 0; /* ラベルの下マージンをリセット */
+    display: inline; /* ラベルをインライン要素に戻す */
+    font-weight: normal; /* 太字を解除 */
+    color: #333;
+}
+
+/* ファイル入力フィールドのスタイル調整 */
+.form-group input[type="file"] {
+    background-color: #eee; /* 薄いグレーの背景 */
+    cursor: pointer; /* カーソルをポインターに */
+}
+
+/* 送信ボタンのスタイル（adminTopStyle.cssと共通化） */
+.submit-button,
+.back-button {
+    display: block;
+    text-decoration: none;
+    color: #555;
+    background-color: #eee;
+    padding: 12px 20px;
+    margin: 25px auto 15px auto; /* 上部のマージンを大きくしてボタン間の距離を確保 */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-size: 1.1em;
+    font-weight: bold;
+    width: 100%;
+    max-width: 300px; /* ボタンの最大幅 */
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.submit-button:hover,
+.back-button:hover {
+    background-color: #ddd;
+    color: #333;
+}
+
+.submit-button:active,
+.back-button:active {
+    background-color: #ccc;
+    color: #333;
+}
+
+/* エラーメッセージのスタイル */
+.error-message {
+    color: red;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}

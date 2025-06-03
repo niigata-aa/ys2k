@@ -155,6 +155,9 @@ public class BreweryDAO {
         String sql = "UPDATE m_brewery SET brewery_name = ?, brewery_explanation = ?, latitude = ?, longitude = ?, "
                 + "area_id = ?, address = ?, reservation_flag = ?, reservation_path = ?, b_img_path = ? WHERE brewery_id = ?";
 
+		//String sql = "UPDATE m_brewery SET reservation_flag = ? , reservation_path = ? , brewery_explanation = ?"
+		//		+ "WHERE brewery_id = ?";
+
 		try (Connection con = ConnectionManager.getConnection();
 				PreparedStatement pstmt = con.prepareStatement(sql)) {
 			
@@ -170,7 +173,14 @@ public class BreweryDAO {
             pstmt.setString(8, brewery.getReservationPath());
             pstmt.setString(9, brewery.getbImgPath());
             pstmt.setInt(10, brewery.getBreweryId());
-
+			
+			/*
+			pstmt.setBoolean(1, brewery.getReservationFlag());
+			pstmt.setString(2, brewery.getReservationPath());
+			pstmt.setString(3, brewery.getBreweryExplanation());
+			pstmt.setInt(4, brewery.getBreweryId());
+			*/
+			
 			processingNumber = pstmt.executeUpdate();
 
 		}
@@ -221,4 +231,31 @@ public class BreweryDAO {
 		}
 		return breweryList;
 	}
+	
+	public BreweryBean selectById(int breweryId) throws SQLException, ClassNotFoundException {
+        BreweryBean brewery = null;
+        String sql = "SELECT brewery_id, brewery_name, b_img_path, latitude, longitude, address, brewery_explanation, reservation_flag, reservation_path, area_id FROM m_brewery WHERE brewery_id = ?";
+
+        try (Connection con = ConnectionManager.getConnection();
+             PreparedStatement pstmt = con.prepareStatement(sql)) {
+
+            pstmt.setInt(1, breweryId);
+            try (ResultSet res = pstmt.executeQuery()) {
+                if (res.next()) {
+                    brewery = new BreweryBean();
+                    brewery.setBreweryId(res.getInt("brewery_id"));
+                    brewery.setBreweryName(res.getString("brewery_name"));
+                    brewery.setbImgPath(res.getString("b_img_path"));
+                    brewery.setLatitude(res.getDouble("latitude"));
+                    brewery.setLongitude(res.getDouble("longitude"));
+                    brewery.setAddress(res.getString("address"));
+                    brewery.setReservationFlag(res.getBoolean("reservation_flag"));
+                    brewery.setReservationPath(res.getString("reservation_path"));
+                    brewery.setBreweryExplanation(res.getString("brewery_explanation"));
+                    brewery.setAreaId(res.getInt("area_id"));
+                }
+            }
+        }
+        return brewery;
+    }
 }

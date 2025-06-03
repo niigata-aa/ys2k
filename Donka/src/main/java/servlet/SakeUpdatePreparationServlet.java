@@ -51,28 +51,48 @@ public class SakeUpdatePreparationServlet extends HttpServlet {
 		//リクエストスコープに入れる値の設定
 		List<BreweryBean> breweryList = null;
 		List<SakeBean> sakeList = null;
-		
-		//DAOで使うオブジェクトの生成
+		SakeBean selectedSake = null; // 更新対象の酒の情報を格納するBean
+
+		// DAOで使うオブジェクトの生成
 		BreweryDAO Bdao = new BreweryDAO();
 		SakeDAO Sdao = new SakeDAO();
 		
-		//DAOの実行
-		try {
-			breweryList = Bdao.selectAll();
-		}catch(SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
+		// リクエストパラメータから酒IDを取得
+		String sakeIdParam = request.getParameter("sakeId");
+		int sakeId = 0;
+		if (sakeIdParam != null && !sakeIdParam.isEmpty()) {
+		    try {
+		        sakeId = Integer.parseInt(sakeIdParam);
+		    } catch (NumberFormatException e) {
+		        // 数値変換エラーの場合、エラーハンドリング（例: エラーメッセージ設定、別のJSPへ遷移）
+		        e.printStackTrace();
+		        url = "adminFailure.jsp"; // 例: エラーページに遷移
+		        request.setAttribute("cause", "酒IDが不正です。");
+		        RequestDispatcher rd = request.getRequestDispatcher(url);
+		        rd.forward(request, response);
+		        return; // 処理を中断
+		    }
 		}
-		
+
 		try {
-			sakeList = Sdao.selectAll();
+			breweryList = Bdao.selectAll(); // 全ての酒蔵情報を取得
+			sakeList = Sdao.selectAll(); // 全ての酒情報を取得 (セレクトボックス用)
+
+            // sakeId が渡された場合、その酒の情報を取得
+            if (sakeId != 0) {
+                selectedSake = Sdao.selectById(sakeId); // SakeDAOにselectByIdメソッドが必要です
+            }
 		}catch(SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
+			url = "adminFailure.jsp"; // 例: エラーページに遷移
+			request.setAttribute("cause", "データベース処理中にエラーが発生しました。");
 		}
 		
 		//リクエストパラメータに値を設定する
-		request.setAttribute("sakeList", sakeList);
-		request.setAttribute("breweryList", breweryList);
-		
+		request.setAttribute("sakeList", sakeList); // 全ての酒（セレクトボックス用）
+		request.setAttribute("breweryList", breweryList); // 全ての酒蔵（セレクトボックス用）
+		request.setAttribute("selectedSake", selectedSake); // 更新対象の酒の情報
+
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
 	}

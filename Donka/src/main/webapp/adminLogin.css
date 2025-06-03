@@ -1,0 +1,100 @@
+@charset "UTF-8";
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #f8f8f8; /* 薄いグレーの背景色 */
+    color: #333; /* デフォルトの文字色 */
+    display: flex; /* Flexboxを有効にしてコンテンツを中央に配置 */
+    justify-content: center; /* 水平方向の中央揃え */
+    align-items: center; /* 垂直方向の中央揃え */
+    min-height: 100vh; /* 画面全体の高さを確保 */
+}
+
+.login-container {
+    background-color: #ffffff; /* 白色の背景 */
+    padding: 40px; /* 内側の余白 */
+    border-radius: 8px; /* 角を丸くする */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* 影を強調 */
+    text-align: center; /* 内部のテキストやインライン要素を中央寄せ */
+    width: 90%; /* コンテナの幅 */
+    max-width: 400px; /* 最大幅を設定して見やすくする */
+    box-sizing: border-box; /* パディングとボーダーを幅に含める */
+}
+
+.login-container h1 {
+    color: #222; /* より濃い黒色の見出し */
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+}
+
+.login-container form {
+    display: inline-block; /* フォーム自体を中央に配置 */
+    text-align: left; /* フォーム内のテキストは左寄せに戻す */
+    width: 100%; /* 親要素の幅に合わせる */
+}
+
+.form-group {
+    margin-bottom: 20px; /* 各入力フィールドグループ間のスペース */
+}
+
+.form-group label {
+    display: block; /* ラベルをブロック要素にして改行 */
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+    width: 100%; /* 親要素の幅いっぱいに広げる */
+    padding: 12px;
+    border: 1px solid #ccc; /* ボーダー */
+    border-radius: 5px; /* 角を丸くする */
+    box-sizing: border-box; /* パディングとボーダーを幅に含める */
+    font-size: 1em;
+    color: #555;
+    background-color: #fff; /* 白い背景 */
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+    border-color: #888; /* フォーカス時のボーダー色 */
+    outline: none; /* デフォルトのアウトラインを消す */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* 軽い影 */
+}
+
+.validation-message {
+    color: red;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center; /* エラーメッセージを中央寄せ */
+}
+
+/* ログインボタンのスタイル */
+.submit-button {
+    display: block; /* ブロック要素にして幅を持たせる */
+    width: 100%; /* 親要素の幅いっぱいに広げる */
+    padding: 12px 20px;
+    margin-top: 30px; /* 上部のマージン */
+    background-color: #333; /* 黒い背景 */
+    color: #fff; /* 白い文字色 */
+    border: 1px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #555; /* ホバー時に少し明るいグレー */
+    border-color: #555;
+}
+
+.submit-button:active {
+    background-color: #222; /* アクティブ時に濃いグレー */
+    border-color: #222;
+}

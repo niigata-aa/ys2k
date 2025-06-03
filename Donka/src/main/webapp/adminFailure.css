@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/* 失敗画面のメッセージ */
+.main-content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #cc0000; /* エラーを示す赤色 */
+    text-align: center;
+}
+
+/* リダイレクトリンクのスタイル（adminTopStyle.cssのaタグスタイルを適用する） */
+.main-content .redirect-link {
+    /* adminTopStyle.cssのaタグのスタイルを継承 */
+    margin-top: 20px; /* 上部のマージンを調整 */
+}
+/* カウントダウン表示用のスタイル */
+#countdown {
+    font-size: 1.2em; /* 数字を少し大きく */
+    font-weight: bold;
+    color: #007bff; /* 青色（または強調したい色） */
+    /* background-color: #f0f0f0; */ /* 必要なら背景色 */
+    /* padding: 0 5px; */ /* 必要ならパディング */
+    /* border-radius: 3px; */ /* 必要なら角丸 */
+}
