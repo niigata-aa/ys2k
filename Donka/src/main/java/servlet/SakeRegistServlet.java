@@ -83,11 +83,11 @@ public class SakeRegistServlet extends HttpServlet {
 		/* validation Check */
 		String errorLog = "";
 		boolean validationFlag = true;
-		boolean sakeExplanationNullFlag = true;//酒の説明がnullか否かを判断するフラグ
+		boolean sakeExplanationNullFlag = false;//酒の説明がnullか否かを判断するフラグ
 		
 		//null比較
 		if( sakeExplanation == null || sakeExplanation.length() == 0 ) {
-			sakeExplanationNullFlag = false;
+			sakeExplanationNullFlag = true;
 		}
 		
 		if(sakeExplanationNullFlag || sakeExplanation.length() > 50) {
