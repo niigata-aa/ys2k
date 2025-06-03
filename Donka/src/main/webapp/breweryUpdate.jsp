@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>酒蔵情報更新画面</title>
-<link rel="stylesheet" type="text/css" href=admin.css">
+<link rel="stylesheet" type="text/css" href="admin.css">
 <link rel="stylesheet" type="text/css" href="adminForm.css">
 </head>
 <body>
