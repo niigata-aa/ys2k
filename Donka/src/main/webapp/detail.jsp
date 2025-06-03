@@ -38,7 +38,7 @@
 			<h3>日本酒</h3>
 			<button class="toggle-button">+</button>
 		</div>
-		<div class="accordion-content">
+		<div class="accordion-content table_box">
 			<table>
 				<tr>
 					<th>画像</th>

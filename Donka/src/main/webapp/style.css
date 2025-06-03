@@ -45,7 +45,7 @@ body{
 
 /* コンテンツが展開されたときのボタンのスタイル（マイナスに変わる） */
 .accordion-item.active .toggle-button {
-    transform: rotate(45deg); /* プラスを回転させてXにする */
+    transform: rotate(1deg); /* プラスを回転させてXにする */
     /* または単にテキストを '-' に変更する */
 }
 
@@ -77,6 +77,62 @@ body{
 	    color: #fec3ee;
 	    font-size: 2em;
 	}
+
+	.table_box{
+		margin-top: 0%;
+		width:60%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+	margin:auto;
+	overflow: auto;
+	    border-collapse: collapse;
+
+		  	
+	}
+
+
+
+	.td{
+	    margin-top: 10%;
+		white-space: nowrap;
+	    border-right: 1px solid #999;
+	    border-bottom: 1px solid #999;
+	    background: #FFF;
+	    padding: 5px;
+		display: flex;
+		border: 2px solid #fff;
+		align-items: center;
+		text-align: center;
+		object-fit: cover;
+	}
+
+
+	.image{
+	    text-align: center;
+		height:auto;
+		width:700px;
+		align-items: center;
+		object-fit: cover;
+		display: block;
+	}
+
+	.d1{
+		font-family:"游明朝";
+		writing-mode: vertical-rl;
+			font-size: xx-large;
+	}
+
+	.d2{
+		width: 35%;
+		font-family:"游明朝";
+			font-size: large;
+		
+	}
+
 
 
 
