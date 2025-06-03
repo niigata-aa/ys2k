@@ -55,14 +55,20 @@ public class CommentRegistConfirmServlet extends HttpServlet {
 		comment.setContent(content);
         comment.setUserId(userId);
         comment.setBreweryId(breweryId);
+        
   
 		
 		// DAOの生成
 		CommentDAO dao = new CommentDAO();
 		
 		try {
-			// DAOの利用
-			 int count= dao.insert(comment);
+			if(content!="") {
+				// DAOの利用
+				//System.out.println("aaaaaaaa");
+				int count= dao.insert(comment);
+			} else {
+				url = "failure.jsp";
+			}
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();

@@ -57,6 +57,7 @@ public class CommentDeleteConfirmServlet extends HttpServlet {
         
 		// DAOの生成
 		CommentDAO dao = new CommentDAO();
+	
 		
 		try {
 			// DAOの利用
