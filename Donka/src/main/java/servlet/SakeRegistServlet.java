@@ -77,11 +77,34 @@ public class SakeRegistServlet extends HttpServlet {
 		//取得したディレクトリに画像を保存
 		part.write(path + File.separator + img_name);
 		
-		System.out.println("アップロードされたファイル：" + sImgPath);
-		System.out.println("保存先のパス：" + path + File.separator + img_name);
-		System.out.println("アップロードされたファイル内容：" + part);
-		System.out.println(request.getPart("sImgPath"));
+		//遷移先URLの設定
+		String url = "sakeRegistConfirm.jsp";
 		
+		/* validation Check */
+		String errorLog = "";
+		boolean validationFlag = true;
+		boolean sakeExplanationNullFlag = true;//酒の説明がnullか否かを判断するフラグ
+		
+		//null比較
+		if( sakeExplanation == null || sakeExplanation.length() == 0 ) {
+			sakeExplanationNullFlag = false;
+		}
+		
+		if(sakeExplanationNullFlag || sakeExplanation.length() > 50) {
+			
+			errorLog += "お酒の説明は50文字以下で入力してください。<br>";
+			
+			//遷移先の設定
+			url = "SakeRegistPreparation";
+			validationFlag = false;
+			
+			request.setAttribute("errorLog", errorLog);
+			
+			RequestDispatcher rd = request.getRequestDispatcher(url);
+			rd.forward(request,response);
+				
+		}
+		/*                   */
 		
 		int iSakeId = 0;
 		int iBreweryId = 0;
@@ -102,10 +125,6 @@ public class SakeRegistServlet extends HttpServlet {
 		
 		System.err.println(dAlc);
 		
-			
-		//遷移先URLの設定
-		String url = "sakeRegistConfirm.jsp";
-		
 		//リクエストスコープへの属性の設定
 		SakeBean sake = new SakeBean();
 		
@@ -120,8 +139,10 @@ public class SakeRegistServlet extends HttpServlet {
 		
 		request.setAttribute("sake", sake);
 		
+		if(validationFlag) {
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
+		}
 	}
 
 }

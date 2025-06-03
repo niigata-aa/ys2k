@@ -37,11 +37,7 @@
 		<input type="submit" value="更新する">
 	</form>
 
-
-	<form action="BreweryEdit" method="POST">
-		<input type="submit" value="戻る">
-	</form>
-
+	<button onclick="history.back()">戻る</button>
 
 </body>
 </html>

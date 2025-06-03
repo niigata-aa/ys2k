@@ -10,16 +10,26 @@
 <body>
 
 	<form action="AdminLogin" method="post">
-		管理者ID:<input type="text" name="adminId"><br>
+	
+		<label id="adminId">
+			管理者ID:<input type="text" name="adminId"><br>
+		</label>
 		
-		パスワード:<input type="text"name="password"><br>
+		<label id="password">
+			パスワード:<input type="password"name="password"><br>
+		</label>
 		
-		<!-- Validation check -->
-		<% if( request.getAttribute("errorLog") != null){%>
-			<div style="color:red"><%= request.getAttribute("errorLog") %></div>
-		<% } %>
+		<label class="validation">
+			<!-- Validation check -->
+			<% if( request.getAttribute("errorLog") != null){%>
+				<div style="color:red"><%= request.getAttribute("errorLog") %></div>
+			<% } %>
+		</label>
 		
-		<input type="submit" value="ログイン">
+		<label id="login">
+			<input type="submit" value="ログイン">
+		</label>
+		
 	</form>
 
 </body>

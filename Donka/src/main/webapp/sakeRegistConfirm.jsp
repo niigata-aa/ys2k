@@ -21,7 +21,6 @@
 	登録する写真のURL：<jsp:getProperty name="sake" property="sImgPath"/><br>
 	<img src="/Donka/img/<jsp:getProperty name="sake" property="sImgPath"/>">
 
-	<button onclick="history.back()">戻る</button>
 	
 	<form action="SakeRegistConfirm" method="POST">
 		<input type="hidden" name="sakeName2" value="<jsp:getProperty name="sake" property="sakeName"/>" >
@@ -33,6 +32,8 @@
 		<input type="hidden" name="sImgPath2" value="<jsp:getProperty name="sake" property="sImgPath"/>" >
 	<input type="submit" value="登録する">
 	</form>
+	
+	<button onclick="history.back()">戻る</button>
 
 </body>
 </html>

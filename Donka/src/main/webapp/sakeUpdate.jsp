@@ -27,7 +27,7 @@
 		変更する酒の名前:<input type="text" name="sakeName" required><br>
 		
 		変更する酒蔵を選択:
-		<select name="breweryId">
+		<select name="breweryId" required>
 			
 			<% for(BreweryBean brewery : breweryList){%>	
 				<option value="<%= brewery.getBreweryId()%>"><%= brewery.getBreweryName()%>
@@ -37,29 +37,36 @@
 		
 		</select><br>
 		度数を選択:
-		<select name="alc">
+		<select name="alc" required>
 			<option>
 			<% for(int i = 5; i < 22; i++){%>	
 				<option value="<%= i%>"><%= i%></option>
 			<%} %>
 		</select><br>	
 		飲み方を選択:
-		<select name="fDrink">
+		<select name="fDrink" required>
 			<option value="冷">冷</option>
 			<option value="常温">常温</option>
 			<option value="燗">燗</option>
 		</select><br>	
 		味わいを選択:
-		<select name="taste">
+		<select name="taste" required>
 			<option value="甘口">甘口</option>
 			<option value="中口">中口</option>
 			<option value="辛口">辛口</option>
 		</select><br>
 			
-		変更する酒の説明:<textarea name="sakeExplanation" cols="30" rows="2" required></textarea><br>
+		変更する酒の説明:<textarea name="sakeExplanation" cols="30" rows="2" ></textarea><br>
 		変更する酒の写真:<input type="file" name="sImgPath" accept="image/jpeg" required><br>
 		
 		<input type="submit" value="登録"> 
+		
+		<!-- Validation check -->
+		<% if( request.getAttribute("errorLog") != null){%>
+			<div style="color:red"><%= request.getAttribute("errorLog") %></div>
+		<% } %>
+		
+		
 	</form>
 		<button onclick="history.back()">戻る</button>
 </body>

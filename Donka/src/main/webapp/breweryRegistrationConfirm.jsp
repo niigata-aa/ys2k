@@ -40,9 +40,7 @@
 		<input type="submit" value="登録する">
 	</form>
 	
-	<form action="adminTop.jsp" method="POST">
-		<input type="submit" value="戻る">
-	</form>
+	<button onclick="history.back()">戻る</button>
 
 </body>
 </html>

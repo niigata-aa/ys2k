@@ -49,6 +49,11 @@
 		
 		<input type="submit" value="登録する">
 	</form>
+	
+	<!-- Validation check -->
+	<% if( request.getAttribute("errorLog") != null){%>
+		<div style="color:red"><%= request.getAttribute("errorLog") %></div>
+	<% } %>
 
 	<form action="adminRegistration.jsp" method="POST">
 		<input type="submit" value="戻る">

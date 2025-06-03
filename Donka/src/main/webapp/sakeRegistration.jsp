@@ -46,7 +46,12 @@
 		登録する酒の説明:<textarea name="sakeExplanation" cols="30" rows="2"></textarea><br>
 		登録する酒の写真:<input type="file" name="sImgPath" accept="image/jpeg" required><br>
 		
-			<button onclick="history.back()">戻る</button> <input type="submit" value="登録"> 
+		<!-- Validation check -->
+		<% if( request.getAttribute("errorLog") != null){%>
+			<div style="color:red"><%= request.getAttribute("errorLog") %></div>
+		<% } %>
+		
+		<button onclick="history.back()">戻る</button> <input type="submit" value="登録"> 
 		
 	</form>
 </body>

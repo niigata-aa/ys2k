@@ -47,9 +47,6 @@ public class BreweryUpdateServlet extends HttpServlet {
 		//リクエストのエンコーディングを指定
 		request.setCharacterEncoding("UTF-8");
 		
-		//遷移先URLの設定
-		String url = "breweryUpdateConfirm.jsp";
-		
 		//リクエストパラメータの取得
 		String breweryId          = request.getParameter("breweryId");
 		String breweryName        = request.getParameter("breweryName");
@@ -77,11 +74,14 @@ public class BreweryUpdateServlet extends HttpServlet {
 		//取得したディレクトリに画像を保存
 		part.write(path + File.separator + img_name);
 		
-		System.out.println("アップロードされたファイル：" + bImgPath);
-		System.out.println("保存先のパス：" + path + File.separator + img_name);
-		System.out.println("アップロードされたファイル内容：" + part);
-		System.out.println(request.getPart("bImgPath"));
-	
+		
+		//遷移先URLの設定
+		String url = "breweryUpdateConfirm.jsp";
+		
+		/* validation Check */
+		String errorLog = "";
+		boolean validationFlag = true;
+		/*                  */
 
 		int iBreweryId = 0;
 		double dLatitude = 0;
@@ -99,21 +99,65 @@ public class BreweryUpdateServlet extends HttpServlet {
 		}
 		
 		
-		System.out.println(bReservetionFlag);
-		
-		
 		//リクエストパラメータの型を合わせる
+		//if 値の型が合わなかった場合errorログを飛ばす
 		try {
 			
 			iBreweryId = Integer.parseInt(breweryId);
+			
+		} catch (NumberFormatException e) {
+			
+			e.printStackTrace();
+			
+		}
+		try {
+			
 			dLatitude = Double.parseDouble(latitude);
+
+		} catch (NumberFormatException e) {
+			
+			//エラーメッセージの生成
+			errorLog += "緯度は小数を入力してください。<br>";
+			
+			//遷移先の設定
+			url = "BreweryUpdatePreparation";
+			validationFlag = false;	
+			
+			e.printStackTrace();
+			
+		}
+		try {
+		
 			dLongitude = Double.parseDouble(longitude);
+		
+		} catch (NumberFormatException e) {
+			
+			//エラーメッセージの生成
+			errorLog += "経度は小数を入力してください。<br>";
+			
+			//遷移先の設定
+			url = "BreweryUpdatePreparation";
+			validationFlag = false;	
+			
+			e.printStackTrace();
+			
+		}
+		
+		try {
+			
 			iAreaId = Integer.parseInt(areaId);
 			
 		} catch (NumberFormatException e) {
 			
 			e.printStackTrace();
 			
+		}
+		
+		if(!validationFlag) {
+			request.setAttribute("errorLog", errorLog);
+			
+			RequestDispatcher rd = request.getRequestDispatcher(url);
+			rd.forward(request,response);
 		}
 		
 		//リクエストスコープへの属性の設定
@@ -132,14 +176,11 @@ public class BreweryUpdateServlet extends HttpServlet {
 		
 		request.setAttribute("brewery", brewery);
 		
+		if(validationFlag) {
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request,response);
+		}
 
-		
-		
-		
-		
-		
 	}
 
 }
