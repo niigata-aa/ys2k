@@ -108,6 +108,7 @@ public class UserLoginServlet extends HttpServlet {
 			url = "failure.jsp";
 			//リクエストスコープへの属性の設定
 			request.setAttribute("url","login.jsp");//aタグの中身に入るurlの値(失敗した時の遷移先を設定)
+			request.setAttribute("cause", "<div>ログインが正常に行えませんでした。</div>");
 			
 		}
 			

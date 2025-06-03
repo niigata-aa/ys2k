@@ -28,10 +28,15 @@
     </div>
     <br>
     <div class="failure">
-	何らかの不具合が発生しました。
-	５秒後にトップページに戻ります。
-	
-	<a href="home.jsp">戻らない場合はこちら</a>
+    
+	    <% if(request.getAttribute("cause") != null){%>
+	    	<%= request.getAttribute("cause")%>
+	    <%} else{ %>
+			<div>何らかの不具合が発生しました。</div>
+		<%} %>	
+		<div>５秒後にトップページに戻ります。</div>
+		
+		<a href="home.jsp">戻らない場合はこちら</a>
 	
 	</div>
 	
