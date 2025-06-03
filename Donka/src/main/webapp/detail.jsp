@@ -27,7 +27,9 @@
 	for (BreweryBean brew : breweryList) {
 	%>
 
-    <p class="name"><h1><%=brew.getBreweryName()%></h1></p>
+	<p class="name">
+	<h1><%=brew.getBreweryName()%></h1>
+	</p>
 	<img src="<%=brew.getbImgPath()%>" alt="<%=brew.getBreweryName()%>">
 	<br>
 
@@ -39,29 +41,31 @@
 			<button class="toggle-button">+</button>
 		</div>
 		<div class="accordion-content">
-			<table>
-				<tr>
-					<th>画像</th>
-					<th>名前</th>
-					<th>度数</th>
-					<th>おすすめの飲み方</th>
-					<th>味わい</th>
-				</tr>
-				<%
-				for (SakeBean sake : sakeList) {
-				%>
-				<tr>
-					<th><img src=<%=sake.getsImgPath()%>
-						alt=<%=sake.getSakeName()%>></th>
-					<th><%=sake.getSakeName()%></th>
-					<th><%=sake.getAlc()%></th>
-					<th><%=sake.getfDrink()%></th>
-					<th><%=sake.getSakeExplanation()%></th>
-				</tr>
-				<%
-	}
-	%>
-			</table>
+			<div class="sample">
+				<table>
+					<tr>
+						<th>画像</th>
+						<th>名前</th>
+						<th>度数</th>
+						<th>おすすめの飲み方</th>
+						<th>味わい</th>
+					</tr>
+					<%
+					for (SakeBean sake : sakeList) {
+					%>
+					<tr>
+						<th><img src=<%=sake.getsImgPath()%>
+							alt=<%=sake.getSakeName()%>></th>
+						<th><%=sake.getSakeName()%></th>
+						<th><%=sake.getAlc()%></th>
+						<th><%=sake.getfDrink()%></th>
+						<th><%=sake.getSakeExplanation()%></th>
+					</tr>
+					<%
+					}
+					%>
+				</table>
+			</div>
 		</div>
 	</div>
 
@@ -153,7 +157,9 @@
 			 L.marker([<%=brew.getLatitude()%>,<%=brew.getLongitude()%>]).addTo(map)
 			var marker = L.marker([<%=brew.getLatitude()%>,<%=brew.getLongitude()%>]).addTo(map);
 			    //上のマーカーにポップアップを追加する。
-			marker.bindPopup("<%=brew.getBreweryName()%></br><%=brew.getAddress()%>").openPopup();
+			marker.bindPopup("<%=brew.getBreweryName()%></br><%=brew.getAddress()%>
+		")
+					.openPopup();
 		}
 
 		//ダウンロード時に初期化する
