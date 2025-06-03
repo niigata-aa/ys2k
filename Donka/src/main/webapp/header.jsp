@@ -42,9 +42,12 @@
 <a href="home.jsp"><li class="header-nav-item">呑花臥酒</li></a>
 <a href="BreweryView"><li class="header-nav-item">一覧表示</li></a>
 <a href="showRank.jsp"><li class="header-nav-item">ランキング</li></a>
-<li class="header-nav-item"><form action="UserLogout" method="post">
-	<input type="submit" style="border:none;background: transparent;font-family:"游明朝";" value="ログアウト">
+<li class="header-nav-item"><form action="UserLogout" method="post" name="logout">
+	<a href="javascript:document.logout.submit()">ログアウト</a>
 </form>
+<%--<form action="UserLogout" method="post">
+	<input type="submit" style="border:none;background: transparent;font-family:"游明朝";" value="ログアウト">
+</form> --%>
 </li>
 </ul>
    <div class="header-ham">
