@@ -51,8 +51,11 @@
 			<div style="color:red"><%= request.getAttribute("errorLog") %></div>
 		<% } %>
 		
-		<button onclick="history.back()">戻る</button> <input type="submit" value="登録"> 
+		<input type="submit" value="登録">
 		
-	</form>
+	</form>	
+		
+	<button onclick="history.back()">戻る</button> 
+		
 </body>
 </html>

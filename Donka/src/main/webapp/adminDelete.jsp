@@ -10,11 +10,12 @@
 
 	<form action="SakeDelete" method="post">
 		<input type="submit" value="酒の削除"><br>
-	</from>
+	</form>
 
 	<form action="CommentSelectBreweryServlet" method="post">
 		<input type="submit" value="コメントの削除"><br>
 	</form>
+	
 	<a href="adminTop.jsp">トップページ</a>
 
 </body>

@@ -11,7 +11,6 @@
 	
 	<jsp:useBean id="sake" scope="request" class="model.entity.SakeBean" />
 	
-<%--登録する酒のID:  	<jsp:getProperty name="sake" property="sakeId"/><br>--%>
 	登録する酒の名前：  <jsp:getProperty name="sake" property="sakeName"/><br>
 	登録する酒の度数：  <jsp:getProperty name="sake" property="alc"/><br>
 	登録する酒蔵のID：  <jsp:getProperty name="sake" property="breweryId"/><br>
@@ -30,7 +29,8 @@
 		<input type="hidden" name="taste2" value="<jsp:getProperty name="sake" property="taste"/>" >
 		<input type="hidden" name="sakeExplanation2" value="<jsp:getProperty name="sake" property="sakeExplanation"/>" >
 		<input type="hidden" name="sImgPath2" value="<jsp:getProperty name="sake" property="sImgPath"/>" >
-	<input type="submit" value="登録する">
+		<input type="submit" value="登録する">
+	
 	</form>
 	
 	<button onclick="history.back()">戻る</button>
