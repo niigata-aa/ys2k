@@ -77,9 +77,9 @@ public class UserRegistServlet extends HttpServlet {
 			rd.forward(request,response);
 		}
 		
-		if(validationFlag || password.length() >= 8) {
+		if(!validationFlag || password.length() < 8 || password.length() > 20) {
 			
-			errorLog += "合言葉は8文字以上入力してください。<br>";
+			errorLog += "合言葉は8文字以上20文字以下で入力してください。<br>";
 			
 			//遷移先の設定
 			url = "userRegistration.jsp";

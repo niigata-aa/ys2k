@@ -93,7 +93,6 @@ public class UserLoginServlet extends HttpServlet {
 		/*成功したとき*/
 		if(nickname != null) {	
 			
-			
 			//ビーンズの中に値を挿入する
 			UserBean user = new UserBean();
 			user.setUserId(userId);
@@ -102,7 +101,6 @@ public class UserLoginServlet extends HttpServlet {
 			//セッションスコープへの属性の設定
 			HttpSession session = request.getSession();
 			session.setAttribute("user",user);
-			
 		
 		/*失敗したとき*/	
 		}else { 
@@ -116,8 +114,8 @@ public class UserLoginServlet extends HttpServlet {
 		//リクエストの転送
 		
 		if(validationFlag) {
-		RequestDispatcher rd = request.getRequestDispatcher(url);
-		rd.forward(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher(url);
+			rd.forward(request, response);
 		}
 	}
 
