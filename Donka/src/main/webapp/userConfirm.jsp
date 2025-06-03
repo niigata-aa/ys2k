@@ -35,9 +35,9 @@
 	ニックネーム:   <%= request.getAttribute("nickname") %>
 	
 	<form action="UserRegistConfirm" method="post">
-		<input type="hidden" name="userId" value="<%= request.getAttribute("userId") %>">
-		<input type="hidden" name="password" value="<%= request.getAttribute("password") %>">
-		<input type="hidden" name="nickname" value="<%= request.getAttribute("nickname") %>">
+		<input type="hidden" name="userId" value="<%= request.getAttribute("userId") %>"><br>
+		<input type="hidden" name="password" value="<%= request.getAttribute("password") %>"><br>
+		<input type="hidden" name="nickname" value="<%= request.getAttribute("nickname") %>"><br>
 		<input type="submit" value="登録する">
 	</form>
 	

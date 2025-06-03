@@ -7,7 +7,27 @@
 <title>口コミ画面</title>
 </head>
 <body>
+<link rel="stylesheet" href="Comment.css">
 		<form action="CommentRegist" method="POST">
+		
+			<jsp:include page="header.jsp"></jsp:include>
+		
+		<ul class="sakura">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+		
+				
+	<div class="body"></div>
+    <div class="grad"></div>
+    <div class="header">
 		<%-- コメント一覧表示--%>  
 		<%
 			int breweryId = (Integer) request.getAttribute("breweryId");
@@ -33,14 +53,21 @@
 		%>
 	
 		<%-- ニックネーム表示 --%>
-		ニックネーム：
+
+      <div>ご意見<span></span></div>
+    </div>
+    <br>
+    <div class="main">
+    ニックネーム：
 		<%=myName %><br>
 		コメント入力：<br>
-		<textarea id="content" name="content"></textarea><br>
+		<textarea id="content" placeholder="ご意見" name="content"></textarea><br>
 		<input type="hidden" name="userId" value=<%=userId %>>
 		<input type="hidden" name="breweryId" value=<%=breweryId %>>
+		
 		<input type="button" value="戻る" onClick="history.back()">
 		<input type=submit value="投稿">
+		</div>
 	</form>
 </body>
 </html>

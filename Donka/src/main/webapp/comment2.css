@@ -1,0 +1,263 @@
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+body{
+  margin: 0;
+  padding: 0;
+  background-image: url(img\logo.png);
+  color: rgb(128, 128, 128);
+  font-family:"游明朝";
+  font-weight: bold;
+  font-size: 50%;
+}
+
+.body{
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -40px;
+  bottom: -40px;
+  width: auto;
+  height: auto;
+  
+  background-image: url(http://ginva.com/wp-content/uploads/2012/07/city-skyline-wallpapers-008.jpg);
+  background-size: cover;
+  background-color:  rgb(254, 255, 223,0.5);
+  z-index: 0;
+ 
+}
+
+.grad{
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -40px;
+  bottom: -40px;
+  width: auto;
+  height: auto;
+  background-image: url(img\logo.png);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(253, 213, 255,0.5)), color-stop(100%,rgba(255, 255, 185,0.5))); /* Chrome,Safari4+ */
+  z-index: 1;
+  opacity: 0.7;
+  
+}
+
+.header{
+  position: absolute;
+  top: calc(50% - 35px);
+  left: calc(50% - 255px);
+  z-index: 2;
+  font-family:"游明朝";
+  font-weight: bold;
+}
+
+.header div{
+  float: left;
+  color: rgb(128, 128, 128);
+  font-family: 'Exo', sans-serif;
+  font-size: 35px;
+  font-weight: 200;
+  font-family:"游明朝";
+  font-weight: bold;
+}
+
+.header div span{
+  color: rgb(128, 128, 128) !important;
+  font-family:"游明朝";
+  font-weight: bold;
+}
+
+.main{
+  position: absolute;
+  top: calc(50% - 75px);
+  left: calc(50% - 50px);
+  height: 150px;
+  width: 350px;
+  padding: 10px;
+  z-index: 2;
+  font-family:"游明朝";
+  font-weight: bold;
+  font-size: x-large;
+}
+
+
+
+
+.main textarea[id=content]{
+  width: 260px;
+  height: 35px;
+  background: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  color: rgb(128, 128, 128);
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px;
+  margin-top: 10px;  
+  font-family:"游明朝";
+  font-weight: bold;
+}
+
+.main input[type=submit]{
+  width: 260px;
+  height: 35px;
+  background: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  color: rgb(128, 128, 128);
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px;
+  margin-top: 10px;  
+  font-family:"游明朝";
+  font-weight: bold;
+}
+
+.main input[type=button]{
+  width: 260px;
+  height: 35px;
+  background: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  color: rgb(128, 128, 128);
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px;
+  margin-top: 10px;  
+  font-family:"游明朝";
+  font-weight: bold;
+}
+
+
+.sakura {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sakura h1 {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 5rem;
+  color: #fff;
+}
+
+.sakura li{
+  position: absolute;
+  list-style: none;
+  top: -50px;
+  background:  rgb(255, 181, 244);
+  border-radius: 0% 70%;  
+  animation: fall 4s linear infinite, sway 2s ease-in-out infinite alternate;
+}
+
+
+@keyframes fall {
+  to {
+    top: 120%;
+  }
+}
+
+@keyframes sway1 {
+  from {
+    transform: translateX(0px) rotate(0deg);
+  }
+  to {
+    transform: translateX(200px) rotate(-45deg);
+  }
+}
+
+@keyframes sway2 {
+  from {
+    transform: translateX(200px) rotate(-45deg);
+  }
+  to {
+    transform: translateX(0px) rotate(0deg);
+  }
+}
+
+.sakura li:nth-child(1){
+  left: 0%;
+  width: 24px;
+  height: 15px;
+  animation: fall 10s linear infinite,
+             sway1 3s ease-in-out infinite alternate;
+  animation-delay: 2s;
+}
+
+.sakura li:nth-child(2){
+  left: 5%;
+  width: 13px;
+  height: 9px;
+  animation: fall 15s linear infinite,
+             sway1 2s ease-in-out infinite alternate;
+  animation-delay: 8s;
+}
+
+.sakura li:nth-child(3){
+  left: 15%;
+  width: 16px;
+  height: 10px;
+  animation: fall 9s linear infinite,
+             sway1 3.5s ease-in-out infinite alternate;
+  animation-delay: 13s;
+}
+
+.sakura li:nth-child(4){
+  left: 30%;
+  width: 16px;
+  height: 10px;
+  animation: fall 8s linear infinite,
+             sway2 4s ease-in-out infinite alternate;
+  animation-delay: 7s;
+}
+.sakura li:nth-child(5){
+  left: 40%;
+  width: 16px;
+  height: 10px;
+  animation: fall 10s linear infinite,
+             sway1 4s ease-in-out infinite alternate;
+  animation-delay: 0s;
+}
+.sakura li:nth-child(6){
+  left: 55%;
+  width: 24px;
+  height: 15px;
+  animation: fall 11s linear infinite,
+             sway2 3s ease-in-out infinite alternate;
+  animation-delay: 3s;
+}
+.sakura li:nth-child(7){
+  left: 65%;
+  width: 16px;
+  height: 10px;
+  animation: fall 7s linear infinite,
+             sway2 3.5s ease-in-out infinite alternate;
+  animation-delay: 7s;
+}
+.sakura li:nth-child(8){
+  left: 50%;
+  width: 13px;
+  height: 9px;
+  animation: fall 7s linear infinite,
+             sway1 3s ease-in-out infinite alternate;
+  animation-delay: 3s;
+}
+.sakura li:nth-child(9){
+  left: 80%;
+  width: 16px;
+  height: 10px;
+  animation: fall 10s linear infinite,
+             sway2 4s ease-in-out infinite alternate;
+  animation-delay: 4s;
+}

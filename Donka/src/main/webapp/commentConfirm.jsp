@@ -7,8 +7,31 @@
 <title>口コミ確認画面</title>
 </head>
 <body>
+
+	<jsp:include page="header.jsp"></jsp:include>
 		<%-- ニックネーム表示 --%>
 		<%-- 書いたコメント表示 --%> 
+		
+			
+		<ul class="sakura">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
+<form action="CommentRegistConfirm" method="POST">
+	
+			
+	<div class="body"></div>
+    <div class="grad"></div>
+    <div class="header">
+    
 	<%
 		//int commentId = (Integer) request.getAttribute("commentId");
 		String content = (String) request.getAttribute("content");
@@ -16,11 +39,16 @@
 		int breweryId = (Integer) request.getAttribute("breweryId");
 		String myName = (String) request.getAttribute("myName");
 	%>
+		
+      <div>ご意見<span></span></div>
+    </div>
+    <br>
+    <div class="main">
 	ニックネーム：<%=myName %><br>
 	投稿内容：<%=content %><br>
 
 	こちらで投稿してもよろしいでしょうか？<br>
-	<form action="CommentRegistConfirm" method="POST">
+
 	
 		<input type="hidden" name="content" value=<%= content %>>
 		<input type="hidden" name="userId" value=<%=userId %>>
@@ -31,7 +59,11 @@
 		<%}else{ %>
 		<input type=submit value="決定する" disabled>
 		<%} %>
+	 </div>
+	 
 	</form>
+	
+	
 	
 </body>
 </html>
