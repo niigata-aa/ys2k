@@ -75,7 +75,8 @@ public class CommentListServlet extends HttpServlet {
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 			System.out.println(e);
-			url="comment.jsp";
+			url="failure.jsp";
+			request.setAttribute("url","home.jsp");
 		}
 		
 		// リクエストの転送

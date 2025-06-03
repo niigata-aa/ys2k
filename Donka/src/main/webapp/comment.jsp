@@ -39,6 +39,7 @@
 		<textarea id="content" name="content"></textarea><br>
 		<input type="hidden" name="userId" value=<%=userId %>>
 		<input type="hidden" name="breweryId" value=<%=breweryId %>>
+		<input type="button" value="戻る" onClick="history.back()">
 		<input type=submit value="投稿">
 	</form>
 </body>

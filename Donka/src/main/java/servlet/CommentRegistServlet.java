@@ -71,6 +71,7 @@ public class CommentRegistServlet extends HttpServlet {
 			e.printStackTrace();
 			System.out.println(e);
 			url="failure.jsp";
+			request.setAttribute("url","home.jsp");
 		}
 		
 		

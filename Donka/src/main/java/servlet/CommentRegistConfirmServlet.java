@@ -68,12 +68,12 @@ public class CommentRegistConfirmServlet extends HttpServlet {
 				int count= dao.insert(comment);
 			} else {
 				url = "failure.jsp";
+				request.setAttribute("url","home.jsp");
 			}
 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 			System.out.println(e);
-			url="failure.jsp";
 		}
 		
 		// リクエストの転送

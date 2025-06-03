@@ -26,7 +26,11 @@
 		<input type="hidden" name="userId" value=<%=userId %>>
 		<input type="hidden" name="breweryId" value=<%=breweryId %>>
 		<input type="button" value="戻る" onClick="history.back()">
+		<% if(content != "" && content.length() <= 200) { %>
 		<input type=submit value="決定する">
+		<%}else{ %>
+		<input type=submit value="決定する" disabled>
+		<%} %>
 	</form>
 	
 </body>
