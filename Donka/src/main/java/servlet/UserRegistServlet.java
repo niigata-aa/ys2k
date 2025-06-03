@@ -47,14 +47,62 @@ public class UserRegistServlet extends HttpServlet {
 		//遷移先URLの設定
 		String url = "userConfirm.jsp";
 		
+		/* validation Check */
+		String errorLog = "";
+		boolean validationFlag = true;
+		
+		if(userId == null || userId.length() == 0 
+			|| nickname == null || nickname.length() == 0
+			|| password == null || password.length() == 0) {
+			
+			if(userId == null || userId.length() == 0) {
+				errorLog += "登録したい会員番号を入力して下さい。<br>";
+			}
+			
+			if(nickname == null || nickname.length() == 0) {
+				errorLog += "登録したい愛称を入力して下さい。<br>";
+			}
+			
+			if(password == null || password.length() == 0) {
+				errorLog += "登録したい合言葉を入力して下さい。<br>";
+			}
+			
+			//遷移先の設定
+			url = "userRegistration.jsp";
+			validationFlag = false;
+			
+			request.setAttribute("errorLog", errorLog);
+			
+			RequestDispatcher rd = request.getRequestDispatcher(url);
+			rd.forward(request,response);
+		}
+		
+		if(validationFlag || password.length() >= 8) {
+			
+			errorLog += "合言葉は8文字以上入力してください。<br>";
+			
+			//遷移先の設定
+			url = "userRegistration.jsp";
+			validationFlag = false;
+			
+			request.setAttribute("errorLog", errorLog);
+			
+			RequestDispatcher rd = request.getRequestDispatcher(url);
+			rd.forward(request,response);
+				
+		}
+		/*                   */
+		
 		//リクエストスコープへの属性の設定
 		request.setAttribute("userId", userId);
 		request.setAttribute("nickname",nickname);
 		request.setAttribute("password",password);
 		
 		//リクエストの転送
+		if(validationFlag) {
 		RequestDispatcher rd = request.getRequestDispatcher(url);
 		rd.forward(request, response);
+		}
 	}
 
 }

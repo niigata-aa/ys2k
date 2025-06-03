@@ -36,7 +36,15 @@
 		<input type="text" placeholder="愛称" name="nickname"><br>
 		<input type="submit" value="会員登録">
 	</form>
+	
+	<!-- Validation check -->
+	<% if( request.getAttribute("errorLog") != null){%>
+		<div style="color:red"><%= request.getAttribute("errorLog") %></div>
+	<% } %>
 	</div>
+	
+
+	
 	
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>

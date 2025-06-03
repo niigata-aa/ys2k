@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
+<link rel="stylesheet" href="adminLogin.css">
 <title>管理者ログイン</title>
 </head>
 <body>
