@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>口コミ確認画面</title>
+<link rel="stylesheet" href="comment2.css">
 </head>
 <body>
 

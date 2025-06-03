@@ -150,7 +150,7 @@ boolean isLoggedIn = (user != null);
 						<input type="hidden" name="brewid" value=<%=sake.getBreweryId()%>>
 						<button style="background: transparent; border: none;">
 							<img src="/Donka/<%=sake.getsImgPath()%>"
-								alt="<%= sake.getSakeName() %>" width="100">
+								alt="<%= sake.getSakeName() %>" width="100" class="image">
 						</button>
 					</form>
 				</td>
