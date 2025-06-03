@@ -10,9 +10,11 @@
 <body>
 
 	<jsp:include page="header.jsp"></jsp:include>
+	
+
 
 	<div class="search">
-		<h1>地域</h1>
+		<div class="box-title"><h2>地域</h2></div>
 		<form action="BrewerySearch" method="POST">
 			<label>1.上越：<input type="checkbox" value="1" name="areaId"></label><br>
 			<label>2.中越：<input type="checkbox" value="2" name="areaId"></label><br>
@@ -29,6 +31,7 @@
 		<button onclick="location.href='SakeViewServlet'">日本酒</button>
 
 	</div>
+	
 
 
 	<%
@@ -37,13 +40,17 @@
 	<div class="d1">
 		<h1>酒蔵の一覧</h1>
 	</div>
-	<h3>画像をクリックすると詳細へ</h3>
+<!--	<p class="ex">画像をクリックすると詳細へ</p>-->
 	<div class="table_box">
+	
+		
+
+
 		<table>
-			<tr>
-				<th class="sticky">酒蔵の名前</th>
-				<th class="sticky">酒蔵の写真</th>
-			</tr>
+<!--			<tr>-->
+<!--				<th class="sticky">酒蔵の名前</th>-->
+<!--				<th class="sticky">酒蔵の写真</th>-->
+<!--			</tr>-->
 			<%
 			for (BreweryBean brewery : breweryList) {
 			%>
@@ -67,7 +74,7 @@
 
 		</table>
 	</div>
-
+<div class="a"></div>
 	<jsp:include page="footer.jsp"></jsp:include>
 
 </body>

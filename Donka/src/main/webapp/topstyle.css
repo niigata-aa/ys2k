@@ -7,9 +7,11 @@ body{
 	    font-weight: 300;
 		margin: 0,auto;
 		width: 100%;
-		height: 100vh;
+		height: 100%;
 		overflow:scroll;
-		background:	 -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(253, 213, 255,0.6
+		
+		
+		background:	 -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(253, 213, 255,0.4
 		 )), color-stop(100%,rgba(255, 255, 185,0.5)));
 	}
 

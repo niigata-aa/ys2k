@@ -30,6 +30,9 @@
 <body>
 
 <jsp:include page="header.jsp"></jsp:include>
+
+
+
     <%
 // サーブレットから渡された酒のリストを取得
 List<SakeBean> sakeList = (List<SakeBean>)request.getAttribute("sakeList");
@@ -118,6 +121,8 @@ boolean isLoggedIn = (user != null);
 
     </div>
 
+
+
     <div class="d1">
         <h1>酒の一覧</h1>
     </div>
@@ -135,7 +140,7 @@ boolean isLoggedIn = (user != null);
         %>
             <tr>
                 <td><%= sake.getSakeName()%></td>
-                <td><a href="SakeDetail"><img src="/Donka/img/<%=sake.getsImgPath()%>" alt="<%= sake.getSakeName() %>" width="100"></a></td>
+                <td><a href="SakeDetail"><img src="/Donka/<%=sake.getsImgPath()%>" alt="<%= sake.getSakeName() %>" width="100"></a></td>
                 <td>
                     <%-- ログインしている場合のみクリック可能なハートアイコンを表示 --%>
                     <% if (isLoggedIn) { %>
