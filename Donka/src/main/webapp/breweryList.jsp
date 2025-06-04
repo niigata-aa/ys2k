@@ -19,7 +19,7 @@
 			<label>1.上越：<input type="checkbox" value="1" name="areaId"></label><br>
 			<label>2.中越：<input type="checkbox" value="2" name="areaId"></label><br>
 			<label>3.下越：<input type="checkbox" value="3" name="areaId"></label><br>
-			<label>4.佐越：<input type="checkbox" value="4" name="areaId"></label><br>
+			<label>4.佐渡：<input type="checkbox" value="4" name="areaId"></label><br>
 
 			<input type="submit" value="検索">
 		</form>
