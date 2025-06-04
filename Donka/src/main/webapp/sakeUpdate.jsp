@@ -95,7 +95,7 @@
 		
 		<div class="form-group">
 			<label for="sImgPath">変更する酒の写真:</label>
-			<input type="file" id="sImgPath" name="sImgPath" accept="image/jpeg, image/png"> <%-- required を削除 --%>
+			<input type="file" id="sImgPath" name="sImgPath" accept="image/jpeg, image/png" required> <%-- required を削除 --%>
             <% if (selectedSakeOnLoad != null && selectedSakeOnLoad.getsImgPath() != null && !selectedSakeOnLoad.getsImgPath().isEmpty()) { %>
                 <p class="current-image-info">現在の画像: <span id="currentImageName"><%= selectedSakeOnLoad.getsImgPath() %></span></p>
                 <img id="currentImagePreview" src="<%= request.getContextPath() %>/img/<%= selectedSakeOnLoad.getsImgPath() %>" alt="現在の酒の画像" style="max-width: 100px; margin-top: 10px; border: 1px solid #ddd;">
