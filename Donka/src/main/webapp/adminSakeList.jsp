@@ -40,7 +40,7 @@
                         <td><%= sake.getSakeName()%></td>
                         <td class="table-image"> <%-- 画像表示用のクラスを追加 --%>
                             <% if (sake.getsImgPath() != null && !sake.getsImgPath().isEmpty()) { %>
-                                <img src="<%= sake.getsImgPath() %>" alt="<%= sake.getSakeName() %>の画像">
+                                <img src="/Donka/img/<%= sake.getsImgPath() %>" alt="<%= sake.getSakeName() %>の画像">
                             <% } else { %>
                                 画像なし
                             <% } %>

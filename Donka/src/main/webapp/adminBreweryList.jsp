@@ -41,7 +41,7 @@
 						<td><%= brewery.getBreweryName()%></td>
 						<td class="table-image"> <%-- 画像表示用のクラスを追加 --%>
                             <% if (brewery.getbImgPath() != null && !brewery.getbImgPath().isEmpty()) { %>
-                                <img src="<%= brewery.getbImgPath() %>" alt="<%= brewery.getBreweryName() %>の画像">
+                                <img src="/Donka/img/<%= brewery.getbImgPath() %>" alt="<%= brewery.getBreweryName() %>の画像">
                             <% } else { %>
                                 画像なし
                             <% } %>
