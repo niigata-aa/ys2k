@@ -86,7 +86,7 @@ body {
 						<form action="BreweryDetail" method="post">
 							<input type="hidden" name="brewid" value=<%=sake.getBreweryId()%>>
 							<button style="background: transparent; border: none;">
-								<img src="/Donka/<%=sake.getsImgPath()%>"
+								<img src="/Donka/img/<%=sake.getsImgPath()%>"
 									alt="<%= sake.getSakeName() %>" width="100">
 							</button>
 						</form>
