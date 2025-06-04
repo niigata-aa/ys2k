@@ -63,7 +63,7 @@
 			ニックネーム：
 			<%=myName%><br> コメント入力：<br>
 			<form action="CommentRegist" method="POST">
-			<textarea id="content" placeholder="ご意見" name="content"></textarea>
+			<textarea id="content" placeholder="ご意見(200文字以下)" name="content"></textarea>
 				<br> <input type="hidden" name="userId" value=<%=userId%>>
 				<input type="hidden" name="breweryId" value=<%=breweryId%>>
 

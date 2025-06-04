@@ -40,7 +40,7 @@ public class CommentRegistConfirmServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url= "home.jsp";
+		String url= "BreweryView";
 		
 		// リクエストオブジェクトのエンコーディング方式の指定
 		request.setCharacterEncoding("UTF-8");

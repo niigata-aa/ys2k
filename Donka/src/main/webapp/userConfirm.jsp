@@ -30,11 +30,11 @@
     <br>
     <div class="user">
 
-    ユーザID:       <%= request.getAttribute("userId") %>
+    ユーザID:       <%= request.getAttribute("userId") %><br>
     
-	パスワード:     <%= request.getAttribute("password") %>
+	パスワード:     <%= request.getAttribute("password") %><br>
 	
-	ニックネーム:   <%= request.getAttribute("nickname") %>
+	ニックネーム:   <%= request.getAttribute("nickname") %><br>
 	
 	<form action="UserRegistConfirm" method="post">
 		<input type="hidden" name="userId" value="<%= request.getAttribute("userId") %>"><br>
