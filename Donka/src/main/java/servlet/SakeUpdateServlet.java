@@ -3,6 +3,7 @@ package servlet;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.sql.SQLException; // 追加
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,7 +36,7 @@ public class SakeUpdateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// GETリクエストはPOSTに転送
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
@@ -48,30 +49,24 @@ public class SakeUpdateServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		
 		//リクエストパラメータの取得
-		String sakeId = request.getParameter("sakeId");
+		String sakeIdParam = request.getParameter("sakeId"); // 更新の場合はsakeIdも取得
 		String sakeName = request.getParameter("sakeName");
 		String breweryId = request.getParameter("breweryId");
 		String alc = request.getParameter("alc");		
 		String fDrink = request.getParameter("fDrink");
 		String taste = request.getParameter("taste");
 		String sakeExplanation = request.getParameter("sakeExplanation");
-		//String sImgPath = request.getParameter("sImgPath");
 		
 		//画像のファイル名取得
-		//アップロードしたファイルを取得
 		Part part = request.getPart("sImgPath");
-		//選択したファイルの名前を取得→パス全体からファイル名だけを取り出す
 		String sImgPath = Paths.get(part.getSubmittedFileName()).getFileName().toString();
-		//ファイル名が空なら空文字で、違ったらそのまま
-		//if(sImgPath.isEmpty)ならimg_nameが"",違うなら"sImgPath"という意味
 		String img_name = sImgPath.isEmpty() ? "" : sImgPath;
 		
 		// 画像アップロード
-		//./img配下のパスを取得
 		String path = getServletContext().getRealPath("/img");
-		//取得したディレクトリに画像を保存
-		part.write(path + File.separator + img_name);
-		
+		if (!img_name.isEmpty()) {
+		    part.write(path + File.separator + img_name);
+		}
 		
 		//遷移先URLの設定
 		String url = "sakeUpdateConfirm.jsp";
@@ -79,28 +74,66 @@ public class SakeUpdateServlet extends HttpServlet {
 		/* validation Check */
 		String errorLog = "";
 		boolean validationFlag = true;
-		boolean sakeExplanationNullFlag = true;//酒の説明がnullか否かを判断するフラグ
 		
-		//null比較
-		if( sakeExplanation == null || sakeExplanation.length() == 0 ) {
-			sakeExplanationNullFlag = false;
+		// 酒の説明のバリデーション
+		if (sakeExplanation != null && sakeExplanation.length() > 50) { // ★修正点: nullチェックを追加
+		    errorLog += "お酒の説明は50文字以下で入力してください。<br>";
+		    validationFlag = false;
 		}
-		
-		if(sakeExplanationNullFlag || sakeExplanation.length() > 50) {
-			
-			errorLog += "お酒の説明は50文字以下で入力してください。<br>";
-			
-			//遷移先の設定
-			url = "SakeUpdatePreparation";
-			validationFlag = false;
-			
+
+		// その他の必須項目チェック (仮)
+		if (sakeIdParam == null || sakeIdParam.isEmpty()) { // 更新対象IDは必須
+		    errorLog += "更新する酒が選択されていません。<br>";
+		    validationFlag = false;
+		}
+		if (sakeName == null || sakeName.isEmpty()) {
+		    errorLog += "酒の名前は必須です。<br>";
+		    validationFlag = false;
+		}
+		if (breweryId == null || breweryId.isEmpty()) {
+		    errorLog += "酒蔵の選択は必須です。<br>";
+		    validationFlag = false;
+		}
+		if (alc == null || alc.isEmpty()) {
+		    errorLog += "度数の選択は必須です。<br>";
+		    validationFlag = false;
+		}
+		if (fDrink == null || fDrink.isEmpty()) {
+		    errorLog += "飲み方の選択は必須です。<br>";
+		    validationFlag = false;
+		}
+		if (taste == null || taste.isEmpty()) {
+		    errorLog += "味わいの選択は必須です。<br>";
+		    validationFlag = false;
+		}
+		// 画像は必須ではないが、もし必須であれば img_name.isEmpty() でチェック
+
+		// エラーがあった場合、エラーメッセージを設定してフォーム画面に戻る
+		if (!validationFlag) {
 			request.setAttribute("errorLog", errorLog);
-			
+			// 更新フォームの初期化に必要なデータを再度設定
+			try {
+				model.dao.BreweryDAO Bdao = new model.dao.BreweryDAO();
+				request.setAttribute("breweryList", Bdao.selectAll());
+				model.dao.SakeDAO Sdao = new model.dao.SakeDAO();
+				request.setAttribute("sakeList", Sdao.selectAll());
+                // もし、現在入力されていたsakeIdParamがあれば、それを元にselectedSakeを再取得
+                if (sakeIdParam != null && !sakeIdParam.isEmpty()) {
+                    request.setAttribute("selectedSake", Sdao.selectById(Integer.parseInt(sakeIdParam)));
+                }
+			} catch (SQLException | ClassNotFoundException e) {
+				e.printStackTrace();
+				url = "adminFailure.jsp"; 
+				request.setAttribute("cause", "データベース処理中にエラーが発生しました。");
+				RequestDispatcher rd = request.getRequestDispatcher(url);
+				rd.forward(request, response);
+				return;
+			}
+			url = "sakeUpdate.jsp";
 			RequestDispatcher rd = request.getRequestDispatcher(url);
 			rd.forward(request,response);
-				
+			return;
 		}
-		/*                   */
 		
 		int iSakeId = 0;
 		int iBreweryId = 0;
@@ -108,15 +141,36 @@ public class SakeUpdateServlet extends HttpServlet {
 		
 		//リクエストパラメータの型を合わせる
 		try {
-			
-			iSakeId = Integer.parseInt(sakeId);
+			iSakeId = Integer.parseInt(sakeIdParam);
 			iBreweryId = Integer.parseInt(breweryId);
 			dAlc = Double.parseDouble(alc);
 			
 		} catch (NumberFormatException e) {
-			
+			errorLog += "度数、酒蔵ID、または酒IDが不正な形式です。<br>";
+			validationFlag = false;
 			e.printStackTrace();
-			
+		}
+		
+		// ここでもし数値変換エラーがあれば再度エラー処理
+		if (!validationFlag) {
+		    request.setAttribute("errorLog", errorLog);
+		    try {
+                model.dao.BreweryDAO Bdao = new model.dao.BreweryDAO();
+                request.setAttribute("breweryList", Bdao.selectAll());
+                model.dao.SakeDAO Sdao = new model.dao.SakeDAO();
+                request.setAttribute("sakeList", Sdao.selectAll());
+                if (sakeIdParam != null && !sakeIdParam.isEmpty()) {
+                    request.setAttribute("selectedSake", Sdao.selectById(Integer.parseInt(sakeIdParam)));
+                }
+            } catch (SQLException | ClassNotFoundException e) {
+                e.printStackTrace();
+                url = "adminFailure.jsp";
+                request.setAttribute("cause", "データベース処理中にエラーが発生しました。");
+            }
+		    url = "sakeUpdate.jsp";
+		    RequestDispatcher rd = request.getRequestDispatcher(url);
+		    rd.forward(request, response);
+		    return;
 		}
 		
 		//リクエストスコープへの属性の設定
@@ -129,16 +183,12 @@ public class SakeUpdateServlet extends HttpServlet {
 		sake.setfDrink(fDrink);
 		sake.setTaste(taste);
 		sake.setSakeExplanation(sakeExplanation);
-		sake.setsImgPath(sImgPath);
-		
+		sake.setsImgPath(img_name); // 新しい画像がアップロードされなければ空文字のまま
+
 		request.setAttribute("sake", sake);
 		
-		
-		if(validationFlag) {
-			RequestDispatcher rd = request.getRequestDispatcher(url);
-			rd.forward(request, response);
-		}
-		
+		RequestDispatcher rd = request.getRequestDispatcher(url);
+		rd.forward(request, response);
 	}
 
 }
