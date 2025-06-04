@@ -30,7 +30,7 @@
 	<p class="name">
 	<h1><%=brew.getBreweryName()%></h1>
 	</p>
-	<img src="<%=brew.getbImgPath()%>" alt="<%=brew.getBreweryName()%>">
+	<img src="/Donka/img/<%=brew.getbImgPath()%>" alt="<%=brew.getBreweryName()%>">
 	<br>
 
 	<p class="ex"><%=brew.getBreweryExplanation()%></p>

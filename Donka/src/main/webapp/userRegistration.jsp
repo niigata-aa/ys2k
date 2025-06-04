@@ -30,9 +30,12 @@
     <div class="user">
 
 	<form action="UserRegist" method="post">
-	    <input type="text" placeholder="会員番号" name="userId"><br>
+	    <input type="text" placeholder="ID" name="userId"><br>
+	    <p>10文字以下：英数字</p>
 		<input type="password" placeholder="合言葉" name="password"><br>
+		<p>パスワード8桁以上20文字以下</p>
 		<input type="text" placeholder="愛称" name="nickname"><br>
+		<p>20文字以下</p>
 		<input type="submit" value="会員登録">
 	</form>
 	

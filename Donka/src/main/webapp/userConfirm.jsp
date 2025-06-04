@@ -31,7 +31,9 @@
     <div class="user">
 
     ユーザID:       <%= request.getAttribute("userId") %>
+    
 	パスワード:     <%= request.getAttribute("password") %>
+	
 	ニックネーム:   <%= request.getAttribute("nickname") %>
 	
 	<form action="UserRegistConfirm" method="post">
